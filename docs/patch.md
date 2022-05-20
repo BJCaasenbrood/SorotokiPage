@@ -6,11 +6,10 @@ nav_order: 7
 
 # Patch notes
 
-% SOROTOKI - Alpha - 2.05.19 - May 19 - 2022
+## SOROTOKI - Alpha - 2.05.19 - May 19 - 2022
 - **Fem.m**:
-    - @muyi-max: Fixed issue with Fem.Log. If a nonlinear residual increment takes less
-      than 2 iterations, data was not properly stored. To solve this, any
-      nonlinear time increment must take atleast two steps, as to ensure a
+    - Addressed to solve [Issue #7](https://github.com/BJCaasenbrood/SorotokiCode/issues/7): Fixed issue with Fem.Log. If a nonlinear residual increment takes less
+      than 2 iterations, data was not properly stored. To solve this, any nonlinear time increment must take at least two steps, as to ensure a
       new displacement field is introduced to the stress-strain calculations.
 
 ## SOROTOKI - Alpha - 2.05.17 - May 17 - 2022

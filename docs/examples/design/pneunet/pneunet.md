@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Example 3 - Topology Optimization of PneuNet
+title: (3) Automated design synthesis of PneuNet
 parent: Design and Analysis
 grand_parent: Examples
 nav_order: 3
 permalink: /docs/examples/design/pneunet/
 ---
 
-#  Topology optimization of PneuNet actuator
+#  Automated design synthesis of PneuNet actuator (topology optimization)
 {: .no_toc }
 
 <details open markdown="block">

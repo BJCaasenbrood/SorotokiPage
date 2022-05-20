@@ -40,11 +40,11 @@
 <a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples" class="nav-list-link">Examples</a><ul class="nav-list ">
 <li class="nav-list-item ">
 <a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples/design.html" class="nav-list-link">Design and Analysis</a><ul class="nav-list">
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pull/" class="nav-list-link">Example 1 - Fitting a hyper-elastic material</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pull/" class="nav-list-link">(1) Material test</a>
 </li>
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pneufem/" class="nav-list-link">Example 2 - Finite Element Analysis of PneuNet</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pneufem/" class="nav-list-link">(2) PneuNet analysis</a>
 </li>
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pneunet/" class="nav-list-link">Example 3 - Topology Optimization of PneuNet</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pneunet/" class="nav-list-link">(3) Automated design synthesis of PneuNet</a>
 </li>
 </ul>
 </li>
@@ -90,33 +90,57 @@
 </code></pre></div></div>
 <p>Alternatively, you can download the latest version of the toolkit below, and unpack the compressed folder at any desired working directory.</p>
 <p><a href="https://github.com/BJCaasenbrood/SorotokiCode/zipball/master" class="btn btn fs-3 mb-4 mb-md-0 mr-2">Stable V3.03 (.zip)</a> <a href="https://github.com/BJCaasenbrood/SorotokiCode/tarball/master" class="btn btn fs-3 mb-4 mb-md-0 mr-2">Stable V3.03 (.tar)</a> <a href="https://github.com/BJCaasenbrood/SorotokiCode" class="btn fs-3 mb-4 mb-md-0">Download from Github</a></p>
-<h2 id="1-open-matlab"> <a href="#1-open-matlab" class="anchor-heading" aria-labelledby="1-open-matlab"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1) Open MATLAB</h2>
+<h2 class="fs-6" id="1-open-matlab"> <a href="#1-open-matlab" class="anchor-heading" aria-labelledby="1-open-matlab"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1) Open MATLAB</h2>
 <ul>
-<li>MATLAB compatibility: verified from R2018a – to R2021a.</li>
-<li>OS compatibility: Windows/Linux (OSX untested).</li>
-<li>Installation size: ~75 MB</li>
+<li>MATLAB compatibility: verified from <code class="language-plaintext highlighter-rouge">R2018a</code> – <code class="language-plaintext highlighter-rouge">R2022a</code>.</li>
+<li>OS compatibility: <code class="language-plaintext highlighter-rouge">Windows</code> and <code class="language-plaintext highlighter-rouge">Linux</code> (<code class="language-plaintext highlighter-rouge">OSX</code> untested).</li>
+<li>Installation size: <code class="language-plaintext highlighter-rouge">20 MB</code>
+</li>
 </ul>
 <p>Please inform the developers if any compatibility issues may occur.</p>
 <h2 id="2-install-the-prerequisites"> <a href="#2-install-the-prerequisites" class="anchor-heading" aria-labelledby="2-install-the-prerequisites"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2) Install the prerequisites</h2>
 <p>To use SOROTOKI optimally, make sure you have the following dependencies installed:</p>
-<ul>
-<li>
-<a href="https://nl.mathworks.com/products/optimization.html">Optimization Toolbox</a>, <a href="https://nl.mathworks.com/products/pde.html">Partial Differential Equation Toolbox</a>, and <a href="https://nl.mathworks.com/products/image.html">Image Processing Toolbox</a>
-</li>
-<li>
-<a href="http://mingw-w64.org/doku.php/start">C++ compiler</a>, <a href="https://eigen.tuxfamily.org/index.php?title=Main_Page">Eigen Libary</a>, and <a href="https://cmake.org/">CMAKE</a> are highly recommended.</li>
-</ul>
+<div class="table-wrapper"><table><tbody>
+<tr>
+<td><a href="https://nl.mathworks.com/products/optimization.html">Optimization Toolbox</a></td>
+<td><strong class="text-red-000">Required</strong></td>
+</tr>
+<tr>
+<td><a href="https://nl.mathworks.com/products/pde.html">Partial Differential Equation Toolbox</a></td>
+<td><strong class="text-red-000">Required</strong></td>
+</tr>
+<tr>
+<td><a href="https://nl.mathworks.com/products/image.html">Image Processing Toolbox</a></td>
+<td><strong class="text-red-000">Required</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.mathworks.com/products/matlab-coder.html">Matlab Coder</a></td>
+<td><strong class="text-red-000">Required</strong></td>
+</tr>
+<tr>
+<td><a href="http://mingw-w64.org/doku.php/start">C++ compiler</a></td>
+<td>Recommended</td>
+</tr>
+<tr>
+<td><a href="https://eigen.tuxfamily.org/index.php?title=Main_Page">Eigen Libary</a></td>
+<td>Recommended</td>
+</tr>
+<tr>
+<td><a href="https://cmake.org/">CMAKE</a></td>
+<td>Highly recommended</td>
+</tr>
+</tbody></table></div>
 <h2 id="3-run-the-installation-script"> <a href="#3-run-the-installation-script" class="anchor-heading" aria-labelledby="3-run-the-installation-script"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3) Run the installation script</h2>
 <p>Once you’ve opened MATLAB, you first have to configure the toolkit with MATLAB’s search paths. Setting up these paths is relatively straightforward. Simply run <code class="language-plaintext text-purple-000 highlighter-rouge">sorotoki()</code>:</p>
 <p><img src="./img/installing.gif" width="725"></p>
 <p>During install, the installer will ask you if SOROTOKI should can set as the <em>main</em> directory of MATLAB. This implies every time you open MATLAB, it will automatically go this directory.</p>
 <p>By using the command: <code class="language-plaintext text-purple-000 highlighter-rouge">cdsoro</code>, you can quickly go back to the main directory from any other directory (super useful!). It will also generate the file <code class="language-plaintext text-purple-000 highlighter-rouge">startup.m</code> that loads the toolkit automatically. This start-up file is typically located under <code class="language-plaintext highlighter-rouge">./Documents/MATLAB/startup.m</code> for Linux/Windows OS.</p>
 <h2 id="thats-all-folks"> <a href="#thats-all-folks" class="anchor-heading" aria-labelledby="thats-all-folks"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> That’s all folks!</h2>
-<p>The soft robotics toolkit is now ready-to-use. The toolkit can be verified using the command <code class="language-plaintext text-purple-000 highlighter-rouge">sorotoki('check')</code>.</p>
+<p>The soft robotics toolkit is now ready-to-use. The toolkit can be verified using the command <code class="language-plaintext text-purple-000 highlighter-rouge">verifySorotoki</code>.</p>
 <h1 id="checking-for-future-updates"> <a href="#checking-for-future-updates" class="anchor-heading" aria-labelledby="checking-for-future-updates"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Checking for future updates</h1>
 <p>It is also worth mentioning that the command above is also used to update the toolkit. It is recommended to run <code class="language-plaintext text-purple-000 highlighter-rouge">sorotoki()</code> to check for updates occasionally. Or type:</p>
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">show</span> <span class="n">demos</span>
-<span class="nf">sorotoki</span><span class="p">(</span><span class="nv">'update</span><span class="err">'</span><span class="p">);</span>
+<span class="nf">sorotoki</span><span class="p">(</span><span class="nv">'demo</span><span class="err">'</span><span class="p">);</span>
 </code></pre></div></div>
 <hr>
 <footer><p><a href="#top" id="back-to-top">Back to top</a></p>

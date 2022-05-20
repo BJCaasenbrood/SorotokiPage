@@ -17,15 +17,29 @@ permalink: /
 
 *SOROTOKI* is an open-source MATLAB toolkit for soft robotics that includes an array of tools for design, modeling, and control. Due to its scientific diversity, it can be challenging for new researchers to quickly familiarize themselves with multiple scientific areas. With the aim to lower this threshold, Sorotoki aims to incorporate multiple layers of soft robotics research into one compact toolkit. Examples include: continuum mechanics, dynamic systems and control theory, topology optimization, computer graphics, and much more to come! The combination provides a highly flexible programming environment and will hopefully aid the development of novel soft robotic research.
 
-#### Download the latest stable version:
-{: .text-purple-000}
+# How to install?
+{: .fs-5 .text-purple-000}
+For the install guide, please see check: [Documentation/Installation guide](./docs/documentation/install.html)
 
+{: .text-purple-000}
 ```bash
 git clone --depth 1  https://github.com/BJCaasenbrood/SorotokiCode.git
 ```
 
+[Stable V2.05.19  (.zip)](https://github.com/BJCaasenbrood/SorotokiCode/zipball/master){: .btn .btn-purple .fs-5 .mb-4 .mb-md-0 .mr-2} [Stable V2.05.19 (.tar)](https://github.com/BJCaasenbrood/SorotokiCode/tarball/master){: .btn .btn-purple .fs-5 .mb-4 .mb-md-0 .mr-2} [View on Github](https://github.com/BJCaasenbrood/SorotokiCode){: .btn .fs-5 .mb-4 .mb-md-0}  
+
+
+## Applications highlights
 {: .text-purple-000}
-[Stable V2.24.01  (.zip)](https://github.com/BJCaasenbrood/SorotokiCode/zipball/master){: .btn .btn-purple .fs-5 .mb-4 .mb-md-0 .mr-2} [Stable V2.24.01 (.tar)](https://github.com/BJCaasenbrood/SorotokiCode/tarball/master){: .btn .btn-purple .fs-5 .mb-4 .mb-md-0 .mr-2} [View on Github](https://github.com/BJCaasenbrood/SorotokiCode){: .btn .fs-5 .mb-4 .mb-md-0}  
+SOROTOKI is exclusively developed as a multi-physics programming tools for the **design**, **modeling**, and **control** of soft robots. Below we see a diagram of how each of the six Matlab classes interact:
+<div align="center"> <img src="./docs/documentation/img/abstract.png" width="750"> </div>
+
+- Implicit modeling with Signed Distance Functions (SDFs),
+- Finite element method (FEM) using hyper-elastic materials,
+- Topology optimization of (pressure-driven) soft robots,
+- Dynamical modeling through differential geometric theory,
+- (NEW!) Real-time control of soft robots via Raspi-interface,
+- Fast graphics rendering with responsive textures.
 
 ## What's new?
 {: .text-purple-000}
@@ -71,16 +85,6 @@ soft robotic systems using a desktop-sized development platform, see [Github rep
 {: .text-purple-000}
 **REMARK**: The controller shown in the video is not a 'elementary' PID controller, we actively use gravity compensation, and hyper-elastic and visco-elastic material compensation! To envelop these entities in a dynamic model, we used the SOROTOKI toolkit.
 {: .fs-2}
-
-
-## Applications highlights
-{: .text-purple-000}
-- Implicit modeling with Signed Distance Functions (SDFs),
-- Finite element method (FEM) using hyper-elastic materials,
-- Topology optimization of (pressure-driven) soft robots,
-- Dynamical modeling through differential geometric theory,
-- (NEW!) Real-time control of soft robots via Raspi-interface,
-- Fast graphics rendering with responsive textures.
 
 {: .text-purple-000}
 **REMARK**: All images below are produced using only MATLAB and the SOROTOKI toolkit, no additional software was used!

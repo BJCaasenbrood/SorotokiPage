@@ -20,17 +20,23 @@ Alternatively, you can download the latest version of the toolkit below, and unp
 
 
 ## 1) Open MATLAB
-- MATLAB compatibility: verified from R2018a -- to R2021a.
-- OS compatibility: Windows/Linux (OSX untested).
-- Installation size: ~75 MB
+{: .fs-6}
+- MATLAB compatibility: verified from `R2018a` -- `R2022a`.
+- OS compatibility: `Windows` and `Linux` (`OSX` untested).
+- Installation size: `20 MB`
 
 Please inform the developers if any compatibility issues may occur.
 
 ## 2) Install the prerequisites
 To use SOROTOKI optimally, make sure you have the following dependencies installed:
 
-- [Optimization Toolbox](https://nl.mathworks.com/products/optimization.html), [Partial Differential Equation Toolbox](https://nl.mathworks.com/products/pde.html), and [Image Processing Toolbox](https://nl.mathworks.com/products/image.html)
-- [C++ compiler](http://mingw-w64.org/doku.php/start), [Eigen Libary](https://eigen.tuxfamily.org/index.php?title=Main_Page), and [CMAKE](https://cmake.org/) are highly recommended.
+| [Optimization Toolbox](https://nl.mathworks.com/products/optimization.html) | **Required**{: .text-red-000} |
+| [Partial Differential Equation Toolbox](https://nl.mathworks.com/products/pde.html) | **Required**{: .text-red-000} |
+| [Image Processing Toolbox](https://nl.mathworks.com/products/image.html) | **Required**{: .text-red-000} |
+| [Matlab Coder](https://www.mathworks.com/products/matlab-coder.html) | **Required**{: .text-red-000}  |
+| [C++ compiler](http://mingw-w64.org/doku.php/start) | Recommended |
+| [Eigen Libary](https://eigen.tuxfamily.org/index.php?title=Main_Page) | Recommended |
+| [CMAKE](https://cmake.org/) | Highly recommended |
 
 ## 3) Run the installation script
 
@@ -43,12 +49,12 @@ During install, the installer will ask you if SOROTOKI should can set as the *ma
 By using the command: `cdsoro`{: .text-purple-000}, you can quickly go back to the main directory from any other directory (super useful!). It will also generate the file `startup.m`{: .text-purple-000} that loads the toolkit automatically. This start-up file is typically located under `./Documents/MATLAB/startup.m` for Linux/Windows OS.
 
 ## That's all folks!
-The soft robotics toolkit is now ready-to-use. The toolkit can be verified using the command `sorotoki('check')`{: .text-purple-000}.
+The soft robotics toolkit is now ready-to-use. The toolkit can be verified using the command `verifySorotoki`{: .text-purple-000}.
 
 # Checking for future updates
 It is also worth mentioning that the command above is also used to update the toolkit. It is recommended to run `sorotoki()`{: .text-purple-000} to check for updates occasionally. Or type:
 
 ```rust
 % show demos
-sorotoki('update');
+sorotoki('demo');
 ```

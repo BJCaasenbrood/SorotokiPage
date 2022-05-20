@@ -1,18 +1,27 @@
 ---
 layout: default
-title: Example 1 - Fitting a hyper-elastic material
+title: (1) Material test
 parent: Design and Analysis
 grand_parent: Examples
 nav_order: 1
 permalink: /docs/examples/design/pull/
 ---
 
-<script type="text/javascript" charset="utf-8"
-src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,
-https://vincenttam.github.io/javascripts/MathJaxLocal.js"></script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
 
-
-#  Example 1: Hyper-elastic material fit
+#  Hyper-elastic material tension test
 {: .no_toc }
 
 <details open markdown="block">
@@ -33,11 +42,11 @@ https://vincenttam.github.io/javascripts/MathJaxLocal.js"></script>
 ---
 
 ### Introduction
-In this illustrative example, we will perform a tension test to fit a hyper-elastic material model for some unknown elastic material. A collection of these measurements have been performed and are saved in under `.\script\tutorial\T1_materialfit.mat`{: .text-purple-000}. Assuming a two-dimensional problem, we consider a $20 \times 20$ mm material specimen and numerically simulate a uni-axial elongation of $\lambda_1 = 500 \%$. Using SOROTOKI, we can run the simulated model through an **constrained optimization routine** (`fmincon.m`) to find the unknown material coefficients for a the Yeoh model:
+In this illustrative example, we will perform a simple tension test using a hyper-elastic material. Assuming a two-dimensional problem, we consider a \\(20 \times 20\\) mm material specimen and numerically simulate a uni-axial elongation of \\(\lambda_1 = 500 \% \\). Using SOROTOKI, we can perform a simple benchtest using the nonlinear Yeoh material model:
 
 $$\Psi = \sum^3_{i = 1} c_i \left(J_1 - 1 \right)^{i},$$
 
-where $J_1$ denotes the first strain invariant of the Lagrangian strain tensor. The results of the material fit are shown below.
+where \\(J_1\\) denotes the first strain invariant of the Lagrangian strain tensor. The results of the material fit are shown below.
 
 <div align="center"> <img src="./img/intro.png" width="500"> </div>
 <div align="center"> Stock image of uni-axial test (left). Produced result from SOROTOKI (right). </div>
@@ -74,10 +83,11 @@ We can now convert this discretized mesh to a finite element model in a few step
 ```matlab
 %% convert Mesh to Fem
 fem = Fem(msh);
-
+```
+And we can change the settings using
+```matlab
 %% setting for fem model
 fem.set('TimeStep',1/25);
-fem.set('PrescribedDisplacement',true);
 fem.set('Linestyle','none');
 fem.set('Coloraxis',[0,1]);
 ```
@@ -85,14 +95,13 @@ Alternatively, we can rewrite the code above more compactly.
 
 ```matlab
 %% generate fem model
-fem = Fem(msh,'TimeStep',1/25,'PrescribedDisplacement',true,...
-'Linestyle','none','Coloraxis',[0,1]);
+fem = Fem(msh,'TimeStep',1/25,'Linestyle','none','Coloraxis',[0,1]);
 ```
 
-Lets discuss these settings in more detail: The setting `TimeStep`{: .text-purple-000} sets the time increments for the nonlinear solver; `PrescribedDisplacement`{: .text-purple-000} sets the mechanical problem as a prescribed displacements instead of applied loads (default is set to `false`{: .text-purple-000}); `Linestyle`{: .text-purple-000} sets the linestyle of the plots; `Coloraxis`{: .text-purple-000} sets the color axis for the colormaps. The default colormap is `turbo`{: .text-purple-000} (a custom colormap from SOROTOKI -- adapted from python).
+Lets discuss these settings in more detail: The setting `TimeStep`{: .text-purple-000} sets the time increments for the nonlinear solver; `Linestyle`{: .text-purple-000} sets the linestyle of the plots; `Coloraxis`{: .text-purple-000} sets the color axis for the colormaps. The default colormap is `turbo`{: .text-purple-000} (a custom colormap from SOROTOKI -- adapted from python).
 
 ### Assigning boundary conditions
-Given the symmetry of the problem, we can fixate the $x$-displacement for the left face of the material domain and fixate the $y$-displacement for the bottom face. We can use the function `fem.AddConstraint`{: .text-purple-000} with the input `Support`{: .text-purple-000}. To find the associated nodal indices of the model `fem`{: .text-purple-000}, we can use the public function `fem.FindNodes`{: .text-purple-000} together with a specified argument of their location, e.g., `Top`{: .text-purple-000}, `Bottom`{: .text-purple-000}, `Left`{: .text-purple-000}, `Right`{: .text-purple-000}. Similarly, the applied displacement `dL`{: .text-purple-000} is added using the `fem.AddConstraint`{: .text-purple-000} function with the input `Load`{: .text-purple-000}. The code for these procedures is given below:
+Given the symmetry of the problem, we can fixate the \\(x\\)-displacement for the left face of the material domain and fixate the \\(y\\)-displacement for the bottom face. We can use the function `fem.AddConstraint`{: .text-purple-000} with the input `Support`{: .text-purple-000}. To find the associated nodal indices of the model `fem`{: .text-purple-000}, we can use the public function `fem.FindNodes`{: .text-purple-000} together with a specified argument of their location, e.g., `Top`{: .text-purple-000}, `Bottom`{: .text-purple-000}, `Left`{: .text-purple-000}, `Right`{: .text-purple-000}. Similarly, the applied displacement `dL`{: .text-purple-000} is added using the `fem.AddConstraint`{: .text-purple-000} function with the input `Displace`{: .text-purple-000}. The code for these procedures is given below:
 
 ```matlab
 %% adding boundary condition
@@ -103,7 +112,7 @@ id = fem.FindNodes('Bottom');
 fem = fem.AddConstraint('Support',id,[0,1]);
 
 id = fem.FindNodes('Top');
-fem = fem.AddConstraint('Load',id,[0,dL]);
+fem = fem.AddConstraint('Displace',id,[0,dL]);
 ```
 
 ### Output logging
@@ -162,42 +171,41 @@ The code above should produce the following:
 ## Complete code (25 lines without comments)
 
 ```matlab
-%% simulation settings
+% simulation settings
 H  = 20;       % height of specimen
 W  = 20;       % width of specimen
 dL = H*5;      % elongation of specimen
 
-%% signed distance function (SDF)
+% signed distance function (SDF)
 sdf = sRectangle(0,W,0,H);
 
-%% generate mesh
+% generate mesh
 msh = Mesh(sdf,'Quads',[20,20]);
 msh = msh.generate();
 
-%% show SDF and mesh
+% show SDF and mesh
 figure(101);
 subplot(1,2,1); sdf.show();
 subplot(1,2,2); msh.show();
 
-%% generate fem model
-fem = Fem(msh,'TimeStep',1/15,'PrescribedDisplacement',true,...
-'Linestyle','none');
+% generate fem model
+fem = Fem(msh,'TimeStep',1/25,'Linestyle','none','ColorAxis',[0,1]);
 
-%% adding boundary condition
+% adding boundary condition
 fem = fem.AddConstraint('Support',fem.FindNodes('Left'),[1,0]);
 fem = fem.AddConstraint('Support',fem.FindNodes('Bottom'),[0,1]);
-fem = fem.AddConstraint('Load',fem.FindNodes('Top'),[0,dL]);
+fem = fem.AddConstraint('Displace',fem.FindNodes('Top'),[0,dL]);
 
-%% outputs nodal data in fem.Log
+% outputs nodal data in fem.Log
 fem = fem.AddConstraint('Output',fem.FindNodes('NW'),[0,0]);
 
-%% adding material
+% adding material
 fem.Material = Ecoflex0030;
 
-%% solving
+% solving
 fem = fem.solve();
 
-%% post-processing data and plotting
+% post-processing data and plotting
 Exx = (dL/H)*fem.Log.t;
 Svm = fem.Log.Svm;
 

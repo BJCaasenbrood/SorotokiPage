@@ -13,7 +13,7 @@
   },"2": {
     "doc": "How to cite?",
     "title": "References",
-    "content": "[1] B. Caasenbrood, A. Pogromsky and H. Nijmeijer, A Computational Design Framework for Pressure-driven Soft Robots through Nonlinear Topology Optimization, 2020 3rd IEEE Inter. Conf. on Soft Robotics (RoboSoft), pp. 633-638, 2020. 10.1109/RoboSoft48309.2020.9116010 . [2] B. Caasenbrood, A. Pogromsky, and H. Nijmeijer, Dynamic modeling of hyper-elastic soft robots using spatial curves, IFAC World Congress (IFAC PapersOnLine), pp. 9238-9243, 2020. 10.1016/j.ifacol.2020.12.2209 . [3] B. Caasenbrood, A. Pogromsky, and H. Nijmeijer, Energy-based control of soft manipulators using Cosserat-beam Models, 18th International Conference on Informatics in Control, Automation and Robotics (INCINCO), pp. 311-319, 2021. 10.5220/0010581503110319 . [4] B. Caasenbrood, A. Pogromsky, and H. Nijmeijer, Control-oriented models for hyper-elastic soft robots using differential geometry, Soft Robotics, 2021 (under review). [5] B. Caasenbrood, F. van Beek, H. Chu Khanh, and I. Kuling, A Desktop-sized Platform for Real-time Control Applications of Pneumatic Soft Robots, 2022 5rd IEEE Inter. Conf. on Soft Robotics (RoboSoft), 2022 (under review). [6] C. Talischi, G. H. Paulino, A. Pereira, and I. F. M. Menezes, PolyMesher: A general-purpose mesh generator for polygonal elements written in Matlab, Struct. Multidiscip. Optim., vol. 45, no. 3, pp. 309–328, 2012. [7] N. Kim, Introduction Analysis Finite Element to Nonlinear. Springer, 2018. [8] M. Bendsøe and O. Sigmund, Topology Optimization. Theory, Methods and Applications. Springer, 2003. [9] L. Marechal, P. Balland, L. Lindenroth, F. Petrou, C. Kontovounisios and F. Bello Toward a Common Framework and Database of Materials for Soft Robotics, Soft Robotics, 2020. 10.1089/soro.2019.0115 . ",
+    "content": "[1] B. Caasenbrood, A. Pogromsky and H. Nijmeijer, A Computational Design Framework for Pressure-driven Soft Robots through Nonlinear Topology Optimization, 2020 3rd IEEE Inter. Conf. on Soft Robotics (RoboSoft), pp. 633-638, 2020. 10.1109/RoboSoft48309.2020.9116010 . [2] B. Caasenbrood, A. Pogromsky, and H. Nijmeijer, Dynamic modeling of hyper-elastic soft robots using spatial curves, IFAC World Congress (IFAC PapersOnLine), pp. 9238-9243, 2020. 10.1016/j.ifacol.2020.12.2209 . [3] B. Caasenbrood, A. Pogromsky, and H. Nijmeijer, Energy-based control of soft manipulators using Cosserat-beam Models, 18th International Conference on Informatics in Control, Automation and Robotics (INCINCO), pp. 311-319, 2021. 10.5220/0010581503110319 . [4] B. Caasenbrood, A. Pogromsky, and H. Nijmeijer, Control-oriented models for hyper-elastic soft robots using differential geometry, Soft Robotics, 2022 (in press). [5] B. Caasenbrood, F. van Beek, H. Chu Khanh, and I. Kuling, A Desktop-sized Platform for Real-time Control Applications of Pneumatic Soft Robots, 2022 5rd IEEE Inter. Conf. on Soft Robotics (RoboSoft), pp. 217-223, 2022. 10.1109/RoboSoft54090.2022.9762137 . [6] C. Talischi, G. H. Paulino, A. Pereira, and I. F. M. Menezes, PolyMesher: A general-purpose mesh generator for polygonal elements written in Matlab, Struct. Multidiscip. Optim., vol. 45, no. 3, pp. 309–328, 2012. [7] N. Kim, Introduction Analysis Finite Element to Nonlinear. Springer, 2018. [8] M. Bendsøe and O. Sigmund, Topology Optimization. Theory, Methods and Applications. Springer, 2003. [9] L. Marechal, P. Balland, L. Lindenroth, F. Petrou, C. Kontovounisios and F. Bello Toward a Common Framework and Database of Materials for Soft Robotics, Soft Robotics, 2020. 10.1089/soro.2019.0115 . ",
     "url": "http://localhost:4000/SorotokiPage/docs/cite.html#references",
     "relUrl": "/docs/cite.html#references"
   },"3": {
@@ -403,286 +403,298 @@
   },"67": {
     "doc": "Home",
     "title": "SOROTOKI - An open-source soft robotics toolkit for MATLAB",
-    "content": "SOROTOKI is an open-source MATLAB toolkit for soft robotics that includes an array of tools for design, modeling, and control. Due to its scientific diversity, it can be challenging for new researchers to quickly familiarize themselves with multiple scientific areas. With the aim to lower this threshold, Sorotoki aims to incorporate multiple layers of soft robotics research into one compact toolkit. Examples include: continuum mechanics, dynamic systems and control theory, topology optimization, computer graphics, and much more to come! The combination provides a highly flexible programming environment and will hopefully aid the development of novel soft robotic research. Download the latest stable version: . git clone --depth 1 https://github.com/BJCaasenbrood/SorotokiCode.git . Stable V2.24.01 (.zip) Stable V2.24.01 (.tar) View on Github . ",
+    "content": "SOROTOKI is an open-source MATLAB toolkit for soft robotics that includes an array of tools for design, modeling, and control. Due to its scientific diversity, it can be challenging for new researchers to quickly familiarize themselves with multiple scientific areas. With the aim to lower this threshold, Sorotoki aims to incorporate multiple layers of soft robotics research into one compact toolkit. Examples include: continuum mechanics, dynamic systems and control theory, topology optimization, computer graphics, and much more to come! The combination provides a highly flexible programming environment and will hopefully aid the development of novel soft robotic research. ",
     "url": "http://localhost:4000/SorotokiPage/#sorotoki---an-open-source-soft-robotics-toolkit-for-matlab",
     "relUrl": "/#sorotoki---an-open-source-soft-robotics-toolkit-for-matlab"
   },"68": {
     "doc": "Home",
-    "title": "What’s new?",
-    "content": ". | Apr 05, 2022: We have written a simulation environment of a continuum soft arm grabbing a spherical object described as Signed Distance Function Sdf.m. To make the soft arm envelop the object, we developed an energy-shaping technique that ensures the geometric distance between the robot and the object is minimal. In theory, this technique can be used to grab any arbitrarily shaped object as long as we describe it as a Sdf. | . Show image DISCLAIMER: The soft arm still penetrates the object, no contact is prescribed in the simulation here. This will be implemented in the future! . Code available here . | Apr 03, 2022: We added environmental contact in SOROTOKI! You can now use Signed Distance Functions Sdf.m with Fem.m. Use fem.AddConstraint('Contact',sdf,Move) to add the contact. The vector Move = [dX, dY] or Move = [dX, dY, dZ] can be used to offset the contact. The contact dynamics can be solved Quasi-static or Dynamic. | . Show image . | Mar 10, 2022: We hugely improved the dynamic simulations performance using a combination of Matrix-Differential Equations (MDEs) and Matlab’s mex compiler. To enable the compiled dynamic solver, set mdl.MexSolver = true (default option). As an example, see mdl_swing_motion. It runs a 16-dim Kirchoff beam at 60 Hz easily! (5s simulation = 1s real-time). Specs: Lenovo Yoga, AMD Ryzen 7 5800H, 32GB RAM. | . Show video Code available here . | Nov 11, 2021: We recently added the functionality to perform real-time control of soft robotic systems using a desktop-sized development platform, see Github repo. Using Model.m, we developed a model-based controller which we see in action below! | . Show image REMARK: The controller shown in the video is not a ‘elementary’ PID controller, we actively use gravity compensation, and hyper-elastic and visco-elastic material compensation! To envelop these entities in a dynamic model, we used the SOROTOKI toolkit. ",
-    "url": "http://localhost:4000/SorotokiPage/#whats-new",
-    "relUrl": "/#whats-new"
+    "title": "How to install?",
+    "content": "For the install guide, please see check: Documentation/Installation guide . git clone --depth 1 https://github.com/BJCaasenbrood/SorotokiCode.git . Stable V2.05.19 (.zip) Stable V2.05.19 (.tar) View on Github . ",
+    "url": "http://localhost:4000/SorotokiPage/#how-to-install",
+    "relUrl": "/#how-to-install"
   },"69": {
     "doc": "Home",
     "title": "Applications highlights",
-    "content": ". | Implicit modeling with Signed Distance Functions (SDFs), | Finite element method (FEM) using hyper-elastic materials, | Topology optimization of (pressure-driven) soft robots, | Dynamical modeling through differential geometric theory, | (NEW!) Real-time control of soft robots via Raspi-interface, | Fast graphics rendering with responsive textures. | . REMARK: All images below are produced using only MATLAB and the SOROTOKI toolkit, no additional software was used! . Signed Distance Functions and Meshing – Sdf.m, Mesh.m . SDF: Implicit modeling of 2D-primes: union and subtraction . Show image Code available here SDF: Implicit modeling of 3D-primes: subtraction and intersection . Show image Code available here MESH: Signed distance function (SDF) to mesh . Show image MESH: Polygonal meshing of circular SDF . Show image Finite Element Method – Fem.m . FEM: Uni-axial tensile test . Show image Code available here FEM: Topology optimization of PneuNet actuator . Show image Code available here FEM: Deforming PneuNet actuator – Ecoflex 0030 . Show image FEM: 3D buckling of hyper-elastic beam . Show image FEM: Hyper-elastic bouncing ball . Show image FEM: PneuNet with dynamic contact . Show image Dynamic Model – Model.m . MODEL: Simulation of two-link soft robot . Show image MODEL: Energy-based control of planar soft robot . Show image MODEL: Basis reconstruction from FEM-data – Reduced-order modeling . Show image Real-time Control – Control.m . CONTROL: Closed-loop control of PneuNet actuator . Show image CONTROL: Energy-based control two-link system . Show image Graphics Model – Gmodel.m . GMODEL: Responsive rendering of the Stanford bunny . Show image GMODEL: Responsive lighting . Show image GMODEL: Rendering ambient occlusion (AO) . Show image GMODEL: Rendering sub-surface scattering (SSS) . Show image ",
+    "content": "SOROTOKI is exclusively developed as a multi-physics programming tools for the design, modeling, and control of soft robots. Below we see a diagram of how each of the six Matlab classes interact: . | Implicit modeling with Signed Distance Functions (SDFs), | Finite element method (FEM) using hyper-elastic materials, | Topology optimization of (pressure-driven) soft robots, | Dynamical modeling through differential geometric theory, | (NEW!) Real-time control of soft robots via Raspi-interface, | Fast graphics rendering with responsive textures. | . ",
     "url": "http://localhost:4000/SorotokiPage/#applications-highlights",
     "relUrl": "/#applications-highlights"
   },"70": {
+    "doc": "Home",
+    "title": "What’s new?",
+    "content": ". | Apr 05, 2022: We have written a simulation environment of a continuum soft arm grabbing a spherical object described as Signed Distance Function Sdf.m. To make the soft arm envelop the object, we developed an energy-shaping technique that ensures the geometric distance between the robot and the object is minimal. In theory, this technique can be used to grab any arbitrarily shaped object as long as we describe it as a Sdf. | . Show image DISCLAIMER: The soft arm still penetrates the object, no contact is prescribed in the simulation here. This will be implemented in the future! . Code available here . | Apr 03, 2022: We added environmental contact in SOROTOKI! You can now use Signed Distance Functions Sdf.m with Fem.m. Use fem.AddConstraint('Contact',sdf,Move) to add the contact. The vector Move = [dX, dY] or Move = [dX, dY, dZ] can be used to offset the contact. The contact dynamics can be solved Quasi-static or Dynamic. | . Show image . | Mar 10, 2022: We hugely improved the dynamic simulations performance using a combination of Matrix-Differential Equations (MDEs) and Matlab’s mex compiler. To enable the compiled dynamic solver, set mdl.MexSolver = true (default option). As an example, see mdl_swing_motion. It runs a 16-dim Kirchoff beam at 60 Hz easily! (5s simulation = 1s real-time). Specs: Lenovo Yoga, AMD Ryzen 7 5800H, 32GB RAM. | . Show video Code available here . | Nov 11, 2021: We recently added the functionality to perform real-time control of soft robotic systems using a desktop-sized development platform, see Github repo. Using Model.m, we developed a model-based controller which we see in action below! | . Show image REMARK: The controller shown in the video is not a ‘elementary’ PID controller, we actively use gravity compensation, and hyper-elastic and visco-elastic material compensation! To envelop these entities in a dynamic model, we used the SOROTOKI toolkit. REMARK: All images below are produced using only MATLAB and the SOROTOKI toolkit, no additional software was used! . Signed Distance Functions and Meshing – Sdf.m, Mesh.m . SDF: Implicit modeling of 2D-primes: union and subtraction . Show image Code available here SDF: Implicit modeling of 3D-primes: subtraction and intersection . Show image Code available here MESH: Signed distance function (SDF) to mesh . Show image MESH: Polygonal meshing of circular SDF . Show image Finite Element Method – Fem.m . FEM: Uni-axial tensile test . Show image Code available here FEM: Topology optimization of PneuNet actuator . Show image Code available here FEM: Deforming PneuNet actuator – Ecoflex 0030 . Show image FEM: 3D buckling of hyper-elastic beam . Show image FEM: Hyper-elastic bouncing ball . Show image FEM: PneuNet with dynamic contact . Show image Dynamic Model – Model.m . MODEL: Simulation of two-link soft robot . Show image MODEL: Energy-based control of planar soft robot . Show image MODEL: Basis reconstruction from FEM-data – Reduced-order modeling . Show image Real-time Control – Control.m . CONTROL: Closed-loop control of PneuNet actuator . Show image CONTROL: Energy-based control two-link system . Show image Graphics Model – Gmodel.m . GMODEL: Responsive rendering of the Stanford bunny . Show image GMODEL: Responsive lighting . Show image GMODEL: Rendering ambient occlusion (AO) . Show image GMODEL: Rendering sub-surface scattering (SSS) . Show image ",
+    "url": "http://localhost:4000/SorotokiPage/#whats-new",
+    "relUrl": "/#whats-new"
+  },"71": {
     "doc": "Home",
     "title": "Citation",
     "content": "If you are planning on using Sorotoki in your (academic) work, please consider citing the toolkit . @misc{Caasenbrood2018, author = {Caasenbrood, Brandon}, title = {Sorotoki - A Soft Robotics Toolkit for MATLAB}, year = {2020}, publisher = {GitHub}, journal = {GitHub repository}, howpublished = {\\url{https://github.com/BJCaasenbrood/SorotokiCode}}, } . ",
     "url": "http://localhost:4000/SorotokiPage/#citation",
     "relUrl": "/#citation"
-  },"71": {
+  },"72": {
     "doc": "Home",
     "title": "Home",
     "content": ". ",
     "url": "http://localhost:4000/SorotokiPage/",
     "relUrl": "/"
-  },"72": {
+  },"73": {
     "doc": "Installation guide",
     "title": "Installation",
     "content": "The toolkit is easy to install. The fastest and easiest way to acquire the toolkit is through git. You can directly clone the repository using the command: . git clone --depth 1 https://github.com/BJCaasenbrood/SorotokiCode.git . Alternatively, you can download the latest version of the toolkit below, and unpack the compressed folder at any desired working directory. Stable V3.03 (.zip) Stable V3.03 (.tar) Download from Github . ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/install.html#installation",
     "relUrl": "/docs/documentation/install.html#installation"
-  },"73": {
-    "doc": "Installation guide",
-    "title": "1) Open MATLAB",
-    "content": ". | MATLAB compatibility: verified from R2018a – to R2021a. | OS compatibility: Windows/Linux (OSX untested). | Installation size: ~75 MB | . Please inform the developers if any compatibility issues may occur. ",
-    "url": "http://localhost:4000/SorotokiPage/docs/documentation/install.html#1-open-matlab",
-    "relUrl": "/docs/documentation/install.html#1-open-matlab"
   },"74": {
     "doc": "Installation guide",
+    "title": "1) Open MATLAB",
+    "content": ". | MATLAB compatibility: verified from R2018a – R2022a. | OS compatibility: Windows and Linux (OSX untested). | Installation size: 20 MB | . Please inform the developers if any compatibility issues may occur. ",
+    "url": "http://localhost:4000/SorotokiPage/docs/documentation/install.html#1-open-matlab",
+    "relUrl": "/docs/documentation/install.html#1-open-matlab"
+  },"75": {
+    "doc": "Installation guide",
     "title": "2) Install the prerequisites",
-    "content": "To use SOROTOKI optimally, make sure you have the following dependencies installed: . | Optimization Toolbox, Partial Differential Equation Toolbox, and Image Processing Toolbox | C++ compiler, Eigen Libary, and CMAKE are highly recommended. | . ",
+    "content": "To use SOROTOKI optimally, make sure you have the following dependencies installed: . | [Optimization Toolbox](https://nl.mathworks.com/products/optimization.html) | **Required**{: .text-red-000} | . | [Partial Differential Equation Toolbox](https://nl.mathworks.com/products/pde.html) | **Required**{: .text-red-000} | . | [Image Processing Toolbox](https://nl.mathworks.com/products/image.html) | **Required**{: .text-red-000} | . | [Matlab Coder](https://www.mathworks.com/products/matlab-coder.html) | **Required**{: .text-red-000} | . | [C++ compiler](http://mingw-w64.org/doku.php/start) | Recommended | . | [Eigen Libary](https://eigen.tuxfamily.org/index.php?title=Main_Page) | Recommended | . | [CMAKE](https://cmake.org/) | Highly recommended | . ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/install.html#2-install-the-prerequisites",
     "relUrl": "/docs/documentation/install.html#2-install-the-prerequisites"
-  },"75": {
+  },"76": {
     "doc": "Installation guide",
     "title": "3) Run the installation script",
     "content": "Once you’ve opened MATLAB, you first have to configure the toolkit with MATLAB’s search paths. Setting up these paths is relatively straightforward. Simply run sorotoki(): . During install, the installer will ask you if SOROTOKI should can set as the main directory of MATLAB. This implies every time you open MATLAB, it will automatically go this directory. By using the command: cdsoro, you can quickly go back to the main directory from any other directory (super useful!). It will also generate the file startup.m that loads the toolkit automatically. This start-up file is typically located under ./Documents/MATLAB/startup.m for Linux/Windows OS. ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/install.html#3-run-the-installation-script",
     "relUrl": "/docs/documentation/install.html#3-run-the-installation-script"
-  },"76": {
-    "doc": "Installation guide",
-    "title": "That’s all folks!",
-    "content": "The soft robotics toolkit is now ready-to-use. The toolkit can be verified using the command sorotoki('check'). ",
-    "url": "http://localhost:4000/SorotokiPage/docs/documentation/install.html#thats-all-folks",
-    "relUrl": "/docs/documentation/install.html#thats-all-folks"
   },"77": {
     "doc": "Installation guide",
+    "title": "That’s all folks!",
+    "content": "The soft robotics toolkit is now ready-to-use. The toolkit can be verified using the command verifySorotoki. ",
+    "url": "http://localhost:4000/SorotokiPage/docs/documentation/install.html#thats-all-folks",
+    "relUrl": "/docs/documentation/install.html#thats-all-folks"
+  },"78": {
+    "doc": "Installation guide",
     "title": "Checking for future updates",
-    "content": "It is also worth mentioning that the command above is also used to update the toolkit. It is recommended to run sorotoki() to check for updates occasionally. Or type: . % show demos sorotoki('update'); . ",
+    "content": "It is also worth mentioning that the command above is also used to update the toolkit. It is recommended to run sorotoki() to check for updates occasionally. Or type: . % show demos sorotoki('demo'); . ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/install.html#checking-for-future-updates",
     "relUrl": "/docs/documentation/install.html#checking-for-future-updates"
-  },"78": {
+  },"79": {
     "doc": "Installation guide",
     "title": "Installation guide",
     "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/install.html",
     "relUrl": "/docs/documentation/install.html"
-  },"79": {
+  },"80": {
     "doc": "About SOROTOKI",
     "title": "About",
     "content": "SOROTOKI is an open-source MATLAB toolkit for soft robotics that includes an array of tools for design, modeling, and control. Due to its scientific diversity, it can be challenging for researchers to quickly familiarize themselves with multiple scientific disciplines. With the aim to lower the threshold, SOROTOKI aims to incorporate multiple layers of soft robotics research into one toolkit. Examples include: continuum mechanics, dynamic systems and control theory, topology optimization, computer graphics, and much more to come! The combination provides a highly flexible modeling environment and hopefully aids the development of novel soft robotic research. ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/introduction.html#about",
     "relUrl": "/docs/documentation/introduction.html#about"
-  },"80": {
+  },"81": {
     "doc": "About SOROTOKI",
     "title": "Object-oriented architecture",
     "content": "SOROTOKI is an object-oriented toolkit that aims for a minimalistic code style. To do so, the toolkit is equipped with several Classes with user-input functionalities, which allow for cross-interaction between other Classes. The main classes are Sdf, Mesh, Fem, Model, Gmodel, and Bdog. A flow-diagram of the toolkit on how these Classes work and interact is given schematically below: . The Object-oriented classes of SOROTOKI . Signed-distance function – Sdf.m . Mesh generation – Mesh.m . Finite elements – Fem.m . Graphical models – Gmodel.m . Dynamic models – Model.m . Real-time control – Bdog.m . ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/introduction.html#object-oriented-architecture",
     "relUrl": "/docs/documentation/introduction.html#object-oriented-architecture"
-  },"81": {
+  },"82": {
     "doc": "About SOROTOKI",
     "title": "About SOROTOKI",
     "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/introduction.html",
     "relUrl": "/docs/documentation/introduction.html"
-  },"82": {
+  },"83": {
     "doc": "Meshing",
     "title": "Mesh generation",
     "content": "SOROTOKI offers mesh generation for triangular, quadrilateral, and polygonal elements. The restricted material domains are defined by so-called ‘signed distance functions’ (SDF). The toolkit provides a set of these geometric shape SDFs (e.g., circles, rectangles, lines) and boolean operators (e.g., union, difference, and intersect). Together they allow for a wide range of spatial discretization in $$\\mathbb{R}^2$$ and $$\\mathbb{R}^3$$. ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/background/meshing/#mesh-generation",
     "relUrl": "/docs/documentation/background/meshing/#mesh-generation"
-  },"83": {
+  },"84": {
     "doc": "Meshing",
     "title": "Mathematical background",
     "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/background/meshing/#mathematical-background",
     "relUrl": "/docs/documentation/background/meshing/#mathematical-background"
-  },"84": {
+  },"85": {
     "doc": "Meshing",
     "title": "Signed distance functions",
     "content": "A signed distance functions (SDF) passes a spatial coordinate and returns the shortest distance to the boundaries of a metric domain. Mathematically speaking, the signed distance function $$d_\\Omega: \\mathbb{R}^n \\mapsto \\mathbb{R}$$ associated with the subset $$\\Omega$$ of Euclidean space $$\\mathbb{R}^n$$ is defined as . $$ d_\\Omega(x) := s_\\Omega(x) \\min_{y \\in \\partial \\Omega} \\lVert x - y \\rVert,$$ . where $$s_\\Omega$$ represents a discontinuous sign function . $$ s_\\Omega(x) = \\begin{cases} -1, &amp; x \\in\\Omega, +1, &amp; x \\in \\mathbb{R}^n\\setminus \\Omega, \\end{cases} $$ . and $$\\partial \\Omega$$ is the boundary of the material domain $$\\Omega$$. The sign of the distance function determines if the coordinate is located inside or outside the bounded domain. Therefore, evaluation of the SDF function is not only numerically efficient, it also allows for an implicit representation of the spatial domain, which can be easily paired with various mathematical operations, like addition, subtraction, and differentiation. The toolkit comes with some preset SDF functions which can be used with off-the-shelf available mathematical operators. Preset SDF-functions . % two-dimensional d = dCircle(P,xc,xy,r); d = dLine(P,x1,x2,y1,y2); d = dRectangle(P,x1,x2,y1,y2); % three-dimensional d = dCube(P,x1,x2,y1,y2,z1,z2); d = dSphere(P,xc,yc,zc,r); d = dCuboid(P,a,b,c); . Mathematical operators . | Operation | SOROTOKI | Math | . | Build | OMEGA = dCircle(P,a,b,R) | $$\\Omega = \\left{r\\in \\mathbb{R}^2 \\; : \\; (r_x-a)^2 + (r_y - b)^2 \\le R^2 \\right} $$ | . | Union | D = OMEGA1 + OMEGA2 | $$\\mathcal{D} = \\Omega_1 \\cup \\Omega_2$$ | . | Difference | D = OMEGA1 - OMEGA2 | $$\\mathcal{D} = \\Omega_1 \\backslash \\Omega_2$$ | . | Intersection | D = OMEGA1\\OMEGA2 | $$\\mathcal{D} = \\Omega_1 \\cap \\Omega_2$$ | . | Evaluation | y = D.eval(x) | $$y = d_\\Omega(x)$$ with $$x\\in \\Omega$$ | . Example . %% set signed distance function msh = Mesh(@(x) SDF(x,0),'BdBox',[-1 3 -1 3]); subplot(2,2,1); msh.showSDF(); msh = Mesh(@(x) SDF(x,1),'BdBox',[-2 2 -1 3]); subplot(2,2,2); msh.showSDF(); msh = Mesh(@(x) SDF(x,2),'BdBox',[-1.5 2.5 -1 3]); subplot(2,2,3); msh.showSDF(); msh = Mesh(@(x) SDF(x,3),'BdBox',[-1 3 -1 3]); subplot(2,2,4); msh.showSDF(); function Dist = SDF(x,request) R = dRectangle(x,0,2,0,2); C = dCircle(x,0,1,1); switch(request) case(0), Dist = R; case(1), Dist = C; case(2), Dist = dUnion(R,C); case(3), Dist = dDiff(R,C); end end . ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/background/meshing/#signed-distance-functions",
     "relUrl": "/docs/documentation/background/meshing/#signed-distance-functions"
-  },"85": {
+  },"86": {
     "doc": "Meshing",
     "title": "Meshing",
     "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/background/meshing/",
     "relUrl": "/docs/documentation/background/meshing/"
-  },"86": {
+  },"87": {
     "doc": "Modeling and Control",
     "title": "Examples",
     "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/model_control.html#examples",
     "relUrl": "/docs/examples/model_control.html#examples"
-  },"87": {
+  },"88": {
     "doc": "Modeling and Control",
     "title": "Modeling and Control",
     "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/model_control.html",
     "relUrl": "/docs/examples/model_control.html"
-  },"88": {
+  },"89": {
     "doc": "Example 1 - Simulating a Multi-link Soft Manipulator",
     "title": "Simulating the dynamics of a multi-link soft robot manipulator (PCC approach)",
     "content": ". | Introduction | Generating the mesh from pictures | . Difficulty: easy ~ intermediate . | Required classes: Model.m | Code length: ~25 lines (without comments) | . Introduction . In this illustrative example, we will perform a simple pull test using a hyper-elastic material – Ecoflex-0030 from SmoothOn. Assuming a two-dimensional problem, we consider a 20x20 specimen and perform an uni-axial elongation of $\\lambda_{1} = 500\\%$ (with $\\lambda_2 = \\lambda_3$). We model this using a single quadrilateral finite-element subjected to plane-stress conditions. Festo's Bionic Handling Assistant inspired by the elphant's trunk (see [1]). Generating the mesh from pictures . Lets start generating a planar rectangular mesh. To discretize the material domain, we use the Signed Distance Function (SDF) Class and Meshing Class – Sdf.m and Mesh.m, respectively. We can define the rectangular domain using SDFs and convert it to a quadtrilateral mesh, consider the following code: . %% mesh generation settings Simp = 0.02; GrowH = 1; MinH = 2; MaxH = 3; %% generate mesh from .png msh = Mesh('Pneunet.png','BdBox',[0,120,0,20],'SimplifyTol',Simp,... 'Hmesh',[GrowH,MinH,MaxH]); msh = msh.generate(); figure(101); subplot(2,1,1); imshow('Pneunet.png'); subplot(2,1,2); msh.show(); . The code above should produce the following: . Source image of Pneunet cross-section (top). Triangular mesh (right). [1] Bionic Handling Assistant a soft robotic manipulator from Festo. ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/model_control/multilink#simulating-the-dynamics-of-a-multi-link-soft-robot-manipulator-pcc-approach",
     "relUrl": "/docs/examples/model_control/multilink#simulating-the-dynamics-of-a-multi-link-soft-robot-manipulator-pcc-approach"
-  },"89": {
+  },"90": {
     "doc": "Example 1 - Simulating a Multi-link Soft Manipulator",
     "title": "Example 1 - Simulating a Multi-link Soft Manipulator",
     "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/model_control/multilink",
     "relUrl": "/docs/examples/model_control/multilink"
-  },"90": {
+  },"91": {
     "doc": "Patch notes",
     "title": "Patch notes",
-    "content": "% SOROTOKI - Alpha - 2.05.19 - May 19 - 2022 . | Fem.m: . | @muyi-max: Fixed issue with Fem.Log. If a nonlinear residual increment takes less than 2 iterations, data was not properly stored. To solve this, any nonlinear time increment must take atleast two steps, as to ensure a new displacement field is introduced to the stress-strain calculations. | . | . ",
+    "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/patch.html",
     "relUrl": "/docs/patch.html"
-  },"91": {
+  },"92": {
+    "doc": "Patch notes",
+    "title": "SOROTOKI - Alpha - 2.05.19 - May 19 - 2022",
+    "content": ". | Fem.m: . | Addressed to solve Issue #7: Fixed issue with Fem.Log. If a nonlinear residual increment takes less than 2 iterations, data was not properly stored. To solve this, any nonlinear time increment must take at least two steps, as to ensure a new displacement field is introduced to the stress-strain calculations. | . | . ",
+    "url": "http://localhost:4000/SorotokiPage/docs/patch.html#sorotoki---alpha---20519---may-19---2022",
+    "relUrl": "/docs/patch.html#sorotoki---alpha---20519---may-19---2022"
+  },"93": {
     "doc": "Patch notes",
     "title": "SOROTOKI - Alpha - 2.05.17 - May 17 - 2022",
     "content": ". | Added MEX compiler for Model, Gmodel, and Fem classes. This significantly improves the computation times of the Sorotoki toolkit. When calling sorotoki.m, the installer asks to compile the mex files. Note we do not support the original Matlab functions anymore, simple because of computational speed. Hence, the Matlab Coder Toolkit is a prerequisite for Sorotoki. | Updated verifySorotoki.m to include also Model. | Shapes.m . | Updated the Fem -&gt; Shapes converter that extracts the geometric modes from dynamic or quasi-static FEM data. This can be done using shp.Fem = Fem followed by shp.reconstruct, shp.rebuild. Then a dynamic model can be generated using mdl = Model(shp). We call this new strain basis the Geometry-Informed Variable Strain basis as the geometry of the soft robot is preserved into the functional basis. | Added Shapes.Material. Now hyper-elastic materials can be loaded into the stiffness and inertia tensor construction. The work is experimental since more research is required to properly include hyper-elastic materials into the Cosserat beam models. | . | Model.m . | Added an auxiliary flow function to the Model class: dx = f(x,t). This can be used for integrator actions, like PI controllers. or adaptive controllers where unknown parameters evolutions can be included. | . | . ",
     "url": "http://localhost:4000/SorotokiPage/docs/patch.html#sorotoki---alpha---20517---may-17---2022",
     "relUrl": "/docs/patch.html#sorotoki---alpha---20517---may-17---2022"
-  },"92": {
+  },"94": {
     "doc": "Patch notes",
     "title": "SOROTOKI - Alpha - 2.01.28 - Jan 28 - 2022",
     "content": ". | Improved stability of Newmark solver. | . ",
     "url": "http://localhost:4000/SorotokiPage/docs/patch.html#sorotoki---alpha---20128---jan-28---2022",
     "relUrl": "/docs/patch.html#sorotoki---alpha---20128---jan-28---2022"
-  },"93": {
+  },"95": {
     "doc": "Patch notes",
     "title": "SOROTOKI - Alpha - 2.24.01 - Jan 24 - 2022",
     "content": ". | Fixed broken installer. vernum.m file was missing on Repo. It has been replaced with soropatch.m which also includes the patch notes. | Sdf.m: . | Added a new function Sdf.showcontour(). It will show the contour of 2D signed distance functions. Currently not implemented for 3D Sdfs. | . | Open issue (2.24.01): . | @martijnschouten Missing DOI for citation, and long-term support/access. | . | . ",
     "url": "http://localhost:4000/SorotokiPage/docs/patch.html#sorotoki---alpha---22401---jan-24---2022",
     "relUrl": "/docs/patch.html#sorotoki---alpha---22401---jan-24---2022"
-  },"94": {
+  },"96": {
     "doc": "Patch notes",
     "title": "SOROTOKI - Alpha - 2.13.01 - Jan 13 - 2022",
     "content": ". | Moved SOROTOKI from early alpha to alpha (prepping for official release). | Shapes.m: . | Significant update to the class Shapes. Shapes now requests a Fem class , a Matlab function_handle of functionals, or a evaluated matrix of shape functions (); to construct the class. Then, it serves as an input for the class Model (e.g., dynamic modeling of soft robots), or as an Inverse Kinematic solver for beam models. | Added a function Shapes.jointEstimate(Fem). This will produce an optimal set of modal coefficient to reconstruct the beam model from FEM-driven data (accessed by Fem.Log). | Current Shapes.jointEstimate() exploits the fact that the shapes are orthonormal w.r.t. their integral over the spatial domain [0,L]. If shapes do not satisfy this conditions, inaccurate estimates can occur. | Added Y = gsog_poly(X) which ensure the columns of Y are mutually orthonormal derived from the matrix X. X must be full-rank. This function is simply the gramm-smith method for the innerproduct space int_C y_i y_j ds on the domain C := [0,L]. | . | . ",
     "url": "http://localhost:4000/SorotokiPage/docs/patch.html#sorotoki---alpha---21301---jan-13---2022",
     "relUrl": "/docs/patch.html#sorotoki---alpha---21301---jan-13---2022"
-  },"95": {
+  },"97": {
     "doc": "Patch notes",
     "title": "SOROTOKI - Early Alpha - 1.12.06 - Dec 6 - 2021",
     "content": ". | Fem.m: . | Fixed some numerical issues with Fem.simulate() function. Stability is now further improved for larger timesteps. | Fixed some numerical issues with Fem.Contact. A wider range of TimeSteps result now in stable solutions. Still the timestep size should be taken with care. Also fixed the issues of induced (unstable) oscillations due to fast impact. Contact is now based on the initial Modulus of the hyper-elastic material,i.e., Material.Emod(). | Added time-base function_handle for the external pressures in dynamic finite-element simulations. They can added using: Fem.AddConstraint('Pressure',id, @(t) sin(t)); | Dynamic simulations now record the potential and kinetic energies. | Future implementation will have Load and Tendon-based dynamic forces | The potential energy of the external load is still missing… | . | . ",
     "url": "http://localhost:4000/SorotokiPage/docs/patch.html#sorotoki---early-alpha---11206---dec-6---2021",
     "relUrl": "/docs/patch.html#sorotoki---early-alpha---11206---dec-6---2021"
-  },"96": {
+  },"98": {
     "doc": "Patch notes",
     "title": "SOROTOKI - Early Alpha - 1.12.02 - Dec 2 - 2021",
     "content": ". | Fem.m: . | Added Fem.simulate() function to the Nonlinear Finite Element. The function is a standard Newmark-Beta dynamic solver routine for NLFEM. Alternatively, fem.simulate() can be used as an alternative for fem.solve() by setting the Fem.Material.Zeta large (overdamped). | Fixed the stability issue of Fem.Contact. Contact can now be added with Fem.AddConstraint('Contact',@(x) sdf(x), [x,y]) (x and y move the SDF). for best stability, use Fem.simulate() with a TimeStep &lt; 1/75. | . | Open issue (1.12.02): . | Fem.simulate does not use dynamic external forces, rather the forces are scaled with a sigmoid function f_ext = f*sigmoid(t); This will be removed in the future with fext = @(t) f* .... - an explicit function of time that can be evaluated at time t. | Possible implementations: Displace, Load, Pressure, Gravity. | . | . ",
     "url": "http://localhost:4000/SorotokiPage/docs/patch.html#sorotoki---early-alpha---11202---dec-2---2021",
     "relUrl": "/docs/patch.html#sorotoki---early-alpha---11202---dec-2---2021"
-  },"97": {
+  },"99": {
     "doc": "Patch notes",
     "title": "SOROTOKI - Early Alpha - 1.02.0 - Oct 6 - 2021",
     "content": ". | Added patch.md file to keep track of any changes to SOROTOKI. | Mesh.m: . | Fixed an issue where Mesh.showSDF was not producing plots. | . | . ",
     "url": "http://localhost:4000/SorotokiPage/docs/patch.html#sorotoki---early-alpha---1020---oct-6---2021",
     "relUrl": "/docs/patch.html#sorotoki---early-alpha---1020---oct-6---2021"
-  },"98": {
+  },"100": {
     "doc": "Patch notes",
     "title": "SOROTOKI - Early Alpha - 1.01.0",
     "content": ". | Official beta release of SOROTOKI | . ",
     "url": "http://localhost:4000/SorotokiPage/docs/patch.html#sorotoki---early-alpha---1010",
     "relUrl": "/docs/patch.html#sorotoki---early-alpha---1010"
-  },"99": {
+  },"101": {
     "doc": "Plotting tools",
     "title": "Plotting tools",
     "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/examples/pneunet/",
     "relUrl": "/docs/documentation/examples/pneunet/"
-  },"100": {
-    "doc": "Example 2 - Finite Element Analysis of PneuNet",
+  },"102": {
+    "doc": "(2) PneuNet analysis",
     "title": "Finite element analysis of PneuNet",
-    "content": ". | Introduction | Generating the mesh from pictures | . Difficulty: easy . | Required classes: Mesh.m, Fem.m | Code length: ~25 lines (without comments) | . Introduction . In this illustrative example, we will perform a simple pull test using a hyper-elastic material – Ecoflex-0030 from SmoothOn. Assuming a two-dimensional problem, we consider a 20x20 specimen and perform an uni-axial elongation of $\\lambda_{1} = 500\\%$ (with $\\lambda_2 = \\lambda_3$). We model this using a single quadrilateral finite-element subjected to plane-stress conditions. Stock image of uni-axial test (left, see [1]). Produced result from SOROTOKI (right). Generating the mesh from pictures . Lets start generating a planar rectangular mesh. To discretize the material domain, we use the Signed Distance Function (SDF) Class and Meshing Class – Sdf.m and Mesh.m, respectively. We can define the rectangular domain using SDFs and convert it to a quadtrilateral mesh, consider the following code: . %% mesh generation settings Simp = 0.02; GrowH = 1; MinH = 2; MaxH = 3; %% generate mesh from .png msh = Mesh('Pneunet.png','BdBox',[0,120,0,20],'SimplifyTol',Simp,... 'Hmesh',[GrowH,MinH,MaxH]); msh = msh.generate(); figure(101); subplot(2,1,1); imshow('Pneunet.png'); subplot(2,1,2); msh.show(); . The code above should produce the following: . Source image of Pneunet cross-section (top). Triangular mesh (right). [1] Titan10 a pull-test instrument for rubber and elastomers. ",
+    "content": ". | Introduction | Generating the mesh from binary image | Building the finite element model | Assigning boundary conditions | . Difficulty: easy . | Required classes: Mesh.m, Fem.m | Code length: ~35 lines (without comments) | . Introduction . In this illustrative example, we will perform a simple pull test using a hyper-elastic material – Ecoflex-0030 from SmoothOn. Assuming a two-dimensional problem, we consider a 20x20 specimen and perform an uni-axial elongation of $\\lambda_{1} = 500\\%$ (with $\\lambda_2 = \\lambda_3$). We model this using a single quadrilateral finite-element subjected to plane-stress conditions. Stock image of uni-axial test (left, see [1]). Produced result from SOROTOKI (right). Generating the mesh from binary image . Lets start generating a planar mesh of the PneuNet actuator. Instead of using the SDF functions as in the previous example, we instead use .png or .jpg files. Located under folder data\\contours , we find an image called PneuNet.png which we can directly input into the mesh generator Mesh.m. We also need to specify a Bounding Box BdBox which tells the mesher the dimension of the image. Lastly, we can tune the mesh quality using Hmesh = [GrowH,MinH,MaxH], where GrowH is the mesh growth (default is set as 1.0), and MinH and MaxH the minimum and maximum element size. % mesh generation settings Simp = 0.02; % simplfication tolerance GrowH = 1; % growth MinH = 2; % minimum size MaxH = 3; % maximum size % generate mesh from .png msh = Mesh('Pneunet.png','BdBox',[0,120,0,20],'SimplifyTol',Simp,... 'Hmesh',[GrowH,MinH,MaxH]); msh = msh.generate(); % show mesh figure(101); subplot(2,1,1); imshow('Pneunet.png'); subplot(2,1,2); msh.show(); . The code above should produce the following: . Source image of Pneunet cross-section (top). Triangular mesh (right). Important! To use images for meshing, you have ensure that the images has a white background and a dark foreground which indicates the region for the mesh. Building the finite element model . We can now convert this discretized mesh to a finite element models. We input the msh object generated by the class Mesh.m into Fem.m using: . %% generate fem model fem = Fem(msh,'TimeStep',1/120,'Linestyle','none'); . Assigning boundary conditions . Now the tricky part is assigning the boundary conditions – especially for the pneumatic regions. Luckily, Sorotoki is equipped with easy mesh identifiers using fem.FindNodes or fem.FindEdges that produce the Node or Edge index given certain geometrical features of the mesh. In this case, we want all the enclosed surfaces inside the mesh domain. By calling id = fem.FindEdges('Hole'), we retrieve a list of edges that span all the enclosed volumes. Alternatively, we can use id = fem.FindEdges('Hole',[1,3...,N]) where [1,3...,N] is a list of desired holes. Lastly, we can use the input to fem.AddConstraint('Pressure',id,P0) to add the pressure load of magnitude P0 = 25 kPa . %% pressure load P0 = 25*kpa; %% adding boundary condition id = fem.FindNodes('Left'); fem = fem.AddConstraint('Support',id,[1,0]); id = fem.FindNodes('Bottom'); fem = fem.AddConstraint('Support',id,[0,1]); id = fem.FindEdges('Hole'); fem = fem.AddConstraint('Pressure',id,P0); . Important! The standard SI units for SOROTOKI are set to millimeters. As such, all physical features like size, density, pressures, stress, gravitational accelerations, must be scaled accordingly! Therefore, a pressure load of 25 kPa equals P0 = 25*1e-3 MPa (megapascal). [1] Titan10 a pull-test instrument for rubber and elastomers. ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/design/pneufem/#finite-element-analysis-of-pneunet",
     "relUrl": "/docs/examples/design/pneufem/#finite-element-analysis-of-pneunet"
-  },"101": {
-    "doc": "Example 2 - Finite Element Analysis of PneuNet",
-    "title": "Example 2 - Finite Element Analysis of PneuNet",
+  },"103": {
+    "doc": "(2) PneuNet analysis",
+    "title": "(2) PneuNet analysis",
     "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/design/pneufem/",
     "relUrl": "/docs/examples/design/pneufem/"
-  },"102": {
-    "doc": "Example 3 - Topology Optimization of PneuNet",
-    "title": "Topology optimization of PneuNet actuator",
+  },"104": {
+    "doc": "(3) Automated design synthesis of PneuNet",
+    "title": "Automated design synthesis of PneuNet actuator (topology optimization)",
     "content": ". | Introduction | Generating the mesh | Building the finite element model | Introduce periodicity and repetition | Boundary conditions (static) | Loading conditions (dynamic) | Material assignment | Starting the optimization! | Complete code (27 lines without comments) | . Difficulty: intermediate . | Required classes: Sdf.m, Mesh.m, Fem.m | Code length: ~25 lines (without comments) | . Introduction . In this illustrative example, we will exploit topology optimization to find a sub-optimal soft structure that undergoes a bending motion when pressurized. This morphology is often associated with a popular class of soft robots named ‘PneuNet’ actuators [1]. PneuNet actuators consist of a set of rectangular pneumatic chambers inside an elastomer medium. When pressurized, these chambers inflate, and due to a stiffness differential the elastomer structure bends (see figure below). To model and optimize such a hyper-elastic structure, we use mainly use the functionality within the Fem.m class of SOROTOKI. The classes Sdf.m and Mesh.m are used to shape the rectangular domain of a single pressure chamber. Source image is taken from the work of (see [1]) Topology optimization process of a PneuNet using SOROTOKI (see [2]) Generating the mesh . Lets start with designing the material domain of the PneuNet actuator. To do so, we start with the classes Sdf.m and Mesh.m. Since PneuNet actuators have a periodical structure, it is sufficient to model a single pressure chamber of the PneuNet for this particular example. %% Domain parameters W = 30; % width cell H = 75; % width cell D = 2; % inter distance %% Signed Distance Function (SDF) sdf = @(x) PneuNet(x,W,H,D,W); %% SDF construction function Dist = PneuNet(P,W,H,E,T) R1 = dRectangle(P,0,W,0,H); R2 = dRectangle(P,-W/2,E,T,H+H/2); R3 = dRectangle(P,W-E,W+W/2,T,H+H/2); C1 = dCircle(P,0,T + 0.5,1); C2 = dCircle(P,W,T + 0.5,1); Dist = dDiff(dDiff(dDiff(dDiff(R1,R2),R3),C1),C2); end . Then, we wish to generate a discretized mesh based on the signed distance function sdf. To do so, we simply input the signed distance function into msh = Mesh(sdf); together with the bounding box (BdBox = [0,W,0,H]) and the required number of finite-elements (NElem = 1250). Notice that we can use the previously defined width and height to outline this bounding box. Finally, we call the public function msh.generate() to build the mesh. %% generate mesh msh = Mesh(sdf,'BdBox',[0,W,0,H],'NElem',1250); msh = msh.generate(); msh.show(); . In SOROTOKI, figures can be produced through a show() request of the class. The figure will automatically be called figure(101) if no figures are opened. The polygonal mesh of the PneuNet domain is shown below. Polygonal mesh of single PneuNet chamber. Building the finite element model . We can now convert this polygonal mesh to a two-dimensional finite element model in a few steps. First, we input the msh object generated by the class Mesh.m into Fem.m. Secondly, we specify some important setting for the finite element solver and the optimization algorithm. We’ll worry about loads and material settings later on. %% generate fem model fem = Fem(msh); fem = fem.set('OptimizationProblem','Compliant'); fem = fem.set('VolumeInfill',0.4); fem = fem.set('FilterRadius',H/15); fem = fem.set('Penal',4); fem = fem.set('Nonlinear',false); fem = fem.set('MaxIterationMMA',50); fem = fem.set('ChangeMax',0.05) . Alternatively, we can rewrite the code above more compactly. %% generate fem model fem = Fem(msh,'OptimizationProblem','Compliant','VolumeInfill',0.4,'FilterRadius',H/15,... 'Penal',4,'Nonlinear',false,'MaxIterationMMA',50,'ChangeMax',0.05); . Lets discuss these settings in more detail: The setting OptimizationProblem sets the optimization objective to a compliant problem (default is 'Compliance'); VolumeInfill sets the desired volume infill (default is set to 0.3); FilterRadius the radius of the spatial filter needed for spatial regularization; Penal penalty power-factor for low-density regions; Nonlinear turns on/off the geometrical and material nonlinearities (default is set to true, i.e., active by default); MaxIterationMMA maximum number of optimization steps; and ChangeMax the maximum allowable change in material densities during optimization. Important! It shall be clear that Nonlinear = true will significantly increase the numerical solver time, please check if your system can handle the computational loads during optimization. If not, please use lower-order meshes or have nonlinear deformation turned off. Introduce periodicity and repetition . In this section, we repeat the material domain 8 times along the horizontal plane to construct a full PneuNet. Furthermore, we add a (periodic) symmetry, which will ensure that a pressure chamber has an appropriate topology that seals. To do so, we can run the code below. %% set spatial settings fem = fem.set('Periodic',[0.5, 0],'Repeat',ones(8,1)); . Boundary conditions (static) . %% add boundary condition id = fem.FindNodes('Left'); fem = fem.AddConstraint('Support',id,[1,1]); id = fem.FindNodes('Right'); fem = fem.AddConstraint('Spring',id,[0,1]); fem = fem.AddConstraint('Output',id,[0,-1]); . Loading conditions (dynamic) . Material assignment . %% assign material fem.Material = Dragonskin10(); . Starting the optimization! . ",
-    "url": "http://localhost:4000/SorotokiPage/docs/examples/design/pneunet/#topology-optimization-of-pneunet-actuator",
-    "relUrl": "/docs/examples/design/pneunet/#topology-optimization-of-pneunet-actuator"
-  },"103": {
-    "doc": "Example 3 - Topology Optimization of PneuNet",
+    "url": "http://localhost:4000/SorotokiPage/docs/examples/design/pneunet/#automated-design-synthesis-of-pneunet-actuator-topology-optimization",
+    "relUrl": "/docs/examples/design/pneunet/#automated-design-synthesis-of-pneunet-actuator-topology-optimization"
+  },"105": {
+    "doc": "(3) Automated design synthesis of PneuNet",
     "title": "Complete code (27 lines without comments)",
     "content": "%% generate mesh from sdf sdf = @(x) PneuNet(x,20,40,1,20); msh = Mesh(sdf,'BdBox',[0,20,0,40],'Quads',[25 50]); msh = msh.generate(); %% generate fem from mesh fem = Fem(msh,'VolumeInfill',0.3,'Penal',4,'FilterRadius',4,... 'Nonlinear',false,'TimeStep',1/3,... 'OptimizationProblem','Compliant',... 'MaxIterationMMA',70); %% set spatial settings fem = fem.set('Periodic',[0.5, 0],'Repeat',ones(8,1)); %% add boundary condition id = fem.FindNodes('Left'); fem = fem.AddConstraint('Support',id,[1,1]); id = fem.FindNodes('Right'); fem = fem.AddConstraint('Spring',id,[0,1]); fem = fem.AddConstraint('Output',id,[0,-1]); id = fem.FindElements('Location',[10,25],1); fem = fem.AddConstraint('PressureCell',id,[1e-3,0]); %% set density fem = fem.initialTopology('Hole',[10,25],0.5); %% material fem.Material = Dragonskin10; %% solving fem.optimize(); fem.show('ISO'); function Dist = PneuNet(P,W,H,E,T) R1 = dRectangle(P,0,W,0,H); R2 = dRectangle(P,-W/2,E,T,H+H/2); R3 = dRectangle(P,W-E,W+W/2,T,H+H/2); C1 = dCircle(P,0,T + 0.5,1); C2 = dCircle(P,W,T + 0.5,1); Dist = dDiff(dDiff(dDiff(dDiff(R1,R2),R3),C1),C2); end . [1] B. Caasenbrood, A. Pogromsky and H. Nijmeijer, A Computational Design Framework for Pressure-driven Soft Robots through Nonlinear Topology Optimization, 2020 3rd IEEE Inter. Conf. on Soft Robotics (RoboSoft), pp. 633-638, 2020. 10.1109/RoboSoft48309.2020.9116010 . ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/design/pneunet/#complete-code-27-lines-without-comments",
     "relUrl": "/docs/examples/design/pneunet/#complete-code-27-lines-without-comments"
-  },"104": {
-    "doc": "Example 3 - Topology Optimization of PneuNet",
-    "title": "Example 3 - Topology Optimization of PneuNet",
+  },"106": {
+    "doc": "(3) Automated design synthesis of PneuNet",
+    "title": "(3) Automated design synthesis of PneuNet",
     "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/design/pneunet/",
     "relUrl": "/docs/examples/design/pneunet/"
-  },"105": {
-    "doc": "Example 1 - Fitting a hyper-elastic material",
-    "title": "Example 1: Hyper-elastic material fit",
-    "content": ". | Introduction | Generating the mesh through SDFs | Building the finite element model | Assigning boundary conditions | Output logging | Specifying a hyper-elastic ansatz | Solving the nonlinear elastic problem | Post-processing the data | Complete code (25 lines without comments) | . Difficulty: intermediate . | Required classes: Mesh.m, Fem.m | Code length: ~25 lines (without comments) | . Introduction . In this illustrative example, we will perform a tension test to fit a hyper-elastic material model for some unknown elastic material. A collection of these measurements have been performed and are saved in under .\\script\\tutorial\\T1_materialfit.mat. Assuming a two-dimensional problem, we consider a $20 \\times 20$ mm material specimen and numerically simulate a uni-axial elongation of $\\lambda_1 = 500 \\%$. Using SOROTOKI, we can run the simulated model through an constrained optimization routine (fmincon.m) to find the unknown material coefficients for a the Yeoh model: . $$\\Psi = \\sum^3_{i = 1} c_i \\left(J_1 - 1 \\right)^{i},$$ . where $J_1$ denotes the first strain invariant of the Lagrangian strain tensor. The results of the material fit are shown below. Stock image of uni-axial test (left). Produced result from SOROTOKI (right). Generating the mesh through SDFs . Lets start generating a planar rectangular mesh. To discretize the material domain, we use the Signed Distance Function (SDF) Class and Meshing Class – Sdf.m and Mesh.m, respectively. We can define the rectangular domain using SDFs and convert it to a quadtrilateral mesh, consider the following code: . %% simulation settings H = 20; % height of specimen W = 20; % width of specimen dL = H*6; % elongation of specimen %% signed distance function (SDF) sdf = sRectangle(W,H); %% generate mesh msh = Mesh(sdf,'Quads',[20,20]); msh = msh.generate(); %% show SDF and mesh subplot(1,2,1); sdf.show(); subplot(1,2,2); msh.show(); . The code above should produce the following: . Signed Distance Function (left). Quad mesh of 400 elements (right). Building the finite element model . We can now convert this discretized mesh to a finite element model in a few steps. First, we input the msh object generated by the class Mesh.m into Fem.m. Secondly, we specify some important setting for the finite element solver: . %% convert Mesh to Fem fem = Fem(msh); %% setting for fem model fem.set('TimeStep',1/25); fem.set('PrescribedDisplacement',true); fem.set('Linestyle','none'); fem.set('Coloraxis',[0,1]); . Alternatively, we can rewrite the code above more compactly. %% generate fem model fem = Fem(msh,'TimeStep',1/25,'PrescribedDisplacement',true,... 'Linestyle','none','Coloraxis',[0,1]); . Lets discuss these settings in more detail: The setting TimeStep sets the time increments for the nonlinear solver; PrescribedDisplacement sets the mechanical problem as a prescribed displacements instead of applied loads (default is set to false); Linestyle sets the linestyle of the plots; Coloraxis sets the color axis for the colormaps. The default colormap is turbo (a custom colormap from SOROTOKI – adapted from python). Assigning boundary conditions . Given the symmetry of the problem, we can fixate the $x$-displacement for the left face of the material domain and fixate the $y$-displacement for the bottom face. We can use the function fem.AddConstraint with the input Support. To find the associated nodal indices of the model fem, we can use the public function fem.FindNodes together with a specified argument of their location, e.g., Top, Bottom, Left, Right. Similarly, the applied displacement dL is added using the fem.AddConstraint function with the input Load. The code for these procedures is given below: . %% adding boundary condition id = fem.FindNodes('Left'); fem = fem.AddConstraint('Support',id,[1,0]); id = fem.FindNodes('Bottom'); fem = fem.AddConstraint('Support',id,[0,1]); id = fem.FindNodes('Top'); fem = fem.AddConstraint('Load',id,[0,dL]); . Output logging . To record the intermediate nodal data during the numerical solver, we can add a logger. To do so, we again use the fem.AddConstraint but with Output as its input argument. %% outputs nodal data in fem.Log fem = fem.AddConstraint('Output',fem.FindNodes('NW')); . Here fem.FindNodes('NW') finds the single node in the North-West corner. After the finite element problem is solved, the data is recorded in a struct which can be accessed through fem.Log. This structured data contains the solver time Log.t, relative displacement w.r.t. the undeformed configuration Log.Ux, Log.Uy, Log.Un, the stresses Log.Sxx, Log.Syy, Log.Sxy and the Von Mises stress Log.Svm. Additionally, Log.Psi given the total strain energy $\\Psi(\\cdot)$ of the continuum solid over the finite time horizon. Specifying a hyper-elastic ansatz . SOROTOKI comes equipped with a library of preset hyper-elastic materials (list of preset materials). Examples include: Ecoflex-0030/50, Dragonskin 10A/30A, Elastosil, and NinjaFlex. To add the Ecoflex-0030 material properties to the FEM model, simply run: . %% adding material properties fem.Material = Ecoflex0030; . Solving the nonlinear elastic problem . To solve the FEM problem, simply run: . %% solving fem = fem.solve(); . Solving this nonlinear problem might take a few minutes. During the solving routine, plots are generated to display the intermediate displacements; and the error residuals are shown in MATLAB’s command window. To stop the solver, simply press Ctrl + C in the command window. Post-processing the data . Last, but definitely not least, is post processing the numerical data. Recall that all intermediate nodal data is stored in fem.Log. Let us plot the deformed material domain, along with the Von Mises stress as a function of the elongation strain. To do so, consider the code below: . %% post-processing data and plotting Eyy = (dL/H)*fem.Log.t + 1; Syy = fem.Log.Svm; % compute the exact solution Eyy_exact = linspace(1,1+(dL/H),500); Syy_exact = @(x) 2*(x.^2 - 1./x).*fem.Material.dWdI(x.^2 + 2./x); figure(102); subplot(1,2,1); fem.show('Uy'); subplot(1,2,2); plot(Eyy,Syy,'o-','Color',col(1),'linewidth',2); subplot(1,2,2); hold on; plot(Eyy_exact,Syy_exact(Eyy_exact),... '--','Color',col(1),'linewidth',2); xlabel('Uni-axial strain (-)','interpreter','latex','fontsize',20); ylabel('Von Mises stress (MPa)','interpreter','latex','fontsize',20); legend('FEM','Exact','Location','Northwest','fontsize',18); grid on; axis tight; . The code above should produce the following: . Uni-axial test of Ecoflex-0030 specimen (left). Strain vs. Von Mises (right). ",
-    "url": "http://localhost:4000/SorotokiPage/docs/examples/design/pull/#example-1-hyper-elastic-material-fit",
-    "relUrl": "/docs/examples/design/pull/#example-1-hyper-elastic-material-fit"
-  },"106": {
-    "doc": "Example 1 - Fitting a hyper-elastic material",
+  },"107": {
+    "doc": "(1) Material test",
+    "title": "Hyper-elastic material tension test",
+    "content": ". | Introduction | Generating the mesh through SDFs | Building the finite element model | Assigning boundary conditions | Output logging | Specifying a hyper-elastic ansatz | Solving the nonlinear elastic problem | Post-processing the data | Complete code (25 lines without comments) | . Difficulty: intermediate . | Required classes: Mesh.m, Fem.m | Code length: ~25 lines (without comments) | . Introduction . In this illustrative example, we will perform a simple tension test using a hyper-elastic material. Assuming a two-dimensional problem, we consider a \\(20 \\times 20\\) mm material specimen and numerically simulate a uni-axial elongation of \\(\\lambda_1 = 500 \\% \\). Using SOROTOKI, we can perform a simple benchtest using the nonlinear Yeoh material model: . $$\\Psi = \\sum^3_{i = 1} c_i \\left(J_1 - 1 \\right)^{i},$$ . where \\(J_1\\) denotes the first strain invariant of the Lagrangian strain tensor. The results of the material fit are shown below. Stock image of uni-axial test (left). Produced result from SOROTOKI (right). Generating the mesh through SDFs . Lets start generating a planar rectangular mesh. To discretize the material domain, we use the Signed Distance Function (SDF) Class and Meshing Class – Sdf.m and Mesh.m, respectively. We can define the rectangular domain using SDFs and convert it to a quadtrilateral mesh, consider the following code: . %% simulation settings H = 20; % height of specimen W = 20; % width of specimen dL = H*6; % elongation of specimen %% signed distance function (SDF) sdf = sRectangle(W,H); %% generate mesh msh = Mesh(sdf,'Quads',[20,20]); msh = msh.generate(); %% show SDF and mesh subplot(1,2,1); sdf.show(); subplot(1,2,2); msh.show(); . The code above should produce the following: . Signed Distance Function (left). Quad mesh of 400 elements (right). Building the finite element model . We can now convert this discretized mesh to a finite element model in a few steps. First, we input the msh object generated by the class Mesh.m into Fem.m. Secondly, we specify some important setting for the finite element solver: . %% convert Mesh to Fem fem = Fem(msh); . And we can change the settings using . %% setting for fem model fem.set('TimeStep',1/25); fem.set('Linestyle','none'); fem.set('Coloraxis',[0,1]); . Alternatively, we can rewrite the code above more compactly. %% generate fem model fem = Fem(msh,'TimeStep',1/25,'Linestyle','none','Coloraxis',[0,1]); . Lets discuss these settings in more detail: The setting TimeStep sets the time increments for the nonlinear solver; Linestyle sets the linestyle of the plots; Coloraxis sets the color axis for the colormaps. The default colormap is turbo (a custom colormap from SOROTOKI – adapted from python). Assigning boundary conditions . Given the symmetry of the problem, we can fixate the \\(x\\)-displacement for the left face of the material domain and fixate the \\(y\\)-displacement for the bottom face. We can use the function fem.AddConstraint with the input Support. To find the associated nodal indices of the model fem, we can use the public function fem.FindNodes together with a specified argument of their location, e.g., Top, Bottom, Left, Right. Similarly, the applied displacement dL is added using the fem.AddConstraint function with the input Displace. The code for these procedures is given below: . %% adding boundary condition id = fem.FindNodes('Left'); fem = fem.AddConstraint('Support',id,[1,0]); id = fem.FindNodes('Bottom'); fem = fem.AddConstraint('Support',id,[0,1]); id = fem.FindNodes('Top'); fem = fem.AddConstraint('Displace',id,[0,dL]); . Output logging . To record the intermediate nodal data during the numerical solver, we can add a logger. To do so, we again use the fem.AddConstraint but with Output as its input argument. %% outputs nodal data in fem.Log fem = fem.AddConstraint('Output',fem.FindNodes('NW')); . Here fem.FindNodes('NW') finds the single node in the North-West corner. After the finite element problem is solved, the data is recorded in a struct which can be accessed through fem.Log. This structured data contains the solver time Log.t, relative displacement w.r.t. the undeformed configuration Log.Ux, Log.Uy, Log.Un, the stresses Log.Sxx, Log.Syy, Log.Sxy and the Von Mises stress Log.Svm. Additionally, Log.Psi given the total strain energy $\\Psi(\\cdot)$ of the continuum solid over the finite time horizon. Specifying a hyper-elastic ansatz . SOROTOKI comes equipped with a library of preset hyper-elastic materials (list of preset materials). Examples include: Ecoflex-0030/50, Dragonskin 10A/30A, Elastosil, and NinjaFlex. To add the Ecoflex-0030 material properties to the FEM model, simply run: . %% adding material properties fem.Material = Ecoflex0030; . Solving the nonlinear elastic problem . To solve the FEM problem, simply run: . %% solving fem = fem.solve(); . Solving this nonlinear problem might take a few minutes. During the solving routine, plots are generated to display the intermediate displacements; and the error residuals are shown in MATLAB’s command window. To stop the solver, simply press Ctrl + C in the command window. Post-processing the data . Last, but definitely not least, is post processing the numerical data. Recall that all intermediate nodal data is stored in fem.Log. Let us plot the deformed material domain, along with the Von Mises stress as a function of the elongation strain. To do so, consider the code below: . %% post-processing data and plotting Eyy = (dL/H)*fem.Log.t + 1; Syy = fem.Log.Svm; % compute the exact solution Eyy_exact = linspace(1,1+(dL/H),500); Syy_exact = @(x) 2*(x.^2 - 1./x).*fem.Material.dWdI(x.^2 + 2./x); figure(102); subplot(1,2,1); fem.show('Uy'); subplot(1,2,2); plot(Eyy,Syy,'o-','Color',col(1),'linewidth',2); subplot(1,2,2); hold on; plot(Eyy_exact,Syy_exact(Eyy_exact),... '--','Color',col(1),'linewidth',2); xlabel('Uni-axial strain (-)','interpreter','latex','fontsize',20); ylabel('Von Mises stress (MPa)','interpreter','latex','fontsize',20); legend('FEM','Exact','Location','Northwest','fontsize',18); grid on; axis tight; . The code above should produce the following: . Uni-axial test of Ecoflex-0030 specimen (left). Strain vs. Von Mises (right). ",
+    "url": "http://localhost:4000/SorotokiPage/docs/examples/design/pull/#hyper-elastic-material-tension-test",
+    "relUrl": "/docs/examples/design/pull/#hyper-elastic-material-tension-test"
+  },"108": {
+    "doc": "(1) Material test",
     "title": "Complete code (25 lines without comments)",
-    "content": "%% simulation settings H = 20; % height of specimen W = 20; % width of specimen dL = H*5; % elongation of specimen %% signed distance function (SDF) sdf = sRectangle(0,W,0,H); %% generate mesh msh = Mesh(sdf,'Quads',[20,20]); msh = msh.generate(); %% show SDF and mesh figure(101); subplot(1,2,1); sdf.show(); subplot(1,2,2); msh.show(); %% generate fem model fem = Fem(msh,'TimeStep',1/15,'PrescribedDisplacement',true,... 'Linestyle','none'); %% adding boundary condition fem = fem.AddConstraint('Support',fem.FindNodes('Left'),[1,0]); fem = fem.AddConstraint('Support',fem.FindNodes('Bottom'),[0,1]); fem = fem.AddConstraint('Load',fem.FindNodes('Top'),[0,dL]); %% outputs nodal data in fem.Log fem = fem.AddConstraint('Output',fem.FindNodes('NW'),[0,0]); %% adding material fem.Material = Ecoflex0030; %% solving fem = fem.solve(); %% post-processing data and plotting Exx = (dL/H)*fem.Log.t; Svm = fem.Log.Svm; figure(102); subplot(1,2,1); fem.show('Uy'); subplot(1,2,2); plot(Exx,Svm,'-o','linewidth',2) xlabel('Uni-axial strain (-)','interpreter','latex','fontsize',20); ylabel('Von Mises stress (MPa)','interpreter','latex','fontsize',20); set(gca,'linewidth',1.5); grid on; axis tight; . [1] Titan10 a pull-test instrument for rubber and elastomers. ",
+    "content": "% simulation settings H = 20; % height of specimen W = 20; % width of specimen dL = H*5; % elongation of specimen % signed distance function (SDF) sdf = sRectangle(0,W,0,H); % generate mesh msh = Mesh(sdf,'Quads',[20,20]); msh = msh.generate(); % show SDF and mesh figure(101); subplot(1,2,1); sdf.show(); subplot(1,2,2); msh.show(); % generate fem model fem = Fem(msh,'TimeStep',1/25,'Linestyle','none','ColorAxis',[0,1]); % adding boundary condition fem = fem.AddConstraint('Support',fem.FindNodes('Left'),[1,0]); fem = fem.AddConstraint('Support',fem.FindNodes('Bottom'),[0,1]); fem = fem.AddConstraint('Displace',fem.FindNodes('Top'),[0,dL]); % outputs nodal data in fem.Log fem = fem.AddConstraint('Output',fem.FindNodes('NW'),[0,0]); % adding material fem.Material = Ecoflex0030; % solving fem = fem.solve(); % post-processing data and plotting Exx = (dL/H)*fem.Log.t; Svm = fem.Log.Svm; figure(102); subplot(1,2,1); fem.show('Uy'); subplot(1,2,2); plot(Exx,Svm,'-o','linewidth',2) xlabel('Uni-axial strain (-)','interpreter','latex','fontsize',20); ylabel('Von Mises stress (MPa)','interpreter','latex','fontsize',20); set(gca,'linewidth',1.5); grid on; axis tight; . [1] Titan10 a pull-test instrument for rubber and elastomers. ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/design/pull/#complete-code-25-lines-without-comments",
     "relUrl": "/docs/examples/design/pull/#complete-code-25-lines-without-comments"
-  },"107": {
-    "doc": "Example 1 - Fitting a hyper-elastic material",
-    "title": "Example 1 - Fitting a hyper-elastic material",
+  },"109": {
+    "doc": "(1) Material test",
+    "title": "(1) Material test",
     "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/design/pull/",
     "relUrl": "/docs/examples/design/pull/"
-  },"108": {
+  },"110": {
     "doc": "Example 1 - Rendering the Stanford Bunny (.stl)",
     "title": "Rendering the Stanford Bunny",
     "content": "Rendering the Stanford bunny in MATLAB with responsive textures [1]. Difficulty: beginner . | Required classes: Gmodel | Lines of code: 4 lines (without comments) | . Rendering a . obj = Gmodel('Bunny.stl'); obj.Material = base; . obj = obj.bake(); obj = obj.render(); . Alternatively, we can rewrite the code above more compactly. obj = obj.bake().render(); . view(20,10); obj.update(); . ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/3_graphics/renderstl/#rendering-the-stanford-bunny",
     "relUrl": "/docs/examples/3_graphics/renderstl/#rendering-the-stanford-bunny"
-  },"109": {
+  },"111": {
     "doc": "Example 1 - Rendering the Stanford Bunny (.stl)",
     "title": "Complete code (4 lines without comments)",
     "content": "%% loading .stl file obj = Gmodel('Bunny.stl'); %% asssigning texture obj.Texture = base; %% baking texture and rendering the bunny obj = obj.bake().render(); view(10,20); obj.update(); . ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/3_graphics/renderstl/#complete-code-4-lines-without-comments",
     "relUrl": "/docs/examples/3_graphics/renderstl/#complete-code-4-lines-without-comments"
-  },"110": {
+  },"112": {
     "doc": "Example 1 - Rendering the Stanford Bunny (.stl)",
     "title": "References",
     "content": "[1] The “Stanford Bunny”, Stanford University Computer Graphics Laboratory – (4.9 MB compressed, 22 MB uncompressed) http://graphics.stanford.edu/data/3Dscanrep/ . ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/3_graphics/renderstl/#references",
     "relUrl": "/docs/examples/3_graphics/renderstl/#references"
-  },"111": {
+  },"113": {
     "doc": "Example 1 - Rendering the Stanford Bunny (.stl)",
     "title": "Example 1 - Rendering the Stanford Bunny (.stl)",
     "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/examples/3_graphics/renderstl/",
     "relUrl": "/docs/examples/3_graphics/renderstl/"
-  },"112": {
+  },"114": {
     "doc": "Topology Optimization",
     "title": "Topology optimization",
     "content": " ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/background/graphics/#topology-optimization",
     "relUrl": "/docs/documentation/background/graphics/#topology-optimization"
-  },"113": {
+  },"115": {
     "doc": "Topology Optimization",
     "title": "Numerical examples",
     "content": "Example: Pneu-net soft robot . %% generate mesh from sdf sdf = @(x) PneuNet(x,20,40,1,20); msh = Mesh(sdf,'BdBox',[0,20,0,40],'Quads',[25 50]); msh = msh.generate(); %% generate fem from mesh fem = Fem(msh,'VolumeInfill',0.3,'Penal',4,'FilterRadius',4,... 'Nonlinear',false,'TimeStep',1/3,... 'OptimizationProblem','Compliant',... 'MaxIterationMMA',70); %% set spatial settings fem = fem.set('Periodic',[0.5, 0],'Repeat',ones(8,1)); %% add boundary condition id = fem.FindNodes('Left'); fem = fem.AddConstraint('Support',id,[1,1]); id = fem.FindNodes('Right'); fem = fem.AddConstraint('Spring',id,[0,1]); fem = fem.AddConstraint('Output',id,[0,-1]); id = fem.FindElements('Location',[10,25],1); fem = fem.AddConstraint('PressureCell',id,[1e-3,0]); %% set density fem = fem.initialTopology('Hole',[10,25],0.5); %% material fem.Material = Dragonskin10; %% solving fem.optimize(); fem.show('ISO'); function Dist = PneuNet(P,W,H,E,T) R1 = dRectangle(P,0,W,0,H); R2 = dRectangle(P,-W/2,E,T,H+H/2); R3 = dRectangle(P,W-E,W+W/2,T,H+H/2); C1 = dCircle(P,0,T + 0.5,1); C2 = dCircle(P,W,T + 0.5,1); Dist = dDiff(dDiff(dDiff(dDiff(R1,R2),R3),C1),C2); end . Example: Pneumatic bellow . %% set signed distance function W = 8; H = 4; sdf = @(x) Bellow(x,W,H); %% generate mesh msh = Mesh(sdf,'BdBox',[0,W,0,H],'NElem',750); msh = msh.generate(); %% generate fem from mesh fem = Fem(msh,'VolumeInfill',0.3,'Penal',4,'FilterRadius',0.75,... 'Nonlinear',false,'TimeStep',1/3,'ReflectionPlane',[1,1],... 'OptimizationProblem','Compliant','Repeat',[1 2],... 'MaxIterationMMA',65); %% add boundary condition fem = fem.AddConstraint('Support',fem.FindNodes('Bottom'),[0,1]); fem = fem.AddConstraint('Support',fem.FindNodes('Left'),[1,0]); id = fem.FindNodes('Location',[0.01*W,H]); fem = fem.AddConstraint('Output',id,[0,1]); fem = fem.AddConstraint('Spring',id,[0,.1]); id = fem.FindNodes('Line',[0.02*W,W,H,H]); fem = fem.AddConstraint('Spring',id,[0,.1]*1e-1); id = fem.FindElements('Location',[0,0],1); fem = fem.AddConstraint('PressureCell',id,[1e-3,0]); %% set density fem = fem.initialTopology('Hole',[0,0],1.0); %% material fem.Material = Ecoflex0030; %% solving fem.optimize(); function D = Bellow(x,W,H) R1 = dRectangle(x,0,W,0,H); C2 = dCircle(x,W,H,1.); D = dDiff(R1,C2); end . ",
     "url": "http://localhost:4000/SorotokiPage/docs/documentation/background/graphics/#numerical-examples",
     "relUrl": "/docs/documentation/background/graphics/#numerical-examples"
-  },"114": {
+  },"116": {
     "doc": "Topology Optimization",
     "title": "Topology Optimization",
     "content": " ",
