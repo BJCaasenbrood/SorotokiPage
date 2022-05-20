@@ -4,20 +4,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<link rel="shortcut icon" href="/SorotokiCode/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="/SorotokiCode/assets/css/just-the-docs-default.css"> <script type="text/javascript" src="/SorotokiCode/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="/SorotokiCode/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/SorotokiPage/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/SorotokiPage/assets/css/just-the-docs-default.css"> <script type="text/javascript" src="/SorotokiPage/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="/SorotokiPage/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Example 3 - Reduced-order Models using FEM-driven Galerkin Projections. | SOROTOKI</title>
 <meta name="generator" content="Jekyll v3.9.2">
 <meta property="og:title" content="Example 3 - Reduced-order Models using FEM-driven Galerkin Projections.">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="A Soft Robotics Toolkit for MATLAB">
 <meta property="og:description" content="A Soft Robotics Toolkit for MATLAB">
-<link rel="canonical" href="http://localhost:4000/SorotokiCode/docs/examples/model_control/dynfem">
-<meta property="og:url" content="http://localhost:4000/SorotokiCode/docs/examples/model_control/dynfem">
+<link rel="canonical" href="http://localhost:4000/SorotokiPage/docs/examples/model_control/dynfem">
+<meta property="og:url" content="http://localhost:4000/SorotokiPage/docs/examples/model_control/dynfem">
 <meta property="og:site_name" content="SOROTOKI">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Example 3 - Reduced-order Models using FEM-driven Galerkin Projections."> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","description":"A Soft Robotics Toolkit for MATLAB","headline":"Example 3 - Reduced-order Models using FEM-driven Galerkin Projections.","url":"http://localhost:4000/SorotokiCode/docs/examples/model_control/dynfem"}</script> <script src="https://kit.fontawesome.com/b6cba8db77.js" crossorigin="anonymous"></script>
+<meta property="twitter:title" content="Example 3 - Reduced-order Models using FEM-driven Galerkin Projections."> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","description":"A Soft Robotics Toolkit for MATLAB","headline":"Example 3 - Reduced-order Models using FEM-driven Galerkin Projections.","url":"http://localhost:4000/SorotokiPage/docs/examples/model_control/dynfem"}</script> <script src="https://kit.fontawesome.com/b6cba8db77.js" crossorigin="anonymous"></script>
 <script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
@@ -26,48 +26,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewbox="0 0 24 24"><title>Expand</title>
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <symbol id="svg-doc" viewbox="0 0 24 24"><title>Document</title>
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> </svg><div class="side-bar">
-<div class="site-header"> <a href="http://localhost:4000/SorotokiCode/" class="site-title lh-tight"> SOROTOKI </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
+<div class="site-header"> <a href="http://localhost:4000/SorotokiPage/" class="site-title lh-tight"> SOROTOKI </a> <a href="#" id="menu-button" class="site-button"> <svg viewbox="0 0 24 24" class="icon"><use xlink:href="#svg-menu"></use></svg> </a>
 </div>
 <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"><ul class="nav-list">
-<li class="nav-list-item"><a href="http://localhost:4000/SorotokiCode/" class="nav-list-link">Home</a></li>
+<li class="nav-list-item"><a href="http://localhost:4000/SorotokiPage/" class="nav-list-link">Home</a></li>
 <li class="nav-list-item">
-<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiCode/docs/documentation" class="nav-list-link">Documentation</a><ul class="nav-list ">
-<li class="nav-list-item "><a href="http://localhost:4000/SorotokiCode/docs/documentation/introduction.html" class="nav-list-link">About SOROTOKI</a></li>
-<li class="nav-list-item "><a href="http://localhost:4000/SorotokiCode/docs/documentation/install.html" class="nav-list-link">Installation guide</a></li>
-<li class="nav-list-item "><a href="http://localhost:4000/SorotokiCode/docs/documentation/guide.html" class="nav-list-link">User functions</a></li>
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/documentation" class="nav-list-link">Documentation</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="http://localhost:4000/SorotokiPage/docs/documentation/introduction.html" class="nav-list-link">About SOROTOKI</a></li>
+<li class="nav-list-item "><a href="http://localhost:4000/SorotokiPage/docs/documentation/install.html" class="nav-list-link">Installation guide</a></li>
+<li class="nav-list-item "><a href="http://localhost:4000/SorotokiPage/docs/documentation/guide.html" class="nav-list-link">User functions</a></li>
 </ul>
 </li>
 <li class="nav-list-item active">
-<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiCode/docs/examples" class="nav-list-link">Examples</a><ul class="nav-list ">
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples" class="nav-list-link">Examples</a><ul class="nav-list ">
 <li class="nav-list-item ">
-<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiCode/docs/examples/design.html" class="nav-list-link">Design and Analysis</a><ul class="nav-list">
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiCode/docs/examples/design/pull/" class="nav-list-link">Example 1 - Fitting a hyper-elastic material</a>
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples/design.html" class="nav-list-link">Design and Analysis</a><ul class="nav-list">
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pull/" class="nav-list-link">Example 1 - Fitting a hyper-elastic material</a>
 </li>
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiCode/docs/examples/design/pneufem/" class="nav-list-link">Example 2 - Finite Element Analysis of PneuNet</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pneufem/" class="nav-list-link">Example 2 - Finite Element Analysis of PneuNet</a>
 </li>
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiCode/docs/examples/design/pneunet/" class="nav-list-link">Example 3 - Topology Optimization of PneuNet</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pneunet/" class="nav-list-link">Example 3 - Topology Optimization of PneuNet</a>
 </li>
 </ul>
 </li>
 <li class="nav-list-item active">
-<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiCode/docs/examples/model_control.html" class="nav-list-link">Modeling and Control</a><ul class="nav-list">
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiCode/docs/examples/model_control/multilink" class="nav-list-link">Example 1 - Simulating a Multi-link Soft Manipulator</a>
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples/model_control.html" class="nav-list-link">Modeling and Control</a><ul class="nav-list">
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/multilink" class="nav-list-link">Example 1 - Simulating a Multi-link Soft Manipulator</a>
 </li>
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiCode/docs/documentation/examples/design/control/" class="nav-list-link">Example 2 - Energy-based Control of Soft Tentacle</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/documentation/examples/design/control/" class="nav-list-link">Example 2 - Energy-based Control of Soft Tentacle</a>
 </li>
-<li class="nav-list-item active"> <a href="http://localhost:4000/SorotokiCode/docs/examples/model_control/dynfem" class="nav-list-link active">Example 3 - Reduced-order Models using FEM-driven Galerkin Projections.</a>
+<li class="nav-list-item active"> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/dynfem" class="nav-list-link active">Example 3 - Reduced-order Models using FEM-driven Galerkin Projections.</a>
 </li>
 </ul>
 </li>
 <li class="nav-list-item ">
-<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiCode/docs/examples/graphics.html" class="nav-list-link">Computer Graphics</a><ul class="nav-list"><li class="nav-list-item "> <a href="http://localhost:4000/SorotokiCode/docs/examples/3_graphics/renderstl/" class="nav-list-link">Example 1 - Rendering the Stanford Bunny (.stl)</a>
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples/graphics.html" class="nav-list-link">Computer Graphics</a><ul class="nav-list"><li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/3_graphics/renderstl/" class="nav-list-link">Example 1 - Rendering the Stanford Bunny (.stl)</a>
 </li></ul>
 </li>
 </ul>
 </li>
-<li class="nav-list-item"><a href="http://localhost:4000/SorotokiCode/docs/contact.html" class="nav-list-link">Contact</a></li>
-<li class="nav-list-item"><a href="http://localhost:4000/SorotokiCode/docs/cite.html" class="nav-list-link">How to cite?</a></li>
-<li class="nav-list-item"><a href="http://localhost:4000/SorotokiCode/docs/patch.html" class="nav-list-link">Patch notes</a></li>
+<li class="nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/contact.html" class="nav-list-link">Contact</a></li>
+<li class="nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/cite.html" class="nav-list-link">How to cite?</a></li>
+<li class="nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/patch.html" class="nav-list-link">Patch notes</a></li>
 </ul></nav><footer class="site-footer"> This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.</footer>
 </div>
 <div class="main" id="top">
@@ -82,8 +82,8 @@
 </div>
 <div id="main-content-wrap" class="main-content-wrap">
 <nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
-<li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/SorotokiCode/docs/examples">Examples</a></li>
-<li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/SorotokiCode/docs/examples/model_control.html">Modeling and Control</a></li>
+<li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/examples">Examples</a></li>
+<li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/examples/model_control.html">Modeling and Control</a></li>
 <li class="breadcrumb-nav-list-item"><span>Example 3 - Reduced-order Models using FEM-driven Galerkin Projections.</span></li>
 </ol></nav><div id="main-content" class="main-content" role="main">
 <h1 class="no_toc" id="reduced-order-dynamics-using-fem-driven-galerkin-projection-snapshot-method"> <a href="#reduced-order-dynamics-using-fem-driven-galerkin-projection-snapshot-method" class="anchor-heading" aria-labelledby="reduced-order-dynamics-using-fem-driven-galerkin-projection-snapshot-method"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Reduced-order dynamics using FEM-driven Galerkin projection (snapshot method).</h1>
@@ -104,7 +104,7 @@
 <p class="fs-3"><a href="https://www.rubbernews.com/blogs/new-products-james-heal-makes-move-rubber-testing-markets"><strong>[1]</strong></a> <strong>Titan10</strong> a pull-test instrument for rubber and elastomers.</p>
 <hr>
 <footer><p><a href="#top" id="back-to-top">Back to top</a></p>
-<p class="text-small text-grey-dk-100 mb-0">Copyright © 2018-2021 Brandon Caasenbrood. Distributed by a <a href="https://github.com/BJCaasenbrood/SorotokiCode/tree/master/LICENSE.md">MIT license.</a></p>
+<p class="text-small text-grey-dk-100 mb-0">Copyright © 2018-2022 Brandon Caasenbrood. Distributed by a <a href="https://github.com/BJCaasenbrood/SorotokiCode/tree/master/LICENSE.md">MIT license.</a></p>
 <div class="d-flex mt-2"></div></footer>
 </div>
 </div>
