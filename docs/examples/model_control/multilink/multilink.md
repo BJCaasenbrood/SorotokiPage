@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example 1 - Simulating a Multi-link Soft Manipulator
+title: (1) Simulating a multi-link soft manipulator (PCC)
 parent: Modeling and Control 
 grand_parent: Examples
 nav_order: 1

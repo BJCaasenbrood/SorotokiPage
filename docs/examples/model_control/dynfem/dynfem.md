@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example 3 - Reduced-order Models using FEM-driven Galerkin Projections.
+title: (3) Geometry-informed variable strain models
 parent: Modeling and Control 
 grand_parent: Examples
 nav_order: 3

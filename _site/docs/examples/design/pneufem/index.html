@@ -51,11 +51,11 @@
 </li>
 <li class="nav-list-item ">
 <a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples/model_control.html" class="nav-list-link">Modeling and Control</a><ul class="nav-list">
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/multilink" class="nav-list-link">Example 1 - Simulating a Multi-link Soft Manipulator</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/multilink" class="nav-list-link">(1) Simulating a multi-link soft manipulator (PCC)</a>
 </li>
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/documentation/examples/design/control/" class="nav-list-link">Example 2 - Energy-based Control of Soft Tentacle</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/documentation/examples/design/control/" class="nav-list-link">(2) Energy-based control of octopus soft arm</a>
 </li>
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/dynfem" class="nav-list-link">Example 3 - Reduced-order Models using FEM-driven Galerkin Projections.</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/dynfem" class="nav-list-link">(3) Geometry-informed variable strain models</a>
 </li>
 </ul>
 </li>
@@ -85,13 +85,16 @@
 <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/examples">Examples</a></li>
 <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/examples/design.html">Design and Analysis</a></li>
 <li class="breadcrumb-nav-list-item"><span>(2) PneuNet analysis</span></li>
-</ol></nav><div id="main-content" class="main-content" role="main">
-<h1 class="no_toc" id="finite-element-analysis-of-pneunet"> <a href="#finite-element-analysis-of-pneunet" class="anchor-heading" aria-labelledby="finite-element-analysis-of-pneunet"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Finite element analysis of PneuNet</h1>
+</ol></nav><div id="main-content" class="main-content" role="main"> <script> MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' } }; </script> <script type="text/javascript" id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"> </script><h1 class="no_toc" id="finite-element-analysis-of-pneunet"> <a href="#finite-element-analysis-of-pneunet" class="anchor-heading" aria-labelledby="finite-element-analysis-of-pneunet"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Finite element analysis of PneuNet</h1>
 <details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
 <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
 <li><a href="#generating-the-mesh-from-binary-image" id="markdown-toc-generating-the-mesh-from-binary-image">Generating the mesh from binary image</a></li>
 <li><a href="#building-the-finite-element-model" id="markdown-toc-building-the-finite-element-model">Building the finite element model</a></li>
 <li><a href="#assigning-boundary-conditions" id="markdown-toc-assigning-boundary-conditions">Assigning boundary conditions</a></li>
+<li><a href="#material-assignment" id="markdown-toc-material-assignment">Material assignment</a></li>
+<li><a href="#running-the-quasi-static-simulation" id="markdown-toc-running-the-quasi-static-simulation">Running the (quasi-static) simulation</a></li>
+<li><a href="#making-an-animation" id="markdown-toc-making-an-animation">Making an animation</a></li>
+<li><a href="#complete-code-25-lines-without-comments" id="markdown-toc-complete-code-25-lines-without-comments">Complete code (~25 lines without comments)</a></li>
 </ol></details><hr>
 <h4 class="no_toc" id="difficulty-easy"> <a href="#difficulty-easy" class="anchor-heading" aria-labelledby="difficulty-easy"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Difficulty: <code class="language-plaintext fs-3 text-green-200 highlighter-rouge">easy</code>
 </h4>
@@ -102,10 +105,10 @@
 </ul>
 <hr>
 <h3 id="introduction"> <a href="#introduction" class="anchor-heading" aria-labelledby="introduction"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Introduction</h3>
-<p>In this illustrative example, we will perform a simple pull test using a hyper-elastic material – Ecoflex-0030 from SmoothOn. Assuming a two-dimensional problem, we consider a 20x20 specimen and perform an uni-axial elongation of $\lambda_{1} = 500\%$ (with $\lambda_2 = \lambda_3$). We model this using a single quadrilateral finite-element subjected to plane-stress conditions.</p>
+<p>In this illustrative example, we will perform a simple simulation of the classic PneuNet actuator, which is a rectangular-shaped soft robot with embedded pressure chambers. Due to a geometrically-induced stiffness gradient, the soft actuator undergoes bending naturally when pressurized. SOROTOKI is purposefully developed to easily build and simulate various Finite Element models using a minimal programming interface.</p>
 <div align="center"> <img src="./img/result.png" width="500">
 </div>
-<div align="center"> Stock image of uni-axial test (left, see [1]). Produced result from SOROTOKI (right).</div>
+<div align="center"> Produced numerical result of the PneuNet actuators using SOROTOKI .</div>
 <h3 id="generating-the-mesh-from-binary-image"> <a href="#generating-the-mesh-from-binary-image" class="anchor-heading" aria-labelledby="generating-the-mesh-from-binary-image"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Generating the mesh from binary image</h3>
 <p>Lets start generating a planar mesh of the PneuNet actuator. Instead of using the SDF functions as in the previous example, we instead use <code class="language-plaintext text-purple-000 highlighter-rouge">.png</code> or <code class="language-plaintext text-purple-000 highlighter-rouge">.jpg</code> files. Located under folder <code class="language-plaintext text-purple-000 highlighter-rouge">data\contours</code> , we find an image called <code class="language-plaintext text-purple-000 highlighter-rouge">PneuNet.png</code> which we can directly input into the mesh generator <code class="language-plaintext text-purple-000 highlighter-rouge">Mesh.m</code>. We also need to specify a Bounding Box <code class="language-plaintext text-purple-000 highlighter-rouge">BdBox</code> which tells the mesher the dimension of the image. Lastly, we can tune the mesh quality using <code class="language-plaintext text-purple-000 highlighter-rouge">Hmesh = [GrowH,MinH,MaxH]</code>, where <code class="language-plaintext text-purple-000 highlighter-rouge">GrowH</code> is the mesh growth (default is set as <code class="language-plaintext text-purple-000 highlighter-rouge">1.0</code>), and <code class="language-plaintext text-purple-000 highlighter-rouge">MinH</code> and <code class="language-plaintext text-purple-000 highlighter-rouge">MaxH</code> the minimum and maximum element size.</p>
 <div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% mesh generation settings</span>
@@ -136,20 +139,88 @@
 </code></pre></div></div>
 <h3 id="assigning-boundary-conditions"> <a href="#assigning-boundary-conditions" class="anchor-heading" aria-labelledby="assigning-boundary-conditions"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Assigning boundary conditions</h3>
 <p>Now the tricky part is assigning the boundary conditions – especially for the pneumatic regions. Luckily, Sorotoki is equipped with easy mesh identifiers using <code class="language-plaintext text-purple-000 highlighter-rouge">fem.FindNodes</code> or <code class="language-plaintext text-purple-000 highlighter-rouge">fem.FindEdges</code> that produce the Node or Edge index given certain geometrical features of the mesh. In this case, we want all the enclosed surfaces inside the mesh domain. By calling <code class="language-plaintext text-purple-000 highlighter-rouge">id = fem.FindEdges('Hole')</code>, we retrieve a list of edges that span all the enclosed volumes. Alternatively, we can use <code class="language-plaintext text-purple-000 highlighter-rouge">id = fem.FindEdges('Hole',[1,3...,N])</code> where <code class="language-plaintext text-purple-000 highlighter-rouge">[1,3...,N]</code> is a list of desired holes. Lastly, we can use the input to <code class="language-plaintext text-purple-000 highlighter-rouge">fem.AddConstraint('Pressure',id,P0)</code> to add the pressure load of magnitude <code class="language-plaintext text-purple-000 highlighter-rouge">P0 = 25 kPa</code> .</p>
-<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%% pressure load</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% pressure load</span>
 <span class="n">P0</span> <span class="o">=</span> <span class="mi">25</span><span class="o">*</span><span class="n">kpa</span><span class="p">;</span>
 
-<span class="c1">%% adding boundary condition</span>
+<span class="c1">% motion constraint</span>
 <span class="n">id</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">FindNodes</span><span class="p">(</span><span class="s1">'Left'</span><span class="p">);</span>
-<span class="n">fem</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">AddConstraint</span><span class="p">(</span><span class="s1">'Support'</span><span class="p">,</span><span class="n">id</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]);</span>
+<span class="n">fem</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">AddConstraint</span><span class="p">(</span><span class="s1">'Support'</span><span class="p">,</span><span class="n">id</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
 
-<span class="n">id</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">FindNodes</span><span class="p">(</span><span class="s1">'Bottom'</span><span class="p">);</span>
-<span class="n">fem</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">AddConstraint</span><span class="p">(</span><span class="s1">'Support'</span><span class="p">,</span><span class="n">id</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
-
+<span class="c1">% pressure load on Mesh</span>
 <span class="n">id</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">FindEdges</span><span class="p">(</span><span class="s1">'Hole'</span><span class="p">);</span>
 <span class="n">fem</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">AddConstraint</span><span class="p">(</span><span class="s1">'Pressure'</span><span class="p">,</span><span class="n">id</span><span class="p">,</span><span class="n">P0</span><span class="p">);</span>
 </code></pre></div></div>
 <p><strong>Important!</strong> The standard SI units for SOROTOKI are set to millimeters. As such, all physical features like size, density, pressures, stress, gravitational accelerations, must be scaled accordingly! Therefore, a pressure load of 25 kPa equals <code class="language-plaintext text-purple-000 highlighter-rouge">P0 = 25*1e-3</code> MPa (megapascal).</p>
+<h3 id="material-assignment"> <a href="#material-assignment" class="anchor-heading" aria-labelledby="material-assignment"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Material assignment</h3>
+<p>Next, we assign the material properties to the PneuNet actuator. Here we use the popular silicone DragonSkin 10 from SmoothOn. Sorotoki comes equiped with various common silicone types used extensively in soft robotics, which can be found under <code class="language-plaintext highlighter-rouge">src/fem/material/samples</code>. To assign the material, consider the following code:</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%% assign material</span>
+<span class="n">fem</span><span class="o">.</span><span class="n">Material</span> <span class="o">=</span>  <span class="n">Dragonskin10</span><span class="p">();</span>
+</code></pre></div></div>
+<h3 id="running-the-quasi-static-simulation"> <a href="#running-the-quasi-static-simulation" class="anchor-heading" aria-labelledby="running-the-quasi-static-simulation"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Running the (quasi-static) simulation</h3>
+<p>To simulate the pneumatic soft robot subjected to a pressure load $P_0 = 25\, \text{kPa}$, together with the assigned boundary loads, we can write:</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%% assign material</span>
+<span class="n">fem</span><span class="o">.</span><span class="n">solve</span><span class="p">();</span>
+</code></pre></div></div>
+<p>The solver will display the assigned material, the Degrees-of-Freedom, element types, ect. It will also show the progress of the simulation. <strong>Note:</strong> The duration of the quasi-static simulation is $T = 1$ standard, implying the loads will monotonically increase for the time domain $[0,T]$. Here a tunable sigmoid function is used: $f_k(t) = \frac{t - kt}{k - 2k\lvert t \rvert + 1}$ with $k = 0.5$ (default).</p>
+<h3 id="making-an-animation"> <a href="#making-an-animation" class="anchor-heading" aria-labelledby="making-an-animation"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Making an animation</h3>
+<p>All numerical data from the Fem simulation is saved in a data struct-file under <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.Log</code>. We’re particularly interested in <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.Log.Node</code> and <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.Log.Stress</code>, which gives the nodal positions of <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.Mesh</code> and the Von Mises stresses at the nodal positions, respectively.</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">figure</span><span class="p">(</span><span class="mi">105</span><span class="p">);</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">t</span><span class="p">;</span>
+
+<span class="c1">% loop of simulation data with FPS = 60</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">fps</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">60</span><span class="p">):</span><span class="nb">numel</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">fem</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="s1">'Node'</span><span class="p">,</span><span class="n">fem</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">Node</span><span class="p">{</span><span class="n">ii</span><span class="p">});</span>
+    <span class="n">fem</span><span class="o">.</span><span class="nb">show</span><span class="p">(</span><span class="s1">'Field'</span><span class="p">,</span><span class="n">fem</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">Stress</span><span class="p">{</span><span class="n">ii</span><span class="p">});</span>
+    <span class="nb">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">60</span> <span class="mi">130</span> <span class="o">-</span><span class="mi">100</span> <span class="mi">30</span><span class="p">]);</span>   
+    <span class="n">background</span><span class="p">();</span>
+    <span class="nb">drawnow</span><span class="p">();</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<h2 id="complete-code-25-lines-without-comments"> <a href="#complete-code-25-lines-without-comments" class="anchor-heading" aria-labelledby="complete-code-25-lines-without-comments"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Complete code (~25 lines without comments)</h2>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%% simulation settings</span>
+<span class="n">P</span> <span class="o">=</span> <span class="mi">15</span><span class="o">*</span><span class="n">kpa</span><span class="p">;</span>   <span class="c1">% pressure load in MPa</span>
+<span class="n">W</span> <span class="o">=</span> <span class="mi">120</span><span class="p">;</span>      <span class="c1">% width image in mm </span>
+<span class="n">H</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>       <span class="c1">% height image in mm</span>
+
+<span class="c1">%% finite element settings</span>
+<span class="n">Simp</span>  <span class="o">=</span> <span class="mf">0.02</span><span class="p">;</span> <span class="c1">% simplification tolerance boundary image</span>
+<span class="n">GrowH</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>    <span class="c1">% mesh growth</span>
+<span class="n">MinH</span>  <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>    <span class="c1">% minimum element size</span>
+<span class="n">MaxH</span>  <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>    <span class="c1">% maximum element size</span>
+
+<span class="c1">%% generate mesh</span>
+<span class="n">msh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="s1">'Pneunet.png'</span><span class="p">,</span><span class="s1">'BdBox'</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">H</span><span class="p">],</span><span class="k">...</span>
+    <span class="s1">'SimplifyTol'</span><span class="p">,</span><span class="n">Simp</span><span class="p">,</span><span class="s1">'Hmesh'</span><span class="p">,[</span><span class="n">GrowH</span><span class="p">,</span><span class="n">MinH</span><span class="p">,</span><span class="n">MaxH</span><span class="p">]);</span>
+<span class="n">msh</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">generate</span><span class="p">();</span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="nb">imshow</span><span class="p">(</span><span class="s1">'Pneunet.png'</span><span class="p">);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="n">msh</span><span class="o">.</span><span class="nb">show</span><span class="p">();</span>
+
+<span class="c1">%% generate fem model</span>
+<span class="n">fem</span> <span class="o">=</span> <span class="n">Fem</span><span class="p">(</span><span class="n">msh</span><span class="p">,</span><span class="s1">'TimeStep'</span><span class="p">,</span><span class="mi">1</span><span class="p">/</span><span class="mi">120</span><span class="p">,</span><span class="s1">'Linestyle'</span><span class="p">,</span><span class="s1">'none'</span><span class="p">);</span>
+
+<span class="c1">%% add boundary constraint</span>
+<span class="n">fem</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">AddConstraint</span><span class="p">(</span><span class="s1">'Support'</span><span class="p">,</span><span class="n">fem</span><span class="o">.</span><span class="n">FindNodes</span><span class="p">(</span><span class="s1">'Left'</span><span class="p">),[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
+<span class="n">fem</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">AddConstraint</span><span class="p">(</span><span class="s1">'Pressure'</span><span class="p">,</span><span class="n">fem</span><span class="o">.</span><span class="n">FindEdges</span><span class="p">(</span><span class="s1">'Hole'</span><span class="p">),</span><span class="mi">20</span><span class="o">*</span><span class="n">kpa</span><span class="p">);</span>
+
+<span class="c1">%% assign material</span>
+<span class="n">fem</span><span class="o">.</span><span class="n">Material</span> <span class="o">=</span> <span class="n">Dragonskin10</span><span class="p">();</span>
+
+<span class="c1">%% solve</span>
+<span class="n">fem</span><span class="o">.</span><span class="n">solve</span><span class="p">();</span>
+
+<span class="c1">%% animation</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">t</span><span class="p">;</span>
+
+<span class="c1">% loop over simulation data with FPS = 60</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">fps</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">60</span><span class="p">):</span><span class="nb">numel</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">fem</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="s1">'Node'</span><span class="p">,</span><span class="n">fem</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">Node</span><span class="p">{</span><span class="n">ii</span><span class="p">});</span>
+    <span class="n">fem</span><span class="o">.</span><span class="nb">show</span><span class="p">(</span><span class="s1">'Field'</span><span class="p">,</span><span class="n">fem</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">Stress</span><span class="p">{</span><span class="n">ii</span><span class="p">});</span>
+    <span class="nb">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">60</span> <span class="mi">130</span> <span class="o">-</span><span class="mi">100</span> <span class="mi">30</span><span class="p">]);</span>   
+    <span class="n">background</span><span class="p">();</span>
+    <span class="nb">drawnow</span><span class="p">();</span>
+<span class="k">end</span>
+</code></pre></div></div>
 <p class="fs-3"><a href="https://www.rubbernews.com/blogs/new-products-james-heal-makes-move-rubber-testing-markets"><strong>[1]</strong></a> <strong>Titan10</strong> a pull-test instrument for rubber and elastomers.</p>
 <hr>
 <footer><p><a href="#top" id="back-to-top">Back to top</a></p>

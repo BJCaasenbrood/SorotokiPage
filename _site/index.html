@@ -50,11 +50,11 @@
 </li>
 <li class="nav-list-item ">
 <a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples/model_control.html" class="nav-list-link">Modeling and Control</a><ul class="nav-list">
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/multilink" class="nav-list-link">Example 1 - Simulating a Multi-link Soft Manipulator</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/multilink" class="nav-list-link">(1) Simulating a multi-link soft manipulator (PCC)</a>
 </li>
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/documentation/examples/design/control/" class="nav-list-link">Example 2 - Energy-based Control of Soft Tentacle</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/documentation/examples/design/control/" class="nav-list-link">(2) Energy-based control of octopus soft arm</a>
 </li>
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/dynfem" class="nav-list-link">Example 3 - Reduced-order Models using FEM-driven Galerkin Projections.</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/dynfem" class="nav-list-link">(3) Geometry-informed variable strain models</a>
 </li>
 </ul>
 </li>
@@ -85,11 +85,12 @@
 <p><br></p>
 <h1 class="fs-6 text-purple-000" id="sorotoki---an-open-source-soft-robotics-toolkit-for-matlab"> <a href="#sorotoki---an-open-source-soft-robotics-toolkit-for-matlab" class="anchor-heading" aria-labelledby="sorotoki---an-open-source-soft-robotics-toolkit-for-matlab"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>SOROTOKI</strong> - An open-source soft robotics toolkit for MATLAB</h1>
 <p><em>SOROTOKI</em> is an open-source MATLAB toolkit for soft robotics that includes an array of tools for design, modeling, and control. Due to its scientific diversity, it can be challenging for new researchers to quickly familiarize themselves with multiple scientific areas. With the aim to lower this threshold, Sorotoki aims to incorporate multiple layers of soft robotics research into one compact toolkit. Examples include: continuum mechanics, dynamic systems and control theory, topology optimization, computer graphics, and much more to come! The combination provides a highly flexible programming environment and will hopefully aid the development of novel soft robotic research.</p>
-<h1 class="fs-5 text-purple-000" id="how-to-install"> <a href="#how-to-install" class="anchor-heading" aria-labelledby="how-to-install"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> How to install?</h1>
-<p>For the install guide, please see check: <a href="./docs/documentation/install.html">Documentation/Installation guide</a></p>
-<div class="language-bash text-purple-000 highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone <span class="nt">--depth</span> 1  https://github.com/BJCaasenbrood/SorotokiCode.git
-</code></pre></div></div>
 <p><a href="https://github.com/BJCaasenbrood/SorotokiCode/zipball/master" class="btn btn-purple fs-5 mb-4 mb-md-0 mr-2">Stable V2.05.19 (.zip)</a> <a href="https://github.com/BJCaasenbrood/SorotokiCode/tarball/master" class="btn btn-purple fs-5 mb-4 mb-md-0 mr-2">Stable V2.05.19 (.tar)</a> <a href="https://github.com/BJCaasenbrood/SorotokiCode" class="btn fs-5 mb-4 mb-md-0">View on Github</a></p>
+<h1 class="fs-5 text-purple-000" id="how-to-install"> <a href="#how-to-install" class="anchor-heading" aria-labelledby="how-to-install"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> How to install</h1>
+<p>For the full install guide, please see check: <a href="./docs/documentation/install.html">Documentation/Installation guide</a>. Download the latest version from above, or clone the following repo using the following command:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone <span class="nt">--depth</span> 1  https://github.com/BJCaasenbrood/SorotokiCode.git
+</code></pre></div></div>
+<p>Once unpacked, navigate to the SOROTOKI directory, and run <code class="language-plaintext highlighter-rouge">sorotoki.m</code> in the command prompt to start the installation. Please be aware, the toolkit requires other Matlab packages to work appropriately.</p>
 <h2 class="text-purple-000" id="applications-highlights"> <a href="#applications-highlights" class="anchor-heading" aria-labelledby="applications-highlights"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Applications highlights</h2>
 <p>SOROTOKI is exclusively developed as a multi-physics programming tools for the <strong>design</strong>, <strong>modeling</strong>, and <strong>control</strong> of soft robots. Below we see a diagram of how each of the six Matlab classes interact:</p>
 <div align="center"> <img src="./docs/documentation/img/abstract.png" width="750">

@@ -17,17 +17,17 @@ permalink: /
 
 *SOROTOKI* is an open-source MATLAB toolkit for soft robotics that includes an array of tools for design, modeling, and control. Due to its scientific diversity, it can be challenging for new researchers to quickly familiarize themselves with multiple scientific areas. With the aim to lower this threshold, Sorotoki aims to incorporate multiple layers of soft robotics research into one compact toolkit. Examples include: continuum mechanics, dynamic systems and control theory, topology optimization, computer graphics, and much more to come! The combination provides a highly flexible programming environment and will hopefully aid the development of novel soft robotic research.
 
-# How to install?
+[Stable V2.05.19  (.zip)](https://github.com/BJCaasenbrood/SorotokiCode/zipball/master){: .btn .btn-purple .fs-5 .mb-4 .mb-md-0 .mr-2} [Stable V2.05.19 (.tar)](https://github.com/BJCaasenbrood/SorotokiCode/tarball/master){: .btn .btn-purple .fs-5 .mb-4 .mb-md-0 .mr-2} [View on Github](https://github.com/BJCaasenbrood/SorotokiCode){: .btn .fs-5 .mb-4 .mb-md-0}  
+# How to install
 {: .fs-5 .text-purple-000}
-For the install guide, please see check: [Documentation/Installation guide](./docs/documentation/install.html)
+For the full install guide, please see check: [Documentation/Installation guide](./docs/documentation/install.html). Download the latest version from above, or clone the following repo using the following command:
 
-{: .text-purple-000}
 ```bash
 git clone --depth 1  https://github.com/BJCaasenbrood/SorotokiCode.git
 ```
 
-[Stable V2.05.19  (.zip)](https://github.com/BJCaasenbrood/SorotokiCode/zipball/master){: .btn .btn-purple .fs-5 .mb-4 .mb-md-0 .mr-2} [Stable V2.05.19 (.tar)](https://github.com/BJCaasenbrood/SorotokiCode/tarball/master){: .btn .btn-purple .fs-5 .mb-4 .mb-md-0 .mr-2} [View on Github](https://github.com/BJCaasenbrood/SorotokiCode){: .btn .fs-5 .mb-4 .mb-md-0}  
 
+Once unpacked, navigate to the SOROTOKI directory, and run `sorotoki.m` in the command prompt to start the installation. Please be aware, the toolkit requires other Matlab packages to work appropriately. 
 
 ## Applications highlights
 {: .text-purple-000}

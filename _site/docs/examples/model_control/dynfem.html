@@ -6,9 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <link rel="shortcut icon" href="/SorotokiPage/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="/SorotokiPage/assets/css/just-the-docs-default.css"> <script type="text/javascript" src="/SorotokiPage/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="/SorotokiPage/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Example 3 - Reduced-order Models using FEM-driven Galerkin Projections. | SOROTOKI</title>
+<title>(3) Geometry-informed variable strain models | SOROTOKI</title>
 <meta name="generator" content="Jekyll v3.9.2">
-<meta property="og:title" content="Example 3 - Reduced-order Models using FEM-driven Galerkin Projections.">
+<meta property="og:title" content="(3) Geometry-informed variable strain models">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="A Soft Robotics Toolkit for MATLAB">
 <meta property="og:description" content="A Soft Robotics Toolkit for MATLAB">
@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="SOROTOKI">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Example 3 - Reduced-order Models using FEM-driven Galerkin Projections."> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","description":"A Soft Robotics Toolkit for MATLAB","headline":"Example 3 - Reduced-order Models using FEM-driven Galerkin Projections.","url":"http://localhost:4000/SorotokiPage/docs/examples/model_control/dynfem"}</script> <script src="https://kit.fontawesome.com/b6cba8db77.js" crossorigin="anonymous"></script>
+<meta property="twitter:title" content="(3) Geometry-informed variable strain models"> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","description":"A Soft Robotics Toolkit for MATLAB","headline":"(3) Geometry-informed variable strain models","url":"http://localhost:4000/SorotokiPage/docs/examples/model_control/dynfem"}</script> <script src="https://kit.fontawesome.com/b6cba8db77.js" crossorigin="anonymous"></script>
 <script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
@@ -51,11 +51,11 @@
 </li>
 <li class="nav-list-item active">
 <a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples/model_control.html" class="nav-list-link">Modeling and Control</a><ul class="nav-list">
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/multilink" class="nav-list-link">Example 1 - Simulating a Multi-link Soft Manipulator</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/multilink" class="nav-list-link">(1) Simulating a multi-link soft manipulator (PCC)</a>
 </li>
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/documentation/examples/design/control/" class="nav-list-link">Example 2 - Energy-based Control of Soft Tentacle</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/documentation/examples/design/control/" class="nav-list-link">(2) Energy-based control of octopus soft arm</a>
 </li>
-<li class="nav-list-item active"> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/dynfem" class="nav-list-link active">Example 3 - Reduced-order Models using FEM-driven Galerkin Projections.</a>
+<li class="nav-list-item active"> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/dynfem" class="nav-list-link active">(3) Geometry-informed variable strain models</a>
 </li>
 </ul>
 </li>
@@ -84,7 +84,7 @@
 <nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
 <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/examples">Examples</a></li>
 <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/examples/model_control.html">Modeling and Control</a></li>
-<li class="breadcrumb-nav-list-item"><span>Example 3 - Reduced-order Models using FEM-driven Galerkin Projections.</span></li>
+<li class="breadcrumb-nav-list-item"><span>(3) Geometry-informed variable strain models</span></li>
 </ol></nav><div id="main-content" class="main-content" role="main">
 <h1 class="no_toc" id="reduced-order-dynamics-using-fem-driven-galerkin-projection-snapshot-method"> <a href="#reduced-order-dynamics-using-fem-driven-galerkin-projection-snapshot-method" class="anchor-heading" aria-labelledby="reduced-order-dynamics-using-fem-driven-galerkin-projection-snapshot-method"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Reduced-order dynamics using FEM-driven Galerkin projection (snapshot method).</h1>
 <details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc"><li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li></ol></details><hr>

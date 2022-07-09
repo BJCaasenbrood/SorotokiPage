@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example 2 - Energy-based Control of Soft Tentacle
+title: (2) Energy-based control of octopus soft arm 
 parent: Modeling and Control
 grand_parent: Examples
 nav_order: 2
