@@ -4,13 +4,13 @@ title: Example 1 - Rendering the Stanford Bunny (.stl)
 parent:  Computer Graphics
 grand_parent: Examples
 nav_order: 1
-permalink: /docs/examples/3_graphics/renderstl/
+permalink: /docs/examples/graphics/renderstl/
 ---
 
 #  Rendering the Stanford Bunny
 
 <div align="center"> <img src="./img/rotateBunny.gif" width="450"> </div>
-<div align="center"> Rendering the Stanford bunny in MATLAB with responsive textures [1].  </div>
+<div align="center"> Rendering the Stanford bunny in MATLAB with responsive textures [1]. </div>
 
 ---
 

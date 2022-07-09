@@ -4,7 +4,7 @@ title: (1) Simulating a multi-link soft manipulator (PCC)
 parent: Modeling and Control 
 grand_parent: Examples
 nav_order: 1
-permalink: /docs/examples/model_control/multilink
+permalink: /docs/examples/model_control/multilink/
 ---
 
 #  Simulating the dynamics of a multi-link soft robot manipulator (PCC approach)

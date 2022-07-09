@@ -51,7 +51,7 @@
 </li>
 <li class="nav-list-item ">
 <a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples/model_control.html" class="nav-list-link">Modeling and Control</a><ul class="nav-list">
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/multilink" class="nav-list-link">(1) Simulating a multi-link soft manipulator (PCC)</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/model_control/multilink/" class="nav-list-link">(1) Simulating a multi-link soft manipulator (PCC)</a>
 </li>
 <li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/documentation/examples/design/control/" class="nav-list-link">(2) Energy-based control of octopus soft arm</a>
 </li>
@@ -60,7 +60,7 @@
 </ul>
 </li>
 <li class="nav-list-item ">
-<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples/graphics.html" class="nav-list-link">Computer Graphics</a><ul class="nav-list"><li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/3_graphics/renderstl/" class="nav-list-link">Example 1 - Rendering the Stanford Bunny (.stl)</a>
+<a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples/graphics.html" class="nav-list-link">Computer Graphics</a><ul class="nav-list"><li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/graphics/renderstl/" class="nav-list-link">Example 1 - Rendering the Stanford Bunny (.stl)</a>
 </li></ul>
 </li>
 </ul>
@@ -93,7 +93,7 @@
 <li><a href="#assigning-boundary-conditions" id="markdown-toc-assigning-boundary-conditions">Assigning boundary conditions</a></li>
 <li><a href="#material-assignment" id="markdown-toc-material-assignment">Material assignment</a></li>
 <li><a href="#running-the-quasi-static-simulation" id="markdown-toc-running-the-quasi-static-simulation">Running the (quasi-static) simulation</a></li>
-<li><a href="#making-an-animation" id="markdown-toc-making-an-animation">Making an animation</a></li>
+<li><a href="#making-the-animation" id="markdown-toc-making-the-animation">Making the animation</a></li>
 <li><a href="#complete-code-25-lines-without-comments" id="markdown-toc-complete-code-25-lines-without-comments">Complete code (~25 lines without comments)</a></li>
 </ol></details><hr>
 <h4 class="no_toc" id="difficulty-easy"> <a href="#difficulty-easy" class="anchor-heading" aria-labelledby="difficulty-easy"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Difficulty: <code class="language-plaintext fs-3 text-green-200 highlighter-rouge">easy</code>
@@ -101,12 +101,12 @@
 <ul>
 <li>Required classes: <code class="language-plaintext text-purple-000 highlighter-rouge">Mesh.m</code>, <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.m</code>
 </li>
-<li>Code length: <code class="language-plaintext text-purple-000 highlighter-rouge">~35 lines</code> (without comments)</li>
+<li>Code length: <code class="language-plaintext text-purple-000 highlighter-rouge">~25 lines</code> (without comments)</li>
 </ul>
 <hr>
 <h3 id="introduction"> <a href="#introduction" class="anchor-heading" aria-labelledby="introduction"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Introduction</h3>
 <p>In this illustrative example, we will perform a simple simulation of the classic PneuNet actuator, which is a rectangular-shaped soft robot with embedded pressure chambers. Due to a geometrically-induced stiffness gradient, the soft actuator undergoes bending naturally when pressurized. SOROTOKI is purposefully developed to easily build and simulate various Finite Element models using a minimal programming interface.</p>
-<div align="center"> <img src="./img/result.png" width="500">
+<div align="center"> <img src="./img/fem_pneunet.gif" width="450">
 </div>
 <div align="center"> Produced numerical result of the PneuNet actuators using SOROTOKI .</div>
 <h3 id="generating-the-mesh-from-binary-image"> <a href="#generating-the-mesh-from-binary-image" class="anchor-heading" aria-labelledby="generating-the-mesh-from-binary-image"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Generating the mesh from binary image</h3>
@@ -131,7 +131,7 @@
 <div align="center"> <img src="./img/mesh.png" width="550">
 </div>
 <div align="center"> Source image of Pneunet cross-section (top). Triangular mesh (right).</div>
-<p><strong>Important!</strong> To use images for meshing, you have ensure that the images has a white background and a dark foreground which indicates the region for the mesh.</p>
+<p><strong>Important!</strong> To use images for meshing, you have ensure that the images have a white background and a dark foreground which indicates the region to be meshed.</p>
 <h3 id="building-the-finite-element-model"> <a href="#building-the-finite-element-model" class="anchor-heading" aria-labelledby="building-the-finite-element-model"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Building the finite element model</h3>
 <p>We can now convert this discretized mesh to a finite element models. We input the <code class="language-plaintext text-purple-000 highlighter-rouge">msh</code> object generated by the class <code class="language-plaintext text-purple-000 highlighter-rouge">Mesh.m</code> into <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.m</code> using:</p>
 <div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%% generate fem model</span>
@@ -161,9 +161,10 @@
 <div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%% assign material</span>
 <span class="n">fem</span><span class="o">.</span><span class="n">solve</span><span class="p">();</span>
 </code></pre></div></div>
-<p>The solver will display the assigned material, the Degrees-of-Freedom, element types, ect. It will also show the progress of the simulation. <strong>Note:</strong> The duration of the quasi-static simulation is $T = 1$ standard, implying the loads will monotonically increase for the time domain $[0,T]$. Here a tunable sigmoid function is used: $f_k(t) = \frac{t - kt}{k - 2k\lvert t \rvert + 1}$ with $k = 0.5$ (default).</p>
-<h3 id="making-an-animation"> <a href="#making-an-animation" class="anchor-heading" aria-labelledby="making-an-animation"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Making an animation</h3>
-<p>All numerical data from the Fem simulation is saved in a data struct-file under <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.Log</code>. We’re particularly interested in <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.Log.Node</code> and <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.Log.Stress</code>, which gives the nodal positions of <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.Mesh</code> and the Von Mises stresses at the nodal positions, respectively.</p>
+<p>The solver will display the assigned material, the Degrees-of-Freedom, element types, ect. It will also show the progress of the simulation.</p>
+<p><strong>Note:</strong> The duration of the quasi-static simulation is $T = 1$ standard, implying the loads will monotonically increase for the time domain $[0,T]$. Users may change the horizon time $T$ using the parameter <code class="language-plaintext highlighter-rouge">Fem.TimeEnd</code> but all external forces will be scaled using a tunable sigmoid function: $f_k(t) = \frac{t - kt}{k - 2k\lvert t \rvert + 1}$ with $k = 0$ (default) – linear ramp.</p>
+<h3 id="making-the-animation"> <a href="#making-the-animation" class="anchor-heading" aria-labelledby="making-the-animation"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Making the animation</h3>
+<p>All numerical data from the Fem simulation is saved in a data struct-file under <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.Log</code>. We’re particularly interested in <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.Log.Node</code> and <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.Log.Stress</code>, which gives the nodal positions of <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.Mesh</code> and the Von Mises stresses at the nodal positions, respectively. To make the animation as seen above, we use the following commands:</p>
 <div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">figure</span><span class="p">(</span><span class="mi">105</span><span class="p">);</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">t</span><span class="p">;</span>
 
@@ -211,7 +212,6 @@
 
 <span class="c1">%% animation</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">t</span><span class="p">;</span>
-
 <span class="c1">% loop over simulation data with FPS = 60</span>
 <span class="k">for</span> <span class="n">ii</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">fps</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">60</span><span class="p">):</span><span class="nb">numel</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">fem</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="s1">'Node'</span><span class="p">,</span><span class="n">fem</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">Node</span><span class="p">{</span><span class="n">ii</span><span class="p">});</span>
