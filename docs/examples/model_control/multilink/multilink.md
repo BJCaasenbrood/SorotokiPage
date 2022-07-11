@@ -20,44 +20,56 @@ permalink: /docs/examples/model_control/multilink/
 </details>
 ---
 
-#### Difficulty: `easy`{: .fs-3 .text-green-200} ~ `intermediate`{: .fs-3 .text-green-200}
+#### Difficulty: `intermediate`{: .fs-3 .text-green-200}
 {: .no_toc }
- - Required classes: `Model.m`{: .text-purple-000}
+ - Required classes: `Shapes.m`{: .text-purple-000}, `Model.m`{: .text-purple-000}, `Rig.m`{: .text-purple-000}
  - Code length: `~25 lines`{: .text-purple-000} (without comments)
 
 ---
 
 ### Introduction
-In this illustrative example, we will perform a simple pull test using a hyper-elastic material -- Ecoflex-0030 from SmoothOn. Assuming a two-dimensional problem, we consider a 20x20 specimen and perform an uni-axial elongation of $\lambda_{1} = 500\%$ (with $\lambda_2 = \lambda_3$). We model this using a single quadrilateral finite-element subjected to plane-stress conditions.
+In the following example, we will build a multi-link soft robot manipulator, similar to Festo's Bionic Handling Assistant as shown below. The system consists of three pneumatic segments, which we will model according the *Piecewise-Constant-Curvature* description -- PCC in short. SOROTOKI comes equipped with two Classes: `Shapes.m`{: .text-purple-000} and `Model.m`{: .text-purple-000} which take care of the spatial strain parameterization and the continuum dynamic model, respectively. Furthermore, `Shapes.m`{: .text-purple-000} will also contain the physical properties of the spatial beam, such as density, stiffness, and damping coefficients. Once the dynamic trajectories of the system are solved using `Model.m`{: .text-purple-000}, we can call `Rig.m`{: .text-purple-000} to assign an kinematic rig for 3D-graphical models. The resulting simulations is produced using SOROTOKI:
 
-<div align="center"> <img src="./img/intro.jpg" width="500"> </div>
-<div align="center"> Festo's Bionic Handling Assistant inspired by the elphant's trunk (see [1]). </div>
+<div align="center">
+<img src="./img/intro.jpg" width="500"> </div>
+<div align="center">
+Festo's Bionic Handling Assistant inspired by the elphant's trunk (see [1])  
+</div>
 
-### Generating the mesh from pictures
-Lets start generating a planar rectangular mesh. To discretize the material domain, we use the Signed Distance Function (SDF) Class and Meshing Class -- `Sdf.m`{: .text-purple-000} and `Mesh.m`{: .text-purple-000}, respectively. We can define the rectangular domain using SDFs and convert it to a quadtrilateral mesh, consider the following code:
+<div align="center">
+<img src="./img/mdl_threelink.gif" width="500"> </div>
+<div align="center">
+Three-link soft robot manipulator dynamics using SOROTOKI based on the Festo's Bionic Handling Assistant. The model's state dimension is $\dim(q) = 6$ that is two unique $x-z$ and $y-z$ curvatures per soft-link segment. 
+</div>
+
+
+### Strain parameterization
+To describe the spatial evolution of the soft robot, we use the class `Shapes.m`. The input for the class is a matrix $Y$ of size $N \times M$, where $N$ is the number of spatial discretizations (i.e., the number of nodes along the spatial curve) and $M$ the number of unique modes. Note that the columns of $Y$ correspond to the spatial modes of the soft robotic model.
 
 ```matlab
-%% mesh generation settings
-Simp  = 0.02;
-GrowH = 1;
-MinH  = 2;
-MaxH  = 3;
+%% spatial parameterization
+L = 360;  % intrinsic length of soft robot
+N = 300;  % number of spatial nodes
+M = 3;    % number of modes (i.e., discrete links)
 
-%% generate mesh from .png
-msh = Mesh('Pneunet.png','BdBox',[0,120,0,20],'SimplifyTol',Simp,...
-    'Hmesh',[GrowH,MinH,MaxH]);
+% construct spatial parameters X
+X = linspace(0,L,N)';
+Y = [];
 
-msh = msh.generate();
+% constructing the shape function matrix evaluated for X
+for ii = 1:M
+   Y(:,ii) = pcc(X/L,ii,M); % PCC 
+end
 
-figure(101);
-subplot(2,1,1); imshow('Pneunet.png');
-subplot(2,1,2); msh.show();
+shp = Shapes(Y,Modes,'L0',L);
+shp.show();
+
 ```
 
 The code above should produce the following:
 
-<div align="center"> <img src="./img/mesh.png" width="550"> </div> 
-<div align="center"> Source image of Pneunet cross-section (top). Triangular mesh (right). </div>
+<div align="center"> <img src="./img/shapes.png" width="550"> </div> 
+<div align="center"> Shape functions of the three-link soft robot </div>
 
 
 [**[1]**](https://www.festo.com/group/en/cms/10241.htm) **Bionic Handling Assistant** a soft robotic manipulator from Festo.
