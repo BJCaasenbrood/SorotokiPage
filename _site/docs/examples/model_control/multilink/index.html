@@ -43,7 +43,7 @@
 <a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples/design.html" class="nav-list-link">Design and Analysis</a><ul class="nav-list">
 <li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pull/" class="nav-list-link">(1) Material test</a>
 </li>
-<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pneufem/" class="nav-list-link">(2) PneuNet analysis</a>
+<li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pneufem/" class="nav-list-link">(2) Finite element analysis of PneuNet</a>
 </li>
 <li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pneunet/" class="nav-list-link">(3) Automated design synthesis of PneuNet</a>
 </li>
@@ -85,11 +85,13 @@
 <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/examples">Examples</a></li>
 <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/examples/model_control.html">Modeling and Control</a></li>
 <li class="breadcrumb-nav-list-item"><span>(1) Simulating a multi-link soft manipulator (PCC)</span></li>
-</ol></nav><div id="main-content" class="main-content" role="main">
-<h1 class="no_toc" id="simulating-the-dynamics-of-a-multi-link-soft-robot-manipulator-pcc-approach"> <a href="#simulating-the-dynamics-of-a-multi-link-soft-robot-manipulator-pcc-approach" class="anchor-heading" aria-labelledby="simulating-the-dynamics-of-a-multi-link-soft-robot-manipulator-pcc-approach"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Simulating the dynamics of a multi-link soft robot manipulator (PCC approach)</h1>
+</ol></nav><div id="main-content" class="main-content" role="main"> <script> MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' } }; </script> <script type="text/javascript" id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"> </script><h1 class="no_toc" id="simulating-the-dynamics-of-a-multi-link-soft-robot-manipulator-pcc-approach"> <a href="#simulating-the-dynamics-of-a-multi-link-soft-robot-manipulator-pcc-approach" class="anchor-heading" aria-labelledby="simulating-the-dynamics-of-a-multi-link-soft-robot-manipulator-pcc-approach"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Simulating the dynamics of a multi-link soft robot manipulator (PCC approach)</h1>
 <details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
 <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
 <li><a href="#strain-parameterization" id="markdown-toc-strain-parameterization">Strain parameterization</a></li>
+<li><a href="#material-assignment" id="markdown-toc-material-assignment">Material assignment</a></li>
+<li><a href="#constructing-the-model-class" id="markdown-toc-constructing-the-model-class">Constructing the Model class</a></li>
+<li><a href="#assigning-a-controller" id="markdown-toc-assigning-a-controller">Assigning a controller</a></li>
 </ol></details><hr>
 <h4 class="no_toc" id="difficulty-intermediate"> <a href="#difficulty-intermediate" class="anchor-heading" aria-labelledby="difficulty-intermediate"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Difficulty: <code class="language-plaintext fs-3 text-green-200 highlighter-rouge">intermediate</code>
 </h4>
@@ -108,11 +110,10 @@
 </div>
 <div align="center"> Three-link soft robot manipulator dynamics using SOROTOKI based on the Festo's Bionic Handling Assistant. The model's state dimension is $\dim(q) = 6$ that is two unique $x-z$ and $y-z$ curvatures per soft-link segment.</div>
 <h3 id="strain-parameterization"> <a href="#strain-parameterization" class="anchor-heading" aria-labelledby="strain-parameterization"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Strain parameterization</h3>
-<p>To describe the spatial evolution of the soft robot, we use the class <code class="language-plaintext highlighter-rouge">Shapes.m</code>. The input for the class is a matrix $Y$ of size $N \times M$, where $N$ is the number of spatial discretizations (i.e., the number of nodes along the spatial curve) and $M$ the number of unique modes. Note that the columns of $Y$ correspond to the spatial modes of the soft robotic model.</p>
+<p>To describe the spatial evolution of the soft robot, we use the class <code class="language-plaintext text-purple-000 highlighter-rouge">Shapes.m</code>. The input for the class is a matrix $Y$ of size $N \times M$, where $N$ is the number of spatial discretizations (i.e., the number of nodes along the spatial curve) and $M$ the number of unique modes. Note that the columns of $Y$ correspond to the spatial modes of the soft robotic model.</p>
 <div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%% spatial parameterization</span>
 <span class="n">L</span> <span class="o">=</span> <span class="mi">360</span><span class="p">;</span>  <span class="c1">% intrinsic length of soft robot</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span>  <span class="c1">% number of spatial nodes</span>
-<span class="n">M</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>    <span class="c1">% number of modes (i.e., discrete links)</span>
 
 <span class="c1">% construct spatial parameters X</span>
 <span class="n">X</span> <span class="o">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">N</span><span class="p">)</span><span class="o">'</span><span class="p">;</span>
@@ -123,15 +124,41 @@
    <span class="n">Y</span><span class="p">(:,</span><span class="n">ii</span><span class="p">)</span> <span class="o">=</span> <span class="n">pcc</span><span class="p">(</span><span class="n">X</span><span class="p">/</span><span class="n">L</span><span class="p">,</span><span class="n">ii</span><span class="p">,</span><span class="n">M</span><span class="p">);</span> <span class="c1">% PCC </span>
 <span class="k">end</span>
 
-<span class="n">shp</span> <span class="o">=</span> <span class="n">Shapes</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">Modes</span><span class="p">,</span><span class="s1">'L0'</span><span class="p">,</span><span class="n">L</span><span class="p">);</span>
-<span class="n">shp</span><span class="o">.</span><span class="nb">show</span><span class="p">();</span>
-
+<span class="c1">% generate Shapes class</span>
+<span class="n">shp</span> <span class="o">=</span> <span class="n">Shapes</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">Modes</span><span class="p">,</span><span class="s1">'L0'</span><span class="p">,</span><span class="n">L</span><span class="p">);</span> <span class="c1">% construct shape class</span>
+<span class="n">shp</span><span class="o">.</span><span class="nb">show</span><span class="p">();</span>                   <span class="c1">% displays the columns of Y</span>
 </code></pre></div></div>
 <p>The code above should produce the following:</p>
 <div align="center"> <img src="./img/shapes.png" width="550">
 </div>
-<div align="center"> Shape functions of the three-link soft robot</div>
+<div align="center"> Shape functions of the three-link soft robot -- a three segmented piecewise constant strain.</div>
+<p><strong>Note:</strong> By default, inputting an matrix into <code class="language-plaintext text-purple-000 highlighter-rouge">Shapes</code> will ensure each column is mutually orthogonal using the Gram-Schmidt orthogonalization procedure, see <a href="https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process">[2]</a>. In other words, the integral $\int_0^L Y_i^\top Y_j \; d\sigma $ will be $1$ for indices $i = j$, and $0$ otherwise. Naturally, this ensure the spatial modes are decoupled from a compliance perspective.</p>
+<p><strong>Note:</strong> Second, notice we specify <code class="language-plaintext text-purple-000 highlighter-rouge">Shapes(...,'L0',L)</code>. This ensure the intrinsic length of the curve is equal to $L$. By default, the intrinsic length is set to $L = 1$ if not adjusted by the user.</p>
+<h2 id="material-assignment"> <a href="#material-assignment" class="anchor-heading" aria-labelledby="material-assignment"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Material assignment</h2>
+<p>Analogous to the finite element class, we can assign materials using <code class="language-plaintext text-purple-000 highlighter-rouge">Shapes.Material</code>. Here, let us consider a Neo-Hookean material with Young’s modulus $E = 10$ MPa and poisson ratio $\nu = 0.4$. We also change the density to $\rho = 150 $ kg/m$^3$ which translates to <code class="language-plaintext text-purple-000 highlighter-rouge">Shapes.Material.Rho = 150e-12</code> as SOROTOKI uses unit millimeters (mm). After those assignments, we set the gravitational component using <code class="language-plaintext text-purple-000 highlighter-rouge">Shapes.Gvec</code>. Once all physical properties are set, make sure to rebuild the necessary material tensors using <code class="language-plaintext text-purple-000 highlighter-rouge">shp.rebuild()</code>.</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%% setting Neo-Hookean material</span>
+<span class="n">shp</span><span class="o">.</span><span class="n">Material</span> <span class="o">=</span> <span class="n">NeoHookeanMaterial</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.4</span><span class="p">);</span>
+
+<span class="c1">% overwriting properties</span>
+<span class="n">shp</span><span class="o">.</span><span class="n">Material</span><span class="o">.</span><span class="n">Rho</span> <span class="o">=</span> <span class="mf">150e-12</span><span class="p">;</span>    <span class="c1">% setting density</span>
+<span class="n">shp</span><span class="o">.</span><span class="n">Gravity</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">9.81e3</span><span class="p">;</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span><span class="p">];</span> <span class="c1">% setting gravity</span>
+
+<span class="c1">% rebuild material tensors</span>
+<span class="n">shp</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">rebuild</span><span class="p">();</span>
+</code></pre></div></div>
+<h2 id="constructing-the-model-class"> <a href="#constructing-the-model-class" class="anchor-heading" aria-labelledby="constructing-the-model-class"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Constructing the Model class</h2>
+<p>Once the shapes and the physical parameters of the curve are set, we can construct the model class. To do so, we simply input the <code class="language-plaintext highlighter-rouge">shp</code> into <code class="language-plaintext highlighter-rouge">Model.m</code>. We also have to specify which Degrees-of-freedom we want to have enabled for the curve. Consider the vector <code class="language-plaintext highlighter-rouge">Modes = [kxx,kxz,kyz,exx,exz,eyz]</code> where <code class="language-plaintext highlighter-rouge">[kxx,kxz,kyz]</code> are the twist and curvatures modes, and <code class="language-plaintext highlighter-rouge">[exx,exz,eyz]</code> the elongation and shear modes. Since we consider a system undergoing pure bending specified by three PCC functions, we have <code class="language-plaintext highlighter-rouge">Modes = [0,kxz,kyz,0,0,0]</code> with <code class="language-plaintext highlighter-rouge">kxz = kyz = 3</code>.</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% generating Model class</span>
+<span class="n">Modes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>   <span class="c1">% DOFs of the curve, i.e., only pure bending</span>
+<span class="n">mdl</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">shp</span><span class="p">,</span><span class="n">Modes</span><span class="p">);</span> <span class="c1">% model class</span>
+</code></pre></div></div>
+<p><strong>Important!</strong> Note that the number of modes per DOF must corresponds to the number of columns of the matrix $Y$. let it be clear that the curvatures <code class="language-plaintext highlighter-rouge">kxy</code> and <code class="language-plaintext highlighter-rouge">kyz</code> do not have to share the same spatial description <code class="language-plaintext highlighter-rouge">Y</code>, as such, we can enrich the <code class="language-plaintext highlighter-rouge">Shapes</code> class by <code class="language-plaintext highlighter-rouge">shp = Shapes([Y1,Y2])</code> where <code class="language-plaintext highlighter-rouge">Y1</code> and <code class="language-plaintext highlighter-rouge">Y2</code> correspond to the spatial modes related to the curvatures <code class="language-plaintext highlighter-rouge">kxy</code> and <code class="language-plaintext highlighter-rouge">kyz</code>, respectively.</p>
+<h2 id="assigning-a-controller"> <a href="#assigning-a-controller" class="anchor-heading" aria-labelledby="assigning-a-controller"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Assigning a controller</h2>
+<p>The advantage of SOROTOKI is its own ODE solver that allows for easy controller development. To be more specific, the function which computes the generalized forces acting on the soft robot, given by <code class="language-plaintext highlighter-rouge">Model.tau</code>, can be overwritten by the user as to specify the torques a every timestep. For each function call, the solver will the class itself into <code class="language-plaintext highlighter-rouge">Model.tau</code>. Let us clarify why this is important, by considering the following example:</p>
+<p>Suppose we want to develop an PD+ controller, that is, a Proportional-Derivative controller that compensates gravity and stiffness. Such a (model-based) controller has the following structure:</p>
+<p>$$\tau = \nabla_{q}\;\mathcal{U}(q) - K_p e - K_d \dot{e} $$</p>
 <p class="fs-3"><a href="https://www.festo.com/group/en/cms/10241.htm"><strong>[1]</strong></a> <strong>Bionic Handling Assistant</strong> a soft robotic manipulator from Festo.</p>
+<p class="fs-3"><a href="https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process"><strong>[2]</strong></a> <strong>Gram-Schmidt process</strong> on constructing a orthonormal basis.</p>
 <hr>
 <footer><p><a href="#top" id="back-to-top">Back to top</a></p>
 <p class="text-small text-grey-dk-100 mb-0">Copyright © 2018-2022 Brandon Caasenbrood. Distributed by a <a href="https://github.com/BJCaasenbrood/SorotokiCode/tree/master/LICENSE.md">MIT license.</a></p>

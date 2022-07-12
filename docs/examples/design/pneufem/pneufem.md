@@ -1,6 +1,6 @@
 ---
 layout: default
-title: (2) PneuNet analysis
+title: (2) Finite element analysis of PneuNet
 parent: Design and Analysis
 grand_parent: Examples
 nav_order: 2

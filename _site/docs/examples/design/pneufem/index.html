@@ -6,9 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <link rel="shortcut icon" href="/SorotokiPage/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="/SorotokiPage/assets/css/just-the-docs-default.css"> <script type="text/javascript" src="/SorotokiPage/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="/SorotokiPage/assets/js/just-the-docs.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>(2) PneuNet analysis | SOROTOKI</title>
+<title>(2) Finite element analysis of PneuNet | SOROTOKI</title>
 <meta name="generator" content="Jekyll v3.9.2">
-<meta property="og:title" content="(2) PneuNet analysis">
+<meta property="og:title" content="(2) Finite element analysis of PneuNet">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="A Soft Robotics Toolkit for MATLAB">
 <meta property="og:description" content="A Soft Robotics Toolkit for MATLAB">
@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="SOROTOKI">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="(2) PneuNet analysis"> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","description":"A Soft Robotics Toolkit for MATLAB","headline":"(2) PneuNet analysis","url":"http://localhost:4000/SorotokiPage/docs/examples/design/pneufem/"}</script> <script src="https://kit.fontawesome.com/b6cba8db77.js" crossorigin="anonymous"></script>
+<meta property="twitter:title" content="(2) Finite element analysis of PneuNet"> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","description":"A Soft Robotics Toolkit for MATLAB","headline":"(2) Finite element analysis of PneuNet","url":"http://localhost:4000/SorotokiPage/docs/examples/design/pneufem/"}</script> <script src="https://kit.fontawesome.com/b6cba8db77.js" crossorigin="anonymous"></script>
 <script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="svg-link" viewbox="0 0 24 24"><title>Link</title>
@@ -43,7 +43,7 @@
 <a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="http://localhost:4000/SorotokiPage/docs/examples/design.html" class="nav-list-link">Design and Analysis</a><ul class="nav-list">
 <li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pull/" class="nav-list-link">(1) Material test</a>
 </li>
-<li class="nav-list-item active"> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pneufem/" class="nav-list-link active">(2) PneuNet analysis</a>
+<li class="nav-list-item active"> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pneufem/" class="nav-list-link active">(2) Finite element analysis of PneuNet</a>
 </li>
 <li class="nav-list-item "> <a href="http://localhost:4000/SorotokiPage/docs/examples/design/pneunet/" class="nav-list-link">(3) Automated design synthesis of PneuNet</a>
 </li>
@@ -84,7 +84,7 @@
 <nav aria-label="Breadcrumb" class="breadcrumb-nav"><ol class="breadcrumb-nav-list">
 <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/examples">Examples</a></li>
 <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/examples/design.html">Design and Analysis</a></li>
-<li class="breadcrumb-nav-list-item"><span>(2) PneuNet analysis</span></li>
+<li class="breadcrumb-nav-list-item"><span>(2) Finite element analysis of PneuNet</span></li>
 </ol></nav><div id="main-content" class="main-content" role="main"> <script> MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' } }; </script> <script type="text/javascript" id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"> </script><h1 class="no_toc" id="finite-element-analysis-of-pneunet"> <a href="#finite-element-analysis-of-pneunet" class="anchor-heading" aria-labelledby="finite-element-analysis-of-pneunet"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Finite element analysis of PneuNet</h1>
 <details open=""> <summary class="text-delta"> Table of contents </summary><ol id="markdown-toc">
 <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
