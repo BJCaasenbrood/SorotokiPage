@@ -92,6 +92,8 @@
 <li><a href="#material-assignment" id="markdown-toc-material-assignment">Material assignment</a></li>
 <li><a href="#constructing-the-model-class" id="markdown-toc-constructing-the-model-class">Constructing the Model class</a></li>
 <li><a href="#assigning-a-controller" id="markdown-toc-assigning-a-controller">Assigning a controller</a></li>
+<li><a href="#simulating-the-closed-loop-system" id="markdown-toc-simulating-the-closed-loop-system">Simulating the closed-loop system</a></li>
+<li><a href="#complete-code" id="markdown-toc-complete-code">Complete code</a></li>
 </ol></details><hr>
 <h4 class="no_toc" id="difficulty-intermediate"> <a href="#difficulty-intermediate" class="anchor-heading" aria-labelledby="difficulty-intermediate"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Difficulty: <code class="language-plaintext fs-3 text-green-200 highlighter-rouge">intermediate</code>
 </h4>
@@ -147,16 +149,189 @@
 <span class="n">shp</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">rebuild</span><span class="p">();</span>
 </code></pre></div></div>
 <h2 id="constructing-the-model-class"> <a href="#constructing-the-model-class" class="anchor-heading" aria-labelledby="constructing-the-model-class"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Constructing the Model class</h2>
-<p>Once the shapes and the physical parameters of the curve are set, we can construct the model class. To do so, we simply input the <code class="language-plaintext highlighter-rouge">shp</code> into <code class="language-plaintext highlighter-rouge">Model.m</code>. We also have to specify which Degrees-of-freedom we want to have enabled for the curve. Consider the vector <code class="language-plaintext highlighter-rouge">Modes = [kxx,kxz,kyz,exx,exz,eyz]</code> where <code class="language-plaintext highlighter-rouge">[kxx,kxz,kyz]</code> are the twist and curvatures modes, and <code class="language-plaintext highlighter-rouge">[exx,exz,eyz]</code> the elongation and shear modes. Since we consider a system undergoing pure bending specified by three PCC functions, we have <code class="language-plaintext highlighter-rouge">Modes = [0,kxz,kyz,0,0,0]</code> with <code class="language-plaintext highlighter-rouge">kxz = kyz = 3</code>.</p>
+<p>Once the shapes and the physical parameters of the curve are set, we can construct the model class. To do so, we simply input the <code class="language-plaintext text-purple-000 highlighter-rouge">shp</code> into <code class="language-plaintext text-purple-000 highlighter-rouge">Model.m</code>. We also have to specify which Degrees-of-freedom we want to have enabled for the curve. Consider the vector <code class="language-plaintext text-purple-000 highlighter-rouge">Modes = [kxx,kxz,kyz,exx,exz,eyz]</code> where <code class="language-plaintext text-purple-000 highlighter-rouge">[kxx,kxz,kyz]</code> are the twist and curvatures modes, and <code class="language-plaintext text-purple-000 highlighter-rouge">[exx,exz,eyz]</code> the elongation and shear modes. Since we consider a system undergoing pure bending specified by three PCC functions, we have <code class="language-plaintext text-purple-000 highlighter-rouge">Modes = [0,kxz,kyz,0,0,0]</code> with <code class="language-plaintext text-purple-000 highlighter-rouge">kxz = kyz = 3</code>.</p>
 <div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% generating Model class</span>
 <span class="n">Modes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>   <span class="c1">% DOFs of the curve, i.e., only pure bending</span>
 <span class="n">mdl</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">shp</span><span class="p">,</span><span class="n">Modes</span><span class="p">);</span> <span class="c1">% model class</span>
 </code></pre></div></div>
-<p><strong>Important!</strong> Note that the number of modes per DOF must corresponds to the number of columns of the matrix $Y$. let it be clear that the curvatures <code class="language-plaintext highlighter-rouge">kxy</code> and <code class="language-plaintext highlighter-rouge">kyz</code> do not have to share the same spatial description <code class="language-plaintext highlighter-rouge">Y</code>, as such, we can enrich the <code class="language-plaintext highlighter-rouge">Shapes</code> class by <code class="language-plaintext highlighter-rouge">shp = Shapes([Y1,Y2])</code> where <code class="language-plaintext highlighter-rouge">Y1</code> and <code class="language-plaintext highlighter-rouge">Y2</code> correspond to the spatial modes related to the curvatures <code class="language-plaintext highlighter-rouge">kxy</code> and <code class="language-plaintext highlighter-rouge">kyz</code>, respectively.</p>
+<p><strong>Important!</strong> Note that the number of modes per DOF must corresponds to the number of columns of the matrix $Y$. let it be clear that the curvatures <code class="language-plaintext text-purple-000 highlighter-rouge">kxy</code> and <code class="language-plaintext text-purple-000 highlighter-rouge">kyz</code> do not have to share the same spatial description <code class="language-plaintext text-purple-000 highlighter-rouge">Y</code>, as such, we can enrich the <code class="language-plaintext text-purple-000 highlighter-rouge">Shapes</code> class by <code class="language-plaintext text-purple-000 highlighter-rouge">shp = Shapes([Y1,Y2])</code> where <code class="language-plaintext text-purple-000 highlighter-rouge">Y1</code> and <code class="language-plaintext text-purple-000 highlighter-rouge">Y2</code> correspond to the spatial modes related to the curvatures <code class="language-plaintext text-purple-000 highlighter-rouge">kxy</code> and <code class="language-plaintext text-purple-000 highlighter-rouge">kyz</code>, respectively.</p>
 <h2 id="assigning-a-controller"> <a href="#assigning-a-controller" class="anchor-heading" aria-labelledby="assigning-a-controller"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Assigning a controller</h2>
-<p>The advantage of SOROTOKI is its own ODE solver that allows for easy controller development. To be more specific, the function which computes the generalized forces acting on the soft robot, given by <code class="language-plaintext highlighter-rouge">Model.tau</code>, can be overwritten by the user as to specify the torques a every timestep. For each function call, the solver will the class itself into <code class="language-plaintext highlighter-rouge">Model.tau</code>. Let us clarify why this is important, by considering the following example:</p>
-<p>Suppose we want to develop an PD+ controller, that is, a Proportional-Derivative controller that compensates gravity and stiffness. Such a (model-based) controller has the following structure:</p>
+<p>The advantage of SOROTOKI is its own ODE solver that allows for easy controller development. To be more specific, the function which computes the generalized forces acting on the soft robot, given by <code class="language-plaintext text-purple-000 highlighter-rouge">Model.tau</code>, can be overwritten by the user as to specify the torques a every timestep. For each function call, the solver will the class itself into <code class="language-plaintext text-purple-000 highlighter-rouge">Model.tau</code>. Let us clarify why this is important, by considering the following example:</p>
+<p>Suppose we want to develop an PD+ controller, that is, a Proportional-Derivative controller that compensates gravity and stiffness. Given the error $e:=q - q_d$, the PD+ controller has the following form:</p>
 <p>$$\tau = \nabla_{q}\;\mathcal{U}(q) - K_p e - K_d \dot{e} $$</p>
+<p>where we choose $K_p = k_1 K_T$ with tangent stiffness $K_T = \nabla^2_{q}\;\mathcal{U}_e(q)$, and $K_d = k_2 M$ with $M(q)$ the generalized inertia matrix; and $k_1,k_2 &gt; 0$ control gains. For simplicity, lets consider the following controller gains: $k_1 = k_2 = 1$. To construct the controller in SOROTOKI, consider the following:</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% desired joint configuration</span>
+<span class="n">qd</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">shp</span><span class="o">.</span><span class="n">NDim</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">qd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">+</span><span class="mf">5e-3</span><span class="p">;</span> <span class="c1">% curvature in 1/mm  </span>
+<span class="n">qd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5e-3</span><span class="p">;</span> <span class="c1">% curvature in 1/mm   </span>
+<span class="n">qd</span><span class="p">(</span><span class="mi">5</span><span class="p">,:)</span> <span class="o">=</span> <span class="o">-</span><span class="mf">7e-3</span><span class="p">;</span> <span class="c1">% curvature in 1/mm  </span>
+<span class="n">qd</span><span class="p">(</span><span class="mi">6</span><span class="p">,:)</span> <span class="o">=</span> <span class="o">-</span><span class="mf">7e-3</span><span class="p">;</span> <span class="c1">% curvature in 1/mm  </span>
+
+<span class="c1">% assign controller</span>
+<span class="n">mdl</span><span class="o">.</span><span class="n">tau</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="n">Controller</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">qd</span><span class="p">)</span>
+
+<span class="c1">% auxiliary function for controller</span>
+<span class="k">function</span> <span class="n">tau</span> <span class="o">=</span> <span class="n">Controller</span><span class="p">(</span><span class="n">mdl</span><span class="p">,</span><span class="n">Qd</span><span class="p">)</span>
+  <span class="n">q</span>  <span class="o">=</span> <span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">q</span><span class="p">;</span>   <span class="c1">% get q(t)</span>
+  <span class="n">dq</span> <span class="o">=</span> <span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">dq</span><span class="p">;</span>  <span class="c1">% get dq(t)</span>
+
+  <span class="n">Kp</span>  <span class="o">=</span> <span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">EL</span><span class="o">.</span><span class="n">K</span><span class="p">;</span>     <span class="c1">% tangent stiffness matrix</span>
+  <span class="n">Kd</span>  <span class="o">=</span> <span class="n">KT</span><span class="o">*</span><span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">EL</span><span class="o">.</span><span class="n">M</span><span class="p">;</span>  <span class="c1">% inertia matrix</span>
+
+  <span class="c1">% switching set-point</span>
+  <span class="k">if</span> <span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">t</span> <span class="o">&lt;</span> <span class="mi">5</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">q</span> <span class="o">-</span> <span class="n">Qd</span><span class="p">(:,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">else</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">q</span> <span class="o">-</span> <span class="n">Qd</span><span class="p">(:,</span><span class="mi">2</span><span class="p">);</span>
+  <span class="k">end</span>
+
+  <span class="c1">% PD+ control law</span>
+  <span class="n">tau</span> <span class="o">=</span> <span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">dUdq</span> <span class="o">-</span> <span class="n">Kp</span><span class="o">*</span><span class="n">e</span> <span class="o">-</span> <span class="n">Kd</span><span class="o">*</span><span class="n">dq</span><span class="p">;</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<h2 id="simulating-the-closed-loop-system"> <a href="#simulating-the-closed-loop-system" class="anchor-heading" aria-labelledby="simulating-the-closed-loop-system"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Simulating the closed-loop system</h2>
+<p>Now, we only have to simulate the system. Let us consider a finite horizon time of $T = 10$ s with timesteps $\Delta t = 10$ ms. Then, we can simulate the closed-loop model as follows:</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% set solver setttings</span>
+<span class="n">mdl</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="s1">'TimeEnd'</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="s1">'TimeStep'</span><span class="p">,</span><span class="mf">10e-3</span><span class="p">);</span>
+
+<span class="c1">% simulate!</span>
+<span class="n">mdl</span><span class="o">.</span><span class="n">simulate</span><span class="p">();</span>
+
+<span class="c1">% plotting</span>
+<span class="nb">figure</span><span class="p">(</span><span class="mi">99</span><span class="p">);</span> 
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> 
+<span class="nb">plot</span><span class="p">(</span><span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">t</span><span class="p">,</span><span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">q</span><span class="p">,</span><span class="s1">'Linew'</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="nb">hold</span> <span class="n">on</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">([</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">5</span> <span class="mi">10</span><span class="p">],[</span><span class="n">qd</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span><span class="n">qd</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span><span class="n">qd</span><span class="p">(:,</span><span class="mi">2</span><span class="p">),</span><span class="n">qd</span><span class="p">(:,</span><span class="mi">2</span><span class="p">)],</span><span class="s1">'k--'</span><span class="p">,</span><span class="s1">'Linew'</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="nb">title</span><span class="p">(</span><span class="s1">'states $q$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">'</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+<span class="nb">grid</span> <span class="n">on</span><span class="p">;</span> 
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="nb">plot</span><span class="p">(</span><span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">t</span><span class="p">,</span><span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">p</span><span class="p">,</span><span class="s1">'Linew'</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'momenta $p = M(q)\dot{q}$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">,</span><span class="s1">'fontsize'</span><span class="p">,</span><span class="mi">21</span><span class="p">);</span>
+<span class="nb">grid</span> <span class="n">on</span><span class="p">;</span> 
+</code></pre></div></div>
+<div align="center"> <img src="./img/states.png" width="600">
+</div>
+<div align="center"> Evolution of the states and generalized momenta of the closed-loop soft robotic system. The dashed black lines denote the desired state configurations $q_d$.</div>
+<h2 id="complete-code"> <a href="#complete-code" class="anchor-heading" aria-labelledby="complete-code"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Complete code</h2>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">L</span> <span class="o">=</span> <span class="mi">360</span><span class="p">;</span>   <span class="c1">% length of robot</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>     <span class="c1">% number of modes</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span>   <span class="c1">% number of discrete points on curve</span>
+<span class="n">H</span> <span class="o">=</span> <span class="mi">1</span><span class="p">/</span><span class="mi">60</span><span class="p">;</span>  <span class="c1">% timesteps</span>
+<span class="n">FPS</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>  <span class="c1">% animation speed</span>
+
+<span class="n">Modes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">];</span>  <span class="c1">% pure-XY curvature</span>
+
+<span class="c1">%% generate shapes</span>
+<span class="n">X</span>   <span class="o">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">N</span><span class="p">)</span><span class="o">'</span><span class="p">;</span>
+
+<span class="n">Y</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">M</span>
+   <span class="n">Y</span><span class="p">(:,</span><span class="n">ii</span><span class="p">)</span> <span class="o">=</span> <span class="n">pcc</span><span class="p">(</span><span class="n">X</span><span class="p">/</span><span class="n">L</span><span class="p">,</span><span class="n">ii</span><span class="p">,</span><span class="n">M</span><span class="p">);</span> <span class="c1">% pcc</span>
+<span class="k">end</span>
+
+<span class="n">shp</span> <span class="o">=</span> <span class="n">Shapes</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">Modes</span><span class="p">,</span><span class="s1">'L0'</span><span class="p">,</span><span class="n">L</span><span class="p">);</span>
+
+<span class="c1">%% setting materials</span>
+<span class="n">shp</span><span class="o">.</span><span class="n">Material</span> <span class="o">=</span> <span class="n">NeoHookeanMaterial</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.4</span><span class="p">);</span>
+<span class="n">shp</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="s1">'Rho'</span><span class="p">,</span><span class="mf">150e-12</span><span class="p">,</span><span class="k">...</span>
+        <span class="s1">'Gravity'</span><span class="p">,[</span><span class="o">-</span><span class="mf">9.81e3</span><span class="p">;</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span><span class="p">]);</span>
+
+<span class="n">shp</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">rebuild</span><span class="p">();</span>
+
+<span class="c1">%% model class</span>
+<span class="n">mdl</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">shp</span><span class="p">,</span><span class="s1">'TimeStep'</span><span class="p">,</span><span class="n">H</span><span class="p">,</span><span class="s1">'TimeEnd'</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+
+<span class="c1">%% class build + controller</span>
+<span class="n">qd</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">qd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">+</span><span class="mi">5</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
+<span class="n">qd</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
+<span class="n">qd</span><span class="p">(</span><span class="mi">5</span><span class="p">,:)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
+<span class="n">qd</span><span class="p">(</span><span class="mi">6</span><span class="p">,:)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
+
+<span class="n">mdl</span><span class="o">.</span><span class="n">tau</span>  <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="n">Controller</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">qd</span><span class="p">);</span>
+
+<span class="c1">%% simulate</span>
+<span class="n">mdl</span> <span class="o">=</span> <span class="n">mdl</span><span class="o">.</span><span class="n">simulate</span><span class="p">();</span> 
+
+<span class="c1">% plotting</span>
+<span class="nb">figure</span><span class="p">(</span><span class="mi">99</span><span class="p">);</span> <span class="nb">clf</span><span class="p">;</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="nb">plot</span><span class="p">(</span><span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">t</span><span class="p">,</span><span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">q</span><span class="p">,</span><span class="s1">'Linew'</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="nb">hold</span> <span class="n">on</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">([</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">5</span> <span class="mi">10</span><span class="p">],[</span><span class="n">qd</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span><span class="n">qd</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span><span class="n">qd</span><span class="p">(:,</span><span class="mi">2</span><span class="p">),</span><span class="n">qd</span><span class="p">(:,</span><span class="mi">2</span><span class="p">)],</span><span class="s1">'k--'</span><span class="p">,</span><span class="s1">'Linew'</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="nb">grid</span> <span class="n">on</span><span class="p">;</span> <span class="nb">title</span><span class="p">(</span><span class="s1">'states $q$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">,</span><span class="s1">'fontsize'</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="nb">plot</span><span class="p">(</span><span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">t</span><span class="p">,</span><span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">p</span><span class="p">,</span><span class="s1">'Linew'</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="nb">grid</span> <span class="n">on</span><span class="p">;</span> <span class="nb">title</span><span class="p">(</span><span class="s1">'momenta $p = M(q)\dot{q}$'</span><span class="p">,</span><span class="s1">'interpreter'</span><span class="p">,</span><span class="s1">'latex'</span><span class="p">,</span><span class="k">...</span>
+    <span class="s1">'fontsize'</span><span class="p">,</span><span class="mi">21</span><span class="p">);</span>
+<span class="n">sorocolor</span>
+
+<span class="c1">%% animation</span>
+<span class="nb">figure</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span> <span class="nb">clf</span><span class="p">;</span>
+<span class="n">rig</span> <span class="o">=</span> <span class="n">setupRig</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Modes</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="n">ii</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">fps</span><span class="p">(</span><span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">t</span><span class="p">,</span><span class="n">FPS</span><span class="p">):</span><span class="nb">length</span><span class="p">(</span><span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">q</span><span class="p">)</span>
+
+    <span class="n">rig</span> <span class="o">=</span> <span class="n">rig</span><span class="o">.</span><span class="n">computeFK</span><span class="p">(</span><span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="n">ii</span><span class="p">,:));</span>
+    <span class="n">rig</span> <span class="o">=</span> <span class="n">rig</span><span class="o">.</span><span class="n">update</span><span class="p">();</span>
+  
+    <span class="nb">axis</span><span class="p">([</span><span class="o">-.</span><span class="mi">1</span><span class="o">*</span><span class="n">L</span> <span class="o">.</span><span class="mi">1</span><span class="o">*</span><span class="n">L</span> <span class="o">-.</span><span class="mi">1</span><span class="o">*</span><span class="n">L</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">L</span> <span class="o">-</span><span class="mf">1.2</span><span class="o">*</span><span class="n">L</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">L</span><span class="p">]);</span>
+    <span class="nb">view</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">);</span>
+    <span class="nb">zoom</span><span class="p">(</span><span class="mf">1.2</span><span class="p">);</span>
+    <span class="nb">drawnow</span><span class="p">();</span>
+    <span class="n">background</span><span class="p">();</span>
+<span class="k">end</span>
+
+<span class="c1">%% setup controller</span>
+<span class="k">function</span> <span class="n">tau</span> <span class="o">=</span> <span class="n">Controller</span><span class="p">(</span><span class="n">mdl</span><span class="p">,</span><span class="n">Qd</span><span class="p">)</span>
+<span class="n">t</span>   <span class="o">=</span> <span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">t</span><span class="p">;</span>
+<span class="n">q</span>   <span class="o">=</span> <span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">q</span><span class="p">;</span>
+<span class="n">dq</span>  <span class="o">=</span> <span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">dq</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mi">5</span>
+    <span class="n">qd</span> <span class="o">=</span> <span class="n">Qd</span><span class="p">(:,</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">else</span>
+    <span class="n">qd</span> <span class="o">=</span> <span class="n">Qd</span><span class="p">(:,</span><span class="mi">2</span><span class="p">);</span>
+<span class="k">end</span>
+
+<span class="n">KT</span>  <span class="o">=</span> <span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">EL</span><span class="o">.</span><span class="n">K</span><span class="p">;</span>
+<span class="n">Kd</span>  <span class="o">=</span> <span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">EL</span><span class="o">.</span><span class="n">M</span><span class="p">;</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="n">mdl</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">dUdq</span> <span class="o">-</span> <span class="n">KT</span><span class="o">*</span><span class="p">(</span><span class="n">q</span> <span class="o">-</span> <span class="n">qd</span><span class="p">)</span> <span class="o">-</span> <span class="n">Kd</span><span class="o">*</span><span class="n">dq</span><span class="p">;</span>
+<span class="k">end</span>
+
+<span class="c1">%% setup rig</span>
+<span class="k">function</span> <span class="n">rig</span> <span class="o">=</span> <span class="n">setupRig</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Modes</span><span class="p">)</span>
+<span class="n">gmdl1</span> <span class="o">=</span> <span class="n">Gmodel</span><span class="p">(</span><span class="s1">'Pneulink.stl'</span><span class="p">,</span><span class="s1">'ShowProcess'</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">gmdl2</span> <span class="o">=</span> <span class="n">gmdl1</span><span class="o">.</span><span class="nb">copy</span><span class="p">();</span>
+<span class="n">gmdl3</span> <span class="o">=</span> <span class="n">gmdl1</span><span class="o">.</span><span class="nb">copy</span><span class="p">();</span>
+
+<span class="n">gmdl1</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">(</span><span class="n">gmdl1</span><span class="p">,</span><span class="s1">'Loft'</span><span class="p">,[</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.96</span><span class="p">]);</span>
+<span class="n">gmdl2</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">(</span><span class="n">gmdl2</span><span class="p">,</span><span class="s1">'Loft'</span><span class="p">,[</span><span class="mf">0.96</span><span class="p">,</span><span class="mf">0.92</span><span class="p">]);</span>
+<span class="n">gmdl3</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">(</span><span class="n">gmdl3</span><span class="p">,</span><span class="s1">'Loft'</span><span class="p">,[</span><span class="mf">0.92</span><span class="p">,</span><span class="mf">0.88</span><span class="p">]);</span>
+
+<span class="n">gmdl4</span> <span class="o">=</span> <span class="n">Gmodel</span><span class="p">(</span><span class="s1">'SoftGripperRedux.stl'</span><span class="p">,</span><span class="s1">'ShowProcess'</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">gmdl4</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">(</span><span class="n">gmdl4</span><span class="p">,</span><span class="s1">'Scale'</span><span class="p">,</span><span class="mf">0.88</span><span class="p">);</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+<span class="n">X</span> <span class="o">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">N</span><span class="p">)</span><span class="o">'</span><span class="p">;</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">GenerateFunctionSpace</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="n">L</span><span class="p">);</span>
+
+<span class="n">shp</span> <span class="o">=</span> <span class="n">Shapes</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">Modes</span><span class="p">,</span><span class="s1">'L0'</span><span class="p">,</span><span class="n">L</span><span class="p">);</span>
+ 
+<span class="n">rig</span> <span class="o">=</span> <span class="n">Rig</span><span class="p">(</span><span class="o">@</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">shp</span><span class="o">.</span><span class="nb">string</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s1">'Domain'</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="s1">'XTangent'</span><span class="p">,</span><span class="nb">true</span><span class="p">);</span>
+
+<span class="n">rig</span> <span class="o">=</span> <span class="n">rig</span><span class="o">.</span><span class="nb">add</span><span class="p">(</span><span class="n">gmdl1</span><span class="p">,</span><span class="n">gmdl2</span><span class="p">,</span><span class="n">gmdl3</span><span class="p">,</span><span class="n">gmdl4</span><span class="p">);</span>
+
+<span class="n">rig</span> <span class="o">=</span> <span class="n">rig</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">rig</span> <span class="o">=</span> <span class="n">rig</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.3</span><span class="p">);</span>
+<span class="n">rig</span> <span class="o">=</span> <span class="n">rig</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.3</span><span class="p">);</span>
+<span class="n">rig</span> <span class="o">=</span> <span class="n">rig</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">6</span><span class="p">);</span>
+<span class="n">rig</span> <span class="o">=</span> <span class="n">rig</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">.</span><span class="mi">6</span><span class="p">);</span>
+<span class="n">rig</span> <span class="o">=</span> <span class="n">rig</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">9</span><span class="p">);</span>
+<span class="n">rig</span> <span class="o">=</span> <span class="n">rig</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">9</span><span class="p">);</span>
+
+<span class="n">rig</span><span class="o">.</span><span class="n">g0</span> <span class="o">=</span> <span class="n">SE3</span><span class="p">(</span><span class="n">roty</span><span class="p">(</span><span class="o">-</span><span class="nb">pi</span><span class="p">),</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">rig</span> <span class="o">=</span> <span class="n">rig</span><span class="o">.</span><span class="n">render</span><span class="p">();</span>
+<span class="k">end</span>
+</code></pre></div></div>
 <p class="fs-3"><a href="https://www.festo.com/group/en/cms/10241.htm"><strong>[1]</strong></a> <strong>Bionic Handling Assistant</strong> a soft robotic manipulator from Festo.</p>
 <p class="fs-3"><a href="https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process"><strong>[2]</strong></a> <strong>Gram-Schmidt process</strong> on constructing a orthonormal basis.</p>
 <hr>
