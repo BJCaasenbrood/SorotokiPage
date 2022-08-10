@@ -19,7 +19,7 @@ If you are using Sorotoki in your (academic) work, please consider citing the to
 ## License
 The code of SOROTOKI is licensed under [MIT License](https://github.com/BJCaasenbrood/SorotokiCode/blob/master/LICENSE.md). However, please be mindful of some third-party libraries which are used by SOROTOKI, which may be available under a different license.
 
-## References
+## Published works using SOROTOKI
 [**[1]**](https://ieeexplore.ieee.org/abstract/document/9116010/metrics#metrics) B. Caasenbrood, A. Pogromsky and H. Nijmeijer, **A Computational Design Framework for Pressure-driven Soft Robots through Nonlinear Topology Optimization**, 2020 3rd IEEE Inter. Conf. on Soft Robotics (RoboSoft), pp. 633-638, 2020. [ 10.1109/RoboSoft48309.2020.9116010](https://doi.org/10.1109/RoboSoft48309.2020.9116010)
 {: .fs-3}
 
@@ -29,7 +29,7 @@ The code of SOROTOKI is licensed under [MIT License](https://github.com/BJCaasen
 [**[3]**](http://dx.doi.org/10.5220/0010581503110319)  B. Caasenbrood, A. Pogromsky, and H. Nijmeijer, **Energy-based control of soft manipulators using Cosserat-beam Models**, 18th International Conference on Informatics in Control, Automation and Robotics (INCINCO), pp. 311-319, 2021. [10.5220/0010581503110319](http://dx.doi.org/10.5220/0010581503110319)
 {: .fs-3}
 
-[4] B. Caasenbrood, A. Pogromsky, and H. Nijmeijer, **Control-oriented models for hyper-elastic soft robots using differential geometry**, Soft Robotics, 2022. [10.1089/soro.2021.0035](http://dx.doi.org/10.1089/soro.2021.0035) 
+[**[4]**](http://dx.doi.org/10.1089/soro.2021.0035)  B. Caasenbrood, A. Pogromsky, and H. Nijmeijer, **Control-oriented models for hyper-elastic soft robots using differential geometry**, Soft Robotics, 2022. [10.1089/soro.2021.0035](http://dx.doi.org/10.1089/soro.2021.0035) 
 {: .fs-3}
 
 [**[5]**](http://dx.doi.org/10.1109/RoboSoft54090.2022.9762137) B. Caasenbrood, F. van Beek, H. Chu Khanh, and I. Kuling, **A Desktop-sized Platform for Real-time Control Applications of Pneumatic Soft Robots**, 2022 5rd IEEE Inter. Conf. on Soft Robotics (RoboSoft), pp. 217-223, 2022. [10.1109/RoboSoft54090.2022.9762137](http://dx.doi.org/10.1109/RoboSoft54090.2022.9762137)

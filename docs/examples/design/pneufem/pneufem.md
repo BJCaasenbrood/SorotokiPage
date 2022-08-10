@@ -40,7 +40,6 @@ MathJax = {
  - Code length: `~25 lines`{: .text-purple-000} (without comments)
 
 ---
-
 ### Introduction
 In this illustrative example, we will perform a simple simulation of the classic PneuNet actuator, which is a rectangular-shaped soft robot with embedded pressure chambers. Due to a geometrically-induced stiffness gradient, the soft actuator undergoes bending naturally when pressurized. SOROTOKI is purposefully developed to easily build and simulate various Finite Element models using a minimal programming interface. 
 
@@ -83,7 +82,7 @@ fem = Fem(msh,'TimeStep',1/120,'Linestyle','none');
 ```
 
 ### Assigning boundary conditions
-Now the tricky part is assigning the boundary conditions -- especially for the pneumatic regions. Luckily, Sorotoki is equipped with easy mesh identifiers using `fem.FindNodes`{: .text-purple-000} or `fem.FindEdges`{: .text-purple-000} that produce the Node or Edge index given certain geometrical features of the mesh. In this case, we want all the enclosed surfaces inside the mesh domain. By calling `id = fem.FindEdges('Hole')`{: .text-purple-000}, we retrieve a list of edges that span all the enclosed volumes. Alternatively, we can use `id = fem.FindEdges('Hole',[1,3...,N])`{: .text-purple-000} where `[1,3...,N]`{: .text-purple-000} is a list of desired holes. Lastly, we can use the input to `fem.AddConstraint('Pressure',id,P0)`{: .text-purple-000} to add the pressure load of magnitude `P0 = 25 kPa`{: .text-purple-000} .
+Now the tricky part is assigning the boundary conditions -- especially for the pneumatic regions. Luckily, Sorotoki is equipped with easy mesh identifiers using `fem.FindNodes`{: .text-purple-000} or `fem.FindEdges`{: .text-purple-000} that produce the Node or Edge index given certain geometrical features of the mesh. In this case, we want all the enclosed surfaces inside the mesh domain. By calling `id = fem.FindEdges('Hole')`{: .text-purple-000}, we retrieve a list of edges that span all the enclosed volumes. Alternatively, we can use `id = fem.FindEdges('Hole',[1,3...,N])`{: .text-purple-000} where `[1,3...,N]`{: .text-purple-000} is a list of desired holes. Lastly, we can use the input to `fem.addPressure(id,P0)`{: .text-purple-000} to add the pressure load of magnitude `P0 = 25 kPa`{: .text-purple-000} .
 
 ```matlab
 % pressure load
@@ -91,14 +90,15 @@ P0 = 25*kpa;
 
 % motion constraint
 id = fem.FindNodes('Left');
-fem = fem.AddConstraint('Support',id,[1,1]);
+fem = fem.addSupport(id,[1,1]);
 
 % pressure load on Mesh
 id = fem.FindEdges('Hole');
-fem = fem.AddConstraint('Pressure',id,P0);
+fem = fem.addPressure(id,P0);
 ```
 
 **Important!** The standard SI units for SOROTOKI are set to millimeters. As such, all physical features like size, density, pressures, stress, gravitational accelerations, must be scaled accordingly! Therefore, a pressure load of 25 kPa equals `P0 = 25*1e-3`{: .text-purple-000}  MPa (megapascal).
+
 
 ### Material assignment
 Next, we assign the material properties to the PneuNet actuator. Here we use the popular silicone DragonSkin 10 from SmoothOn. Sorotoki comes equiped with various common silicone types used extensively in soft robotics, which can be found under `src/fem/material/samples`. To assign the material, consider the following code:
@@ -137,6 +137,7 @@ for ii = 1:fps(t,60):numel(t)
 end
 ```
 
+---
 ## Complete code (~25 lines without comments)
 ```matlab
 %% simulation settings
@@ -162,8 +163,8 @@ subplot(2,1,2); msh.show();
 fem = Fem(msh,'TimeStep',1/120,'Linestyle','none');
 
 %% add boundary constraint
-fem = fem.AddConstraint('Support',fem.FindNodes('Left'),[1,1]);
-fem = fem.AddConstraint('Pressure',fem.FindEdges('Hole'),20*kpa);
+fem = fem.addSupport(fem.FindNodes('Left'),[1,1]);
+fem = fem.addPressure(fem.FindEdges('Hole'),20*kpa);
 
 %% assign material
 fem.Material = Dragonskin10();

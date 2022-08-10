@@ -66,6 +66,7 @@
 </li>
 <li class="nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/contact.html" class="nav-list-link">Contact</a></li>
 <li class="nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/cite.html" class="nav-list-link">How to cite?</a></li>
+<li class="nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/news.html" class="nav-list-link">Highlights</a></li>
 <li class="nav-list-item"><a href="http://localhost:4000/SorotokiPage/docs/patch.html" class="nav-list-link">Patch notes</a></li>
 </ul></nav><footer class="site-footer"> This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.</footer>
 </div>
@@ -103,24 +104,6 @@
 <li>(NEW!) Real-time control of soft robots via Raspi-interface,</li>
 <li>Fast graphics rendering with responsive textures.</li>
 </ul>
-<h2 class="text-purple-000" id="whats-new"> <a href="#whats-new" class="anchor-heading" aria-labelledby="whats-new"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> What’s new?</h2>
-<ul><li>
-<strong>Apr 05, 2022</strong>: We have written a simulation environment of a continuum soft arm grabbing a spherical object described as Signed Distance Function <code class="language-plaintext text-purple-000 highlighter-rouge">Sdf.m</code>. To make the soft arm envelop the object, we developed an energy-shaping technique that ensures the geometric distance between the robot and the object is minimal. In theory, this technique can be used to grab any arbitrarily shaped object as long as we describe it as a Sdf.</li></ul>
-<details> <summary>Show image</summary><div align="center"> <img src="./docs/documentation/img/mdl_energycontrol_sdfshape.gif" width="500">
-</div></details><p class="text-purple-000 fs-2"><strong>DISCLAIMER</strong>: The soft arm still penetrates the object, no contact is prescribed in the simulation here. This will be implemented in the future!</p>
-<p><a href="https://github.com/BJCaasenbrood/SorotokiCode/blob/master/scripts/mdl/mdl_swing_motion.m"> Code available here</a></p>
-<ul><li>
-<strong>Apr 03, 2022</strong>: We added environmental contact in SOROTOKI! You can now use Signed Distance Functions <code class="language-plaintext text-purple-000 highlighter-rouge">Sdf.m</code> with <code class="language-plaintext text-purple-000 highlighter-rouge">Fem.m</code>. Use <code class="language-plaintext text-purple-000 highlighter-rouge">fem.AddConstraint('Contact',sdf,Move)</code> to add the contact. The vector <code class="language-plaintext text-purple-000 highlighter-rouge">Move = [dX, dY]</code> or <code class="language-plaintext text-purple-000 highlighter-rouge">Move = [dX, dY, dZ]</code> can be used to offset the contact. The contact dynamics can be solved Quasi-static or Dynamic.</li></ul>
-<details> <summary>Show image</summary><div align="center"> <img src="./docs/documentation/img/fem_bouncing_ball.gif" width="500">
-</div></details><ul><li>
-<strong>Mar 10, 2022</strong>: We hugely improved the dynamic simulations performance using a combination of Matrix-Differential Equations (MDEs) and Matlab’s mex compiler. To enable the compiled dynamic solver, set <code class="language-plaintext text-purple-000 highlighter-rouge">mdl.MexSolver = true</code> (default option). As an example, see <code class="language-plaintext text-purple-000 highlighter-rouge">mdl_swing_motion</code>. It runs a 16-dim Kirchoff beam at 60 Hz easily! (5s simulation = 1s real-time). Specs: Lenovo Yoga, AMD Ryzen 7 5800H, 32GB RAM.</li></ul>
-<details> <summary>Show video</summary><div align="center"> <img src="./docs/documentation/img/mdl_fast_simu.gif" width="500">
-</div></details><p><a href="https://github.com/BJCaasenbrood/SorotokiCode/blob/master/scripts/mdl/mdl_swing_motion.m"> Code available here</a></p>
-<ul><li>
-<strong>Nov 11, 2021</strong>: We recently added the functionality to perform real-time control of soft robotic systems using a desktop-sized development platform, see <a href="https://github.com/chukhanhhoang/SoftRoboticSetupFesto">Github repo</a>. Using <code class="language-plaintext text-purple-000 highlighter-rouge">Model.m</code>, we developed a model-based controller which we see in action below!</li></ul>
-<details> <summary>Show image</summary><div align="center"> <img src="./docs/documentation/img/bdog_closed_loop_control.gif" width="500">
-</div></details><p class="text-purple-000 fs-2"><strong>REMARK</strong>: The controller shown in the video is not a ‘elementary’ PID controller, we actively use gravity compensation, and hyper-elastic and visco-elastic material compensation! To envelop these entities in a dynamic model, we used the SOROTOKI toolkit.</p>
-<p class="text-purple-000 fs-2"><strong>REMARK</strong>: All images below are produced using only MATLAB and the SOROTOKI toolkit, no additional software was used!</p>
 <h3 id="signed-distance-functions-and-meshing--sdfm-meshm"> <a href="#signed-distance-functions-and-meshing--sdfm-meshm" class="anchor-heading" aria-labelledby="signed-distance-functions-and-meshing--sdfm-meshm"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Signed Distance Functions and Meshing – <code class="language-plaintext text-purple-000 highlighter-rouge">Sdf.m</code>, <code class="language-plaintext text-purple-000 highlighter-rouge">Mesh.m</code>
 </h3>
 <h4 class="text-purple-000" id="sdf-implicit-modeling-of-2d-primes-union-and-subtraction"> <a href="#sdf-implicit-modeling-of-2d-primes-union-and-subtraction" class="anchor-heading" aria-labelledby="sdf-implicit-modeling-of-2d-primes-union-and-subtraction"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> SDF: Implicit modeling of 2D-primes: union and subtraction</h4>
