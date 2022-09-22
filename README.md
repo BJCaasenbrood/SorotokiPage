@@ -13,16 +13,20 @@ Please visit [**Sorotoki**](https://bjcaasenbrood.github.io/SorotokiCode/) for t
 
 ## What can it do?
 <p float="left">
-<img src="/docs/documentation/img/twist.gif" height="140"> <img src="/docs/documentation/img/buckling.png" height="140"> <img src="/docs/documentation/img/diamondbot.png" height="120"> <img src="/docs/documentation/img/opt_bellow.gif" height="150"> <img src="/docs/documentation/img/opt_pneunet_90.gif" height="160">
+<img src="/docs/documentation/img/mckibben.gif" height="150"> <img src="/docs/documentation/img/twist.gif" height="140"> <img src="/docs/documentation/img/buckling.png" height="140"> <img src="/docs/documentation/img/diamondbot.png" height="120"> <img src="/docs/documentation/img/opt_bellow.gif" height="150"> <img src="/docs/documentation/img/opt_pneunet_90.gif" height="160"> 
 </p>
 
 <p float="left">
-<img src="/docs/documentation/img/mckibben.gif" height="150"> <img src="/docs/documentation/img/straingauge.gif" height="145"> <img src="/docs/documentation/img/soft_finger.gif" height="140"> <img src="/docs/documentation/img/soro_softcrawl.gif" height="140"> <img src="/docs/documentation/img/soft_bounce.gif" height="140">
+ <img src="/docs/documentation/img/straingauge.gif" height="145"> <img src="/docs/documentation/img/soft_finger.gif" height="140"> <img src="/docs/documentation/img/soro_softcrawl.gif" height="140"> <img src="/docs/documentation/img/soft_bounce.gif" height="140">
 <img src="/docs/documentation/img/soro_gripper.png" height="140"> <img src="/docs/documentation/img/beam.gif" height="160">
 </p>
 
 <p float="left">
 <img src="/docs/documentation/img/soro_hand.gif" height="150"> <img src="/docs/documentation/img/soft_control.gif" height="150"> <img src="/docs/documentation/img/soro_control.gif" height="140"> 
+</p>
+
+<p float="left">
+<img src="/docs/documentation/img/bdog_bellow.gif" height="150"> <img src="/docs/documentation/img/bdog_grip.gif" height="150"> <img src="/docs/documentation/img/bdog_srm.gif" height="150"> 
 </p>
 
 ## Applications highlights

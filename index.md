@@ -157,6 +157,13 @@ SOROTOKI is exclusively developed as a multi-physics programming tools for the *
 
 ### Real-time Control -- `Control.m`{: .text-purple-000}
 
+#### CONTROL: Open-loop control of soft gripper
+{: .text-purple-000}
+<details>
+<summary>Show image</summary>
+<div align="left"> <img src="./docs/documentation/img/bdog_grip.gif" width="400"> </div>
+</details>
+
 #### CONTROL: Closed-loop control of PneuNet actuator
 {: .text-purple-000}
 <details>
@@ -170,6 +177,15 @@ SOROTOKI is exclusively developed as a multi-physics programming tools for the *
 <summary>Show image</summary>
 <div align="left"> <img src="./docs/documentation/img/bdog_2link.gif" width="300"> </div>
 </details>
+
+#### CONTROL: Closed-loop control of soft manipulator with gripper
+{: .text-purple-000}
+<details>
+<summary>Show image</summary>
+<div align="left"> <img src="./docs/documentation/img/bdog_srm.gif" width="400"> </div>
+</details>
+
+
 
 ### Graphics Model -- `Gmodel.m`{: .text-purple-000}
 
